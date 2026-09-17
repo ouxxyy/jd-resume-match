@@ -1,0 +1,208 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "case-e-unspecified-data",
+  "synthetic": true,
+  "private_markers": [
+    "方圆",
+    "13700009999",
+    "fangyuan@example.com",
+    "某物流科技公司"
+  ],
+  "sources": [
+    {
+      "source_id": "src-resume-e",
+      "kind": "resume",
+      "summary": "无时间线简历：工作经历 1 段（无起止日期）、项目 1 段（无日期）、无教育背景信息、技能清单 1 组；无法判断工作年限与阶段",
+      "parse_warnings": [
+        "timeline_missing"
+      ],
+      "filename": "resume.md"
+    },
+    {
+      "source_id": "src-jd-e1",
+      "kind": "jd",
+      "filename": "jd-1-data.md",
+      "summary": "数据分析师：职责 3 条、任职要求 4 条；硬门槛 1 条（学历）；重要性标注 2 处明确",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "unspecified",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-e1",
+      "title": "数据分析师",
+      "category": "data",
+      "jd_source_id": "src-jd-e1",
+      "score": 39,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-e1-g1",
+          "job_id": "job-e1",
+          "text": "本科及以上学历",
+          "jd_quote": "本科及以上学历，统计、数学、计算机相关专业优先",
+          "status": "pending_confirmation",
+          "evidence_ids": [],
+          "rationale": "简历无任何教育背景信息；不从「没写」推断「不满足」，列为待确认并请候选人补证"
+        }
+      ],
+      "unknown_count": 2,
+      "rank": 1,
+      "rank_rationale": "在各自 JD 的证据覆盖口径下：数据分析师为单岗位诊断；分数为该 JD 内的证据覆盖，不代表岗位难度或招聘成功率",
+      "suggestion": "revise_then_apply",
+      "suggestion_rationale": "存在 1 项待确认门槛（学历）：先补教育背景并核实再投；39 分的缺口集中在 SQL 之外的子项与两处未知项，补全时间线与证据后覆盖会明显变化，当前分数不构成最终判断"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-e1-r1",
+      "job_id": "job-e1",
+      "text": "熟练使用 SQL 完成数据提取与清洗",
+      "jd_quote": "熟练使用 SQL 完成数据提取与清洗（必须）",
+      "locator": "src-jd-e1 任职要求第 1 条",
+      "category": "skill",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": [
+        "ev-e1"
+      ],
+      "answer_ids": [],
+      "rationale": "SQL 有真实行为证据（报表自动化脚本）；可视化与清洗流程工具无记录，子项缺一半故判部分满足",
+      "weight": 3
+    },
+    {
+      "req_id": "req-e1-r2",
+      "job_id": "job-e1",
+      "text": "搭建业务指标体系并输出分析报告",
+      "jd_quote": "搭建业务指标体系，定期输出专题分析报告",
+      "locator": "src-jd-e1 职责第 1 条",
+      "category": "experience",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "unknown",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "材料只有一段无日期经历且无指标体系相关描述；阶段不明按「不从缺失推断」处理，记未知项而非不具备",
+      "weight": 3
+    },
+    {
+      "req_id": "req-e1-r3",
+      "job_id": "job-e1",
+      "text": "与业务部门协作定义数据需求",
+      "jd_quote": "与业务部门协作，定义数据需求与口径",
+      "locator": "src-jd-e1 职责第 2 条",
+      "category": "soft",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "supported",
+      "evidence_ids": [
+        "ev-e2"
+      ],
+      "answer_ids": [],
+      "rationale": "有跨部门需求对接的行为证据（与运营、财务两部门对接报表口径），协作事实清楚",
+      "weight": 2
+    },
+    {
+      "req_id": "req-e1-r4",
+      "job_id": "job-e1",
+      "text": "有 A/B 实验设计与分析经验",
+      "jd_quote": "有 A/B 实验设计与分析经验者优先",
+      "locator": "src-jd-e1 任职要求第 3 条",
+      "category": "skill",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unclear",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "技能清单自述「了解实验思维」无任何实验记录佐证；单列为未知项",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-e1",
+      "source_id": "src-resume-e",
+      "quote": "用 SQL 编写取数与自动化报表脚本 20 余个，覆盖订单、运力与结算数据",
+      "locator": "工作经历（无日期）",
+      "tags": [
+        "SQL",
+        "自动化"
+      ]
+    },
+    {
+      "evidence_id": "ev-e2",
+      "source_id": "src-resume-e",
+      "quote": "对接运营与财务两个部门的报表口径需求，统一结算数据定义",
+      "locator": "工作经历（无日期）",
+      "tags": [
+        "跨部门",
+        "口径"
+      ]
+    }
+  ],
+  "answers": [],
+  "primary_job_id": "job-e1",
+  "primary_selection_reason": "单岗位诊断：job-e1 为唯一 JD；材料无法确定职业阶段，按「阶段不明」口径诊断，不对任何要求因阶段额外惩罚或豁免",
+  "answer_variants": [],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-e1",
+      "job_id": "job-e1",
+      "rationale": "材料无时间线、无教育背景，无法在事实范围内完成结构化改写；先补时间线与教育信息再重跑",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": true,
+      "target_gap": "工作经历时间线与教育背景",
+      "ask": "补充任职起止时间、教育背景（学校、专业、学历、时间）；无时间线的简历无法判断资历阶段"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-e1",
+      "job_id": "job-e1",
+      "order": 1,
+      "goal": "补全简历时间线与教育背景",
+      "deliverable": "带起止日期的简历修订版",
+      "completion_criteria": "每段经历有起止时间，教育背景完整；可重跑判定职业阶段",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-e2",
+      "job_id": "job-e1",
+      "order": 2,
+      "goal": "补可视化与指标体系证据",
+      "deliverable": "可视化工具使用记录或指标体系相关项目描述",
+      "completion_criteria": "新增 1 条可引用的可视化/指标经历，或明确决定不补并保留未知项",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-e3",
+      "job_id": "job-e1",
+      "order": 3,
+      "goal": "核实学历门槛后重跑",
+      "deliverable": "学历证明材料及重跑报告",
+      "completion_criteria": "门槛从待确认更新为核实通过或明确不满足；重跑后分数与建议以脚本为准",
+      "fact_or_skill": "fact"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 39,
+    "score_label": "简历证据匹配度",
+    "job_title": "数据分析师",
+    "job_category": "data",
+    "headline_findings": [
+      "SQL 取数与报表自动化有真实行为证据",
+      "指标体系与 A/B 实验暂无可引用记录",
+      "简历缺时间线与教育背景，无法判断职业阶段"
+    ],
+    "gate_notes": [
+      "1 项门槛待确认：学历（简历无教育背景信息）"
+    ],
+    "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"
+  }
+}

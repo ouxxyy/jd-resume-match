@@ -1,0 +1,223 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "jd-match-report/0.1.0",
+  "title": "JD vs 简历匹配度报告数据契约",
+  "description": "T1 产出的共同输入契约：skill 分析（T2）产出此结构，渲染（T3）只消费此结构。分数由权重×系数确定性计算，渲染器与模型无另造总分之权。",
+  "type": "object",
+  "required": [
+    "schema_version", "rubric_version", "case_id", "synthetic", "private_markers",
+    "sources", "candidate_stage", "parse_warnings", "jobs", "requirements",
+    "evidence", "answers", "primary_job_id", "primary_selection_reason",
+    "rewrites", "actions", "share_payload"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "jd-match-report/0.1.0" },
+    "rubric_version": { "const": "jd-match-rubric/0.1.0" },
+    "case_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "synthetic": { "type": "boolean", "description": "true=合成材料（本仓库 examples/ 黄金案例必须为 true，禁止真实材料入库）；false=真实用户材料。两种取值都必须提供 private_markers 供分享层扫描。修订记录 2026-09-11（MYW-58 报备，T1 落地）：原 const:true 会使真实材料报告永远无法通过校验、阻断 T4 真实材料验收，故改为布尔；schema_version 保持 0.1.0（约束放宽，不改数据形状，既有合法文档仍合法）" },
+    "private_markers": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "string", "minLength": 2 },
+      "description": "不得进入 share_payload 的个人标识（姓名/电话/邮箱/公司名等）；契约校验会扫描 share_payload 全部字符串。下限 2 字符：中文两字/三字姓名（如「王成」「李晓晓」）恰是扫描最主要对象；单字符标记会产生大范围误报、使扫描失去可信度。修订记录 2026-09-11：原 minLength=4 与黄金案例姓名标记矛盾（MYW-58 报备），T2 的临时覆盖随之自动失效"
+    },
+    "sources": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_id", "kind", "filename", "summary", "parse_warnings"],
+        "additionalProperties": false,
+        "properties": {
+          "source_id": { "type": "string", "pattern": "^src-[a-z0-9-]+$" },
+          "kind": { "enum": ["resume", "jd"] },
+          "filename": { "type": "string" },
+          "summary": { "type": "string", "description": "识别摘要：经历条数、时间范围、岗位数、漏读/截断项；不含联系方式" },
+          "parse_warnings": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "candidate_stage": {
+      "enum": ["fresh_grad", "early_career", "experienced", "unspecified"],
+      "description": "fresh_grad=应届生；early_career=1-3年；experienced=工作超过3年；unspecified=材料无法确定阶段。资历只影响诊断关注点，不作为加减分系数。交叉任职不得重复累加年限。管理经验不能仅凭年限推断。"
+    },
+    "parse_warnings": { "type": "array", "items": { "type": "string" } },
+    "jobs": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["job_id", "title", "category", "jd_source_id", "score", "scoring_status",
+                     "gates", "unknown_count", "rank", "rank_rationale", "suggestion", "suggestion_rationale"],
+        "additionalProperties": false,
+        "properties": {
+          "job_id": { "type": "string", "pattern": "^job-[a-z0-9-]+$" },
+          "title": { "type": "string" },
+          "category": { "enum": ["product", "operations", "marketing", "data", "engineering", "design", "category_unverified"] },
+          "jd_source_id": { "type": "string" },
+          "score": { "type": ["integer", "null"], "minimum": 0, "maximum": 100, "description": "整数；insufficient_input 时为 null" },
+          "scoring_status": { "enum": ["ok", "insufficient_input"] },
+          "gates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["gate_id", "job_id", "text", "jd_quote", "status", "rationale"],
+              "additionalProperties": false,
+              "properties": {
+                "gate_id": { "type": "string", "pattern": "^gate-[a-z0-9-]+$" },
+                "job_id": { "type": "string" },
+                "text": { "type": "string" },
+                "jd_quote": { "type": "string" },
+                "status": { "enum": ["met", "unmet", "pending_confirmation"] },
+                "evidence_ids": { "type": "array", "items": { "type": "string" } },
+                "rationale": { "type": "string", "description": "pending_confirmation 的理由不得是推断式表述" }
+              }
+            }
+          },
+          "unknown_count": { "type": "integer", "minimum": 0 },
+          "rank": { "type": "integer", "minimum": 1 },
+          "rank_rationale": { "type": "string", "description": "必须声明「各自 JD 的证据覆盖」口径" },
+          "suggestion": { "enum": ["prioritize", "revise_then_apply", "hold"] },
+          "suggestion_rationale": { "type": "string" }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["req_id", "job_id", "text", "jd_quote", "locator", "category", "importance",
+                     "importance_source", "status", "evidence_ids", "answer_ids", "rationale", "weight"],
+        "additionalProperties": false,
+        "properties": {
+          "req_id": { "type": "string", "pattern": "^req-[a-z0-9-]+$" },
+          "job_id": { "type": "string" },
+          "text": { "type": "string" },
+          "jd_quote": { "type": "string", "description": "JD 原文摘录" },
+          "locator": { "type": "string", "description": "source_id + 段落/条目位置" },
+          "category": { "enum": ["skill", "tool", "experience", "domain", "education", "soft", "other"] },
+          "importance": { "enum": ["must", "normal", "bonus"] },
+          "importance_source": { "enum": ["jd_explicit", "system_default"] },
+          "status": { "enum": ["supported", "partial", "unclear", "unmet", "unknown"] },
+          "evidence_ids": { "type": "array", "items": { "type": "string" } },
+          "answer_ids": { "type": "array", "items": { "type": "string" } },
+          "rationale": { "type": "string" },
+          "weight": { "type": "integer", "enum": [3, 2, 1], "description": "必须与 importance 对应（must=3/normal=2/bonus=1），复算器校验" },
+          "merged_into": { "type": "string", "description": "去重：被合并到目标 req_id，本条退出计分" }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "source_id", "quote", "locator", "tags"],
+        "additionalProperties": false,
+        "properties": {
+          "evidence_id": { "type": "string", "pattern": "^ev-[a-z0-9-]+$" },
+          "source_id": { "type": "string" },
+          "quote": { "type": "string", "description": "简历原文摘录，逐字" },
+          "locator": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["answer_id", "question", "answer", "recorded_as", "applies_to_jobs"],
+        "additionalProperties": false,
+        "properties": {
+          "answer_id": { "type": "string", "pattern": "^ans-[a-z0-9-]+$" },
+          "question": { "type": "string" },
+          "answer": { "type": "string" },
+          "recorded_as": { "const": "supplementary_evidence", "description": "补充回答与原简历区分" },
+          "applies_to_jobs": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "primary_job_id": { "type": "string" },
+    "primary_selection_reason": { "type": "string" },
+    "answer_variants": {
+      "type": "array",
+      "description": "补充回答后的重算期望：原报告保留，新分数显示来源",
+      "items": {
+        "type": "object",
+        "required": ["answer_ids", "changes", "job_scores", "note"],
+        "additionalProperties": false,
+        "properties": {
+          "answer_ids": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "changes": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["req_id", "status", "rationale"],
+              "additionalProperties": false,
+              "properties": {
+                "req_id": { "type": "string" },
+                "status": { "enum": ["supported", "partial", "unclear", "unmet", "unknown"] },
+                "rationale": { "type": "string" }
+              }
+            }
+          },
+          "job_scores": { "type": "object", "description": "job_id → 变更后分数（整数）" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "rewrites": {
+      "type": "array", "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": ["rewrite_id", "job_id", "rationale", "new_facts", "pending_fill"],
+        "additionalProperties": false,
+        "properties": {
+          "rewrite_id": { "type": "string", "pattern": "^rw-[a-z0-9-]+$" },
+          "job_id": { "type": "string", "description": "重点改写只属于主目标岗位" },
+          "original_quote": { "type": "string", "description": "pending_fill=false 时必填（契约检查器执行）" },
+          "rewritten_text": { "type": "string", "description": "pending_fill=false 时必填；只含材料内已有事实" },
+          "rationale": { "type": "string" },
+          "new_facts": { "type": "array", "description": "改写引入的新事实清单；纯润色必须为空" },
+          "numbers_from": { "type": "array", "items": { "type": "string" }, "description": "改写文本中数字的 evidence_id 出处" },
+          "pending_fill": { "type": "boolean", "description": "true=待补项：只有 target_gap/ask，不产出可复制文本，独立展示" },
+          "target_gap": { "type": "string" },
+          "ask": { "type": "string" }
+        }
+      }
+    },
+    "actions": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "description": "主目标的 3 项行动",
+      "items": {
+        "type": "object",
+        "required": ["action_id", "job_id", "order", "goal", "deliverable", "completion_criteria", "fact_or_skill"],
+        "additionalProperties": false,
+        "properties": {
+          "action_id": { "type": "string", "pattern": "^act-[a-z0-9-]+$" },
+          "job_id": { "type": "string" },
+          "order": { "type": "integer", "minimum": 1 },
+          "goal": { "type": "string" },
+          "deliverable": { "type": "string" },
+          "completion_criteria": { "type": "string" },
+          "fact_or_skill": { "enum": ["fact", "skill"], "description": "区分补事实与补能力" }
+        }
+      }
+    },
+    "share_payload": {
+      "type": "object",
+      "description": "白名单独立生成；不得含姓名/联系方式/学校/公司等可识别信息",
+      "required": ["standalone", "anonymized", "score", "score_label", "job_title", "job_category", "headline_findings", "gate_notes", "disclaimer"],
+      "additionalProperties": false,
+      "properties": {
+        "standalone": { "const": true, "description": "必须可脱离完整报告独立渲染；分享文件不得在隐藏 DOM/嵌入数据中保留原简历" },
+        "anonymized": { "const": true },
+        "score": { "type": ["integer", "null"], "minimum": 0, "maximum": 100 },
+        "score_label": { "const": "简历证据匹配度" },
+        "job_title": { "type": "string" },
+        "job_category": { "type": "string" },
+        "headline_findings": { "type": "array", "maxItems": 3, "items": { "type": "string" }, "description": "必须有原文支持；需通过 private_markers 扫描" },
+        "gate_notes": { "type": "array", "items": { "type": "string" } },
+        "disclaimer": { "type": "string" }
+      }
+    }
+  }
+}

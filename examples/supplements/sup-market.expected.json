@@ -1,0 +1,211 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "sup-market-freshgrad",
+  "synthetic": true,
+  "private_markers": ["李晓晓", "13800001234", "lixiaoxiao@example.com", "ABC 消费品牌", "某省大学"],
+  "sources": [
+    {
+      "source_id": "src-resume-a",
+      "kind": "resume",
+      "filename": "../case-a-freshgrad-ops/resume.md",
+      "summary": "复用 Case A 应届生简历：1 段实习、1 段校园经历；联系方式不入分析数据",
+      "parse_warnings": []
+    },
+    {
+      "source_id": "src-jd-s1",
+      "kind": "jd",
+      "filename": "sup-market-jd.md",
+      "summary": "市场专员：职责 1 条、任职要求 4 条（含 1 条门槛、1 条优先项）",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "fresh_grad",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-s1",
+      "title": "市场专员",
+      "category": "marketing",
+      "jd_source_id": "src-jd-s1",
+      "score": 64,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-s1-g1",
+          "job_id": "job-s1",
+          "text": "本科及以上学历",
+          "jd_quote": "本科及以上学历",
+          "status": "met",
+          "evidence_ids": ["ev-a7"],
+          "rationale": "2026 届本科在读，入职时点满足"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 1,
+      "rank_rationale": "单岗位样例；分数为各自 JD 的证据覆盖口径，不代表岗位难度或招聘成功率",
+      "suggestion": "revise_then_apply",
+      "suggestion_rationale": "无门槛问题；分数 64 < 70 且投放渠道为信息不足（未知 1 条），按决策表第 4 条建议补投放证据/实践后投"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-s1-m1",
+      "job_id": "job-s1",
+      "text": "策划面向年轻用户的线上活动并执行复盘",
+      "jd_quote": "策划面向年轻用户群体的线上活动，负责执行与复盘",
+      "locator": "src-jd-s1 职责第 1 条",
+      "category": "experience",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "supported",
+      "evidence_ids": ["ev-a2", "ev-a4"],
+      "answer_ids": [],
+      "rationale": "社群抽奖活动（参与率约 25%）与校园活动（参与 300+ 人）提供策划与执行证据；「复盘」子项无记录，已作备注——整体仍属有直接证据的活动策划执行经验",
+      "weight": 2
+    },
+    {
+      "req_id": "req-s1-m2",
+      "job_id": "job-s1",
+      "text": "熟悉主流线上投放渠道（信息流/搜索/社媒）",
+      "jd_quote": "熟悉主流线上投放渠道（信息流/搜索/社媒）",
+      "locator": "src-jd-s1 任职要求第 2 条",
+      "category": "domain",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "unknown",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "简历无任何投放相关记录；应届生有无了解无法从材料判断，判 unknown（未知不等于不具备），单列并建议追问或补充实践",
+      "weight": 2
+    },
+    {
+      "req_id": "req-s1-m3",
+      "job_id": "job-s1",
+      "text": "独立撰写品牌与活动文案",
+      "jd_quote": "能独立撰写品牌与活动文案",
+      "locator": "src-jd-s1 任职要求第 3 条",
+      "category": "skill",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "supported",
+      "evidence_ids": ["ev-a1", "ev-a4"],
+      "answer_ids": [],
+      "rationale": "推文 12 篇 + 宣传推文 3 篇，文案产出有频次与效果数字",
+      "weight": 2
+    },
+    {
+      "req_id": "req-s1-m4",
+      "job_id": "job-s1",
+      "text": "有校园渠道或 KOC 资源",
+      "jd_quote": "有校园渠道或 KOC 资源者优先",
+      "locator": "src-jd-s1 任职要求第 4 条",
+      "category": "domain",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": ["ev-a4"],
+      "answer_ids": [],
+      "rationale": "校园活动组织经验与「校园渠道资源」相关但不等同（无渠道合作或 KOC 关系记录），部分覆盖",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-a1",
+      "source_id": "src-resume-a",
+      "quote": "独立撰写并发布公众号推文 12 篇，平均阅读 800+，最高单篇阅读 4600",
+      "locator": "实习经历第 1 条",
+      "tags": ["内容产出"]
+    },
+    {
+      "evidence_id": "ev-a2",
+      "source_id": "src-resume-a",
+      "quote": "运营用户社群 2 个（共约 400 人），策划社群抽奖活动 1 场，参与率约 25%",
+      "locator": "实习经历第 2 条",
+      "tags": ["活动策划"]
+    },
+    {
+      "evidence_id": "ev-a4",
+      "source_id": "src-resume-a",
+      "quote": "负责活动宣传推文 3 篇与现场签到组织，活动参与 300+ 人",
+      "locator": "校园经历",
+      "tags": ["活动执行", "校园"]
+    },
+    {
+      "evidence_id": "ev-a7",
+      "source_id": "src-resume-a",
+      "quote": "某省大学 · 市场营销专业 · 本科 · 2022.09 – 2026.06（在读，2026 届）",
+      "locator": "教育背景",
+      "tags": ["学历"]
+    }
+  ],
+  "answers": [],
+  "primary_job_id": "job-s1",
+  "primary_selection_reason": "单岗位样例，自动作为主目标",
+  "rewrites": [
+    {
+      "rewrite_id": "rw-s1",
+      "job_id": "job-s1",
+      "original_quote": "负责活动宣传推文 3 篇与现场签到组织，活动参与 300+ 人",
+      "rewritten_text": "负责校园活动宣传与现场执行：撰写宣传推文 3 篇，组织签到，活动参与 300+ 人",
+      "rationale": "按「策划-执行-结果」链路重排，对齐市场岗活动执行口径；数字全部来自原文",
+      "new_facts": [],
+      "numbers_from": ["ev-a4"],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-s2",
+      "job_id": "job-s1",
+      "rationale": "投放渠道无任何材料证据，不凑改写；列为待补",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": true,
+      "target_gap": "线上投放渠道实操或认知证据",
+      "ask": "补充个人账号小额投放、课程投放项目或渠道分析作业（如有）；无则保留 unknown 并在面试前自学基础口径"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-s1-1",
+      "job_id": "job-s1",
+      "order": 1,
+      "goal": "核实/补充投放渠道证据（req-s1-m2 未知项）",
+      "deliverable": "个人投放实践记录或课程项目链接；确无则记录为未知",
+      "completion_criteria": "新增 1 条可引用证据或明确标记 unknown 保留",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-s1-2",
+      "job_id": "job-s1",
+      "order": 2,
+      "goal": "应用改写更新简历后投递",
+      "deliverable": "新版简历",
+      "completion_criteria": "rw-s1 已应用，数字与原文一致",
+      "fact_or_skill": "skill"
+    },
+    {
+      "action_id": "act-s1-3",
+      "job_id": "job-s1",
+      "order": 3,
+      "goal": "为社群抽奖活动补写 3 行复盘（目标-动作-结果）",
+      "deliverable": "可引用的活动复盘段落",
+      "completion_criteria": "复盘含参与率约 25% 等原文数字，无新增事实",
+      "fact_or_skill": "skill"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 64,
+    "score_label": "简历证据匹配度",
+    "job_title": "市场专员",
+    "job_category": "marketing",
+    "headline_findings": [
+      "活动策划与执行有参与人数与参与率佐证",
+      "投放渠道经验未写明，需补充或确认"
+    ],
+    "gate_notes": [],
+    "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"
+  }
+}

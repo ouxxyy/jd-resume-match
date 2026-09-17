@@ -1,0 +1,971 @@
+{
+  "extraction_version": "jd-extract/0.1.0",
+  "ready_for_analysis": true,
+  "inputs": [
+    {
+      "source_id": "src-resume-1",
+      "kind": "resume",
+      "filename": "resume-2col-zh.pdf",
+      "path": ".t5-toole2e/pdf-multicolumn/resume-2col-zh.pdf",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [
+        "page_order_approximate: 部分页面未纳入页面树，页序为近似还原"
+      ],
+      "format": "pdf",
+      "text": "Ff\u000f\nñIFèå D÷\u0003\nÙ\u0003\n¼×\u0014\n\u0016\n\u001b\n\u0010\n\u0013\n\u0013\n\u0013\n\u0013\n\u0010\n\u0013\n\u0013\n\u0013\n\u0013\nzzÝjÙ\u0003­óZD\nQ\nJ\n[\nP\n#\nH\n[\nD\nP\nS\nO\nH\n\u0011\nF\nR\nP\n\u0003\nÙ\u0003\nÿG\nÈ\no\n}\n5\n²²h\u0017\n\u0003\nûÓ÷\u0003\njT\u0003\n\u0015\n\u0013\n\u0015\n\u0015\n\u0011\n\u0013\nD\n\u0015\n\u0013\n\u0015\n\u0019\n\u0011\n\u0013\n\u0019\n\u000bêa%!\n\u00178ûÓüË8Ñ*G\u0007\n*\n3\n$\n\u0003\n\u0016\n\u0011\n\u0018\n\u0012\u0017\n\u0011\n\u0013\n¿\u0003\n\u0015\n\u0013\n\b\n\n5\n$\n\n9\n²²å[QJq\u0003\nz\u0003\nèå D÷5$°\n\u0003\n\u0015\n\u0013\n\u0015\n\u0018\n\u0011\n\u0013\n\u0016\nD\n\u0015\n\u0013\n\u0015\n\u0018\n\u0011\n\u0013\n\u0011D÷äÙ¤ãJp\u0015$\\\u001cø\\\u0003\u001b\u000f\u0013\n\u0013\n\u0013\nI\u0006í\u0003\n\u0015\n\u0014\n\u000f\n\u0013\n\u0013\n\u0013\n#ØZD\u0003\n\u0019\n\u0011\n\u001b\n\b\nÑ \u0003\n\u0014\n\u0015\n\u0003\nÓ\u000béBÕjÜR\u0003\u0003\n\u0016\n\u0003\nø\"ô\nÛ\nåYy\u001bø\u0003\n\u0017\n\u0011\n\u0015\n\u0003\nå\nxWµA\\EÑ*t²\u0003\n(\n[\nF\nH\nO\n\u0003\nk}+³Ï\u0003\nþþgé¿\u0003DZ\u0003\n\u0016\n\u0013\n\b\n²²¼'\u0003\nz\u0003\nD÷Ýj@e\n\u0003\n\u0015\n\u0013\n\u0015\n\u0017\n\u0011\n\u0013\n\u0019\nD\n\u0015\n\u0013\n\u0015\n\u0017\n\u0011\n\u0013\n\u001b\n\u0017Ý&\u0003D÷\u0003\n\u0018\n\u0003\nÿ²\u0003Z\u0003\n\u0017\n\u000f\n\u0013\n\u0013\n\u0013\n\u0003\nM\n\nº\nHYÄE{K\u0003\u0003þDV\u0012\u0003\n\u0014\n\u0015\n\b\nØ\n¶\n\n9\nØ\u0017°9ÌËÌ\u0006ÝCè.9J\np\u001bµ \u001c\u0003\n\u0014\n\u000f\n\u0018\n\u0013\n\u0013\n\u000e\n²\n\n\\Ee§¸seBÕ\u0012»}ä«jI B¦\n\u0019\n\u0013\n\u000e\n\u0003\nø\nÑ*ëS([\nF\nH\nO\nk}+\u0012Ñ\n8#ã\u0003\n6\n4\n/\n8\nèQ\u0012àÑ*#j\nº ëS&\nD\nQ\nY\nD\n\u0003\n¸s)\nL\nJ\nP\nD\n\u0003\nG\u0007\n½\n&\nì\nR\na\nh\u0017læK[&\n(\n7\n\u0010\n\u0019\n\u0018\n\u0019\n\u0013\n\u0003\n4r×\n0[º\nÉ",
+      "blocks": [
+        {
+          "locator": "P1L1",
+          "text": "Ff\u000f"
+        },
+        {
+          "locator": "P1L2",
+          "text": "ñIFèå D÷\u0003"
+        },
+        {
+          "locator": "P1L3",
+          "text": "Ù\u0003"
+        },
+        {
+          "locator": "P1L4",
+          "text": "¼×\u0014"
+        },
+        {
+          "locator": "P1L5",
+          "text": "\u0016"
+        },
+        {
+          "locator": "P1L6",
+          "text": "\u001b"
+        },
+        {
+          "locator": "P1L7",
+          "text": "\u0010"
+        },
+        {
+          "locator": "P1L8",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L9",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L10",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L11",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L12",
+          "text": "\u0010"
+        },
+        {
+          "locator": "P1L13",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L14",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L15",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L16",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L17",
+          "text": "zzÝjÙ\u0003­óZD"
+        },
+        {
+          "locator": "P1L18",
+          "text": "Q"
+        },
+        {
+          "locator": "P1L19",
+          "text": "J"
+        },
+        {
+          "locator": "P1L20",
+          "text": "["
+        },
+        {
+          "locator": "P1L21",
+          "text": "P"
+        },
+        {
+          "locator": "P1L22",
+          "text": "#"
+        },
+        {
+          "locator": "P1L23",
+          "text": "H"
+        },
+        {
+          "locator": "P1L24",
+          "text": "["
+        },
+        {
+          "locator": "P1L25",
+          "text": "D"
+        },
+        {
+          "locator": "P1L26",
+          "text": "P"
+        },
+        {
+          "locator": "P1L27",
+          "text": "S"
+        },
+        {
+          "locator": "P1L28",
+          "text": "O"
+        },
+        {
+          "locator": "P1L29",
+          "text": "H"
+        },
+        {
+          "locator": "P1L30",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L31",
+          "text": "F"
+        },
+        {
+          "locator": "P1L32",
+          "text": "R"
+        },
+        {
+          "locator": "P1L33",
+          "text": "P"
+        },
+        {
+          "locator": "P1L34",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L35",
+          "text": "Ù\u0003"
+        },
+        {
+          "locator": "P1L36",
+          "text": "ÿG"
+        },
+        {
+          "locator": "P1L37",
+          "text": "È"
+        },
+        {
+          "locator": "P1L38",
+          "text": "o"
+        },
+        {
+          "locator": "P1L39",
+          "text": "}"
+        },
+        {
+          "locator": "P1L40",
+          "text": "5"
+        },
+        {
+          "locator": "P1L41",
+          "text": "²²h\u0017"
+        },
+        {
+          "locator": "P1L42",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L43",
+          "text": "ûÓ÷\u0003"
+        },
+        {
+          "locator": "P1L44",
+          "text": "jT\u0003"
+        },
+        {
+          "locator": "P1L45",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L46",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L47",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L48",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L49",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L50",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L51",
+          "text": "D"
+        },
+        {
+          "locator": "P1L52",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L53",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L54",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L55",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L56",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L57",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L58",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L59",
+          "text": "\u000bêa%!"
+        },
+        {
+          "locator": "P1L60",
+          "text": "\u00178ûÓüË8Ñ*G\u0007"
+        },
+        {
+          "locator": "P1L61",
+          "text": "*"
+        },
+        {
+          "locator": "P1L62",
+          "text": "3"
+        },
+        {
+          "locator": "P1L63",
+          "text": "$"
+        },
+        {
+          "locator": "P1L64",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L65",
+          "text": "\u0016"
+        },
+        {
+          "locator": "P1L66",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L67",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L68",
+          "text": "\u0012\u0017"
+        },
+        {
+          "locator": "P1L69",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L70",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L71",
+          "text": "¿\u0003"
+        },
+        {
+          "locator": "P1L72",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L73",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L74",
+          "text": "\b"
+        },
+        {
+          "locator": "P1L75",
+          "text": ""
+        },
+        {
+          "locator": "P1L76",
+          "text": "5"
+        },
+        {
+          "locator": "P1L77",
+          "text": "$"
+        },
+        {
+          "locator": "P1L78",
+          "text": ""
+        },
+        {
+          "locator": "P1L79",
+          "text": "9"
+        },
+        {
+          "locator": "P1L80",
+          "text": "²²å[QJq\u0003"
+        },
+        {
+          "locator": "P1L81",
+          "text": "z\u0003"
+        },
+        {
+          "locator": "P1L82",
+          "text": "èå D÷5$°"
+        },
+        {
+          "locator": "P1L83",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L84",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L85",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L86",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L87",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L88",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L89",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L90",
+          "text": "\u0016"
+        },
+        {
+          "locator": "P1L91",
+          "text": "D"
+        },
+        {
+          "locator": "P1L92",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L93",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L94",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L95",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L96",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L97",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L98",
+          "text": "\u0011D÷äÙ¤ãJp\u0015$\\\u001cø\\\u0003\u001b\u000f\u0013"
+        },
+        {
+          "locator": "P1L99",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L100",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L101",
+          "text": "I\u0006í\u0003"
+        },
+        {
+          "locator": "P1L102",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L103",
+          "text": "\u0014"
+        },
+        {
+          "locator": "P1L104",
+          "text": "\u000f"
+        },
+        {
+          "locator": "P1L105",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L106",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L107",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L108",
+          "text": "#ØZD\u0003"
+        },
+        {
+          "locator": "P1L109",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L110",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L111",
+          "text": "\u001b"
+        },
+        {
+          "locator": "P1L112",
+          "text": "\b"
+        },
+        {
+          "locator": "P1L113",
+          "text": "Ñ \u0003"
+        },
+        {
+          "locator": "P1L114",
+          "text": "\u0014"
+        },
+        {
+          "locator": "P1L115",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L116",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L117",
+          "text": "Ó\u000béBÕjÜR\u0003\u0003"
+        },
+        {
+          "locator": "P1L118",
+          "text": "\u0016"
+        },
+        {
+          "locator": "P1L119",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L120",
+          "text": "ø\"ô"
+        },
+        {
+          "locator": "P1L121",
+          "text": "Û"
+        },
+        {
+          "locator": "P1L122",
+          "text": "åYy\u001bø\u0003"
+        },
+        {
+          "locator": "P1L123",
+          "text": "\u0017"
+        },
+        {
+          "locator": "P1L124",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L125",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L126",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L127",
+          "text": "å"
+        },
+        {
+          "locator": "P1L128",
+          "text": "xWµA\\EÑ*t²\u0003"
+        },
+        {
+          "locator": "P1L129",
+          "text": "("
+        },
+        {
+          "locator": "P1L130",
+          "text": "["
+        },
+        {
+          "locator": "P1L131",
+          "text": "F"
+        },
+        {
+          "locator": "P1L132",
+          "text": "H"
+        },
+        {
+          "locator": "P1L133",
+          "text": "O"
+        },
+        {
+          "locator": "P1L134",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L135",
+          "text": "k}+³Ï\u0003"
+        },
+        {
+          "locator": "P1L136",
+          "text": "þþgé¿\u0003DZ\u0003"
+        },
+        {
+          "locator": "P1L137",
+          "text": "\u0016"
+        },
+        {
+          "locator": "P1L138",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L139",
+          "text": "\b"
+        },
+        {
+          "locator": "P1L140",
+          "text": "²²¼'\u0003"
+        },
+        {
+          "locator": "P1L141",
+          "text": "z\u0003"
+        },
+        {
+          "locator": "P1L142",
+          "text": "D÷Ýj@e"
+        },
+        {
+          "locator": "P1L143",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L144",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L145",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L146",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L147",
+          "text": "\u0017"
+        },
+        {
+          "locator": "P1L148",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L149",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L150",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L151",
+          "text": "D"
+        },
+        {
+          "locator": "P1L152",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L153",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L154",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L155",
+          "text": "\u0017"
+        },
+        {
+          "locator": "P1L156",
+          "text": "\u0011"
+        },
+        {
+          "locator": "P1L157",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L158",
+          "text": "\u001b"
+        },
+        {
+          "locator": "P1L159",
+          "text": "\u0017Ý&\u0003D÷\u0003"
+        },
+        {
+          "locator": "P1L160",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L161",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L162",
+          "text": "ÿ²\u0003Z\u0003"
+        },
+        {
+          "locator": "P1L163",
+          "text": "\u0017"
+        },
+        {
+          "locator": "P1L164",
+          "text": "\u000f"
+        },
+        {
+          "locator": "P1L165",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L166",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L167",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L168",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L169",
+          "text": "M"
+        },
+        {
+          "locator": "P1L170",
+          "text": ""
+        },
+        {
+          "locator": "P1L171",
+          "text": "º"
+        },
+        {
+          "locator": "P1L172",
+          "text": "HYÄE{K\u0003\u0003þDV\u0012\u0003"
+        },
+        {
+          "locator": "P1L173",
+          "text": "\u0014"
+        },
+        {
+          "locator": "P1L174",
+          "text": "\u0015"
+        },
+        {
+          "locator": "P1L175",
+          "text": "\b"
+        },
+        {
+          "locator": "P1L176",
+          "text": "Ø"
+        },
+        {
+          "locator": "P1L177",
+          "text": "¶"
+        },
+        {
+          "locator": "P1L178",
+          "text": ""
+        },
+        {
+          "locator": "P1L179",
+          "text": "9"
+        },
+        {
+          "locator": "P1L180",
+          "text": "Ø\u0017°9ÌËÌ\u0006ÝCè.9J"
+        },
+        {
+          "locator": "P1L181",
+          "text": "p\u001bµ \u001c\u0003"
+        },
+        {
+          "locator": "P1L182",
+          "text": "\u0014"
+        },
+        {
+          "locator": "P1L183",
+          "text": "\u000f"
+        },
+        {
+          "locator": "P1L184",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L185",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L186",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L187",
+          "text": "\u000e"
+        },
+        {
+          "locator": "P1L188",
+          "text": "²"
+        },
+        {
+          "locator": "P1L189",
+          "text": ""
+        },
+        {
+          "locator": "P1L190",
+          "text": "\\Ee§¸seBÕ\u0012»}ä«jI B¦"
+        },
+        {
+          "locator": "P1L191",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L192",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L193",
+          "text": "\u000e"
+        },
+        {
+          "locator": "P1L194",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L195",
+          "text": "ø"
+        },
+        {
+          "locator": "P1L196",
+          "text": "Ñ*ëS(["
+        },
+        {
+          "locator": "P1L197",
+          "text": "F"
+        },
+        {
+          "locator": "P1L198",
+          "text": "H"
+        },
+        {
+          "locator": "P1L199",
+          "text": "O"
+        },
+        {
+          "locator": "P1L200",
+          "text": "k}+\u0012Ñ"
+        },
+        {
+          "locator": "P1L201",
+          "text": "8#ã\u0003"
+        },
+        {
+          "locator": "P1L202",
+          "text": "6"
+        },
+        {
+          "locator": "P1L203",
+          "text": "4"
+        },
+        {
+          "locator": "P1L204",
+          "text": "/"
+        },
+        {
+          "locator": "P1L205",
+          "text": "8"
+        },
+        {
+          "locator": "P1L206",
+          "text": "èQ\u0012àÑ*#j"
+        },
+        {
+          "locator": "P1L207",
+          "text": "º ëS&"
+        },
+        {
+          "locator": "P1L208",
+          "text": "D"
+        },
+        {
+          "locator": "P1L209",
+          "text": "Q"
+        },
+        {
+          "locator": "P1L210",
+          "text": "Y"
+        },
+        {
+          "locator": "P1L211",
+          "text": "D"
+        },
+        {
+          "locator": "P1L212",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L213",
+          "text": "¸s)"
+        },
+        {
+          "locator": "P1L214",
+          "text": "L"
+        },
+        {
+          "locator": "P1L215",
+          "text": "J"
+        },
+        {
+          "locator": "P1L216",
+          "text": "P"
+        },
+        {
+          "locator": "P1L217",
+          "text": "D"
+        },
+        {
+          "locator": "P1L218",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L219",
+          "text": "G\u0007"
+        },
+        {
+          "locator": "P1L220",
+          "text": "½"
+        },
+        {
+          "locator": "P1L221",
+          "text": "&"
+        },
+        {
+          "locator": "P1L222",
+          "text": "ì"
+        },
+        {
+          "locator": "P1L223",
+          "text": "R"
+        },
+        {
+          "locator": "P1L224",
+          "text": "a"
+        },
+        {
+          "locator": "P1L225",
+          "text": "h\u0017læK[&"
+        },
+        {
+          "locator": "P1L226",
+          "text": "("
+        },
+        {
+          "locator": "P1L227",
+          "text": "7"
+        },
+        {
+          "locator": "P1L228",
+          "text": "\u0010"
+        },
+        {
+          "locator": "P1L229",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L230",
+          "text": "\u0018"
+        },
+        {
+          "locator": "P1L231",
+          "text": "\u0019"
+        },
+        {
+          "locator": "P1L232",
+          "text": "\u0013"
+        },
+        {
+          "locator": "P1L233",
+          "text": "\u0003"
+        },
+        {
+          "locator": "P1L234",
+          "text": "4r×"
+        },
+        {
+          "locator": "P1L235",
+          "text": "0[º"
+        },
+        {
+          "locator": "P1L236",
+          "text": "É"
+        }
+      ],
+      "summary": {
+        "pages": 1,
+        "text_chars": 524,
+        "blocks": 236
+      }
+    }
+  ]
+}

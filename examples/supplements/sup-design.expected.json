@@ -1,0 +1,191 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "sup-design-freshgrad",
+  "synthetic": true,
+  "private_markers": ["李晓晓", "13800001234", "lixiaoxiao@example.com", "ABC 消费品牌", "某省大学"],
+  "sources": [
+    {
+      "source_id": "src-resume-a",
+      "kind": "resume",
+      "filename": "../case-a-freshgrad-ops/resume.md",
+      "summary": "复用 Case A 应届生简历：1 段实习、1 段校园经历；联系方式不入分析数据",
+      "parse_warnings": []
+    },
+    {
+      "source_id": "src-jd-s2",
+      "kind": "jd",
+      "filename": "sup-design-jd.md",
+      "summary": "视觉设计师：职责 1 条、任职要求 5 条（含 2 条门槛：学历、作品集链接）",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "fresh_grad",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-s2",
+      "title": "视觉设计师",
+      "category": "design",
+      "jd_source_id": "src-jd-s2",
+      "score": 42,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-s2-g1",
+          "job_id": "job-s2",
+          "text": "本科及以上学历",
+          "jd_quote": "本科及以上学历",
+          "status": "met",
+          "evidence_ids": ["ev-a7"],
+          "rationale": "2026 届本科在读，入职时点满足"
+        },
+        {
+          "gate_id": "gate-s2-g2",
+          "job_id": "job-s2",
+          "text": "必须提供个人作品集链接",
+          "jd_quote": "必须提供个人作品集链接",
+          "status": "pending_confirmation",
+          "evidence_ids": [],
+          "rationale": "简历未附作品集链接；「未附链接」不等于「没有作品集」，不能自动宣判不满足，列为待确认并提示先准备"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 1,
+      "rank_rationale": "单岗位样例；分数为各自 JD 的证据覆盖口径，不代表岗位难度或招聘成功率",
+      "suggestion": "revise_then_apply",
+      "suggestion_rationale": "作品集门槛待确认（gate-s2-g2）：按决策表第 2 条先准备作品集并确认岗位要求后再投；工具差距（Canva → Figma/PS）列为补能力行动"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-s2-q1",
+      "job_id": "job-s2",
+      "text": "熟练使用 Figma 或 Photoshop 完成活动物料设计",
+      "jd_quote": "熟练使用 Figma 或 Photoshop 完成活动物料设计",
+      "locator": "src-jd-s2 任职要求第 2 条",
+      "category": "tool",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": ["ev-a6"],
+      "answer_ids": [],
+      "rationale": "Canva 海报制作是相关设计工具证据，但与 JD 指定的 Figma/PS 存在工具与专业度差距，覆盖不完整判 partial；改写不得夸大为「熟练 Figma」",
+      "weight": 3
+    },
+    {
+      "req_id": "req-s2-q2",
+      "job_id": "job-s2",
+      "text": "了解品牌视觉一致性的基本要求",
+      "jd_quote": "了解品牌视觉一致性的基本要求",
+      "locator": "src-jd-s2 任职要求第 4 条",
+      "category": "skill",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "unclear",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "简历无品牌视觉相关描述；单列未知项，不当作不具备",
+      "weight": 2
+    },
+    {
+      "req_id": "req-s2-q3",
+      "job_id": "job-s2",
+      "text": "会视频剪辑或动效制作",
+      "jd_quote": "会视频剪辑或动效制作者优先",
+      "locator": "src-jd-s2 任职要求第 5 条",
+      "category": "skill",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": ["ev-a6"],
+      "answer_ids": [],
+      "rationale": "剪映短视频剪辑与优先项直接对应",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-a6",
+      "source_id": "src-resume-a",
+      "quote": "剪映（短视频剪辑）、Canva（海报制作）",
+      "locator": "技能清单",
+      "tags": ["工具"]
+    },
+    {
+      "evidence_id": "ev-a7",
+      "source_id": "src-resume-a",
+      "quote": "某省大学 · 市场营销专业 · 本科 · 2022.09 – 2026.06（在读，2026 届）",
+      "locator": "教育背景",
+      "tags": ["学历"]
+    }
+  ],
+  "answers": [],
+  "primary_job_id": "job-s2",
+  "primary_selection_reason": "单岗位样例，自动作为主目标",
+  "rewrites": [
+    {
+      "rewrite_id": "rw-d1",
+      "job_id": "job-s2",
+      "original_quote": "剪映（短视频剪辑）、Canva（海报制作）",
+      "rewritten_text": "掌握 Canva 海报制作与剪映短视频剪辑，可覆盖活动物料与短视频内容场景",
+      "rationale": "把工具清单转成场景化表述，对齐 JD「活动物料设计」与剪辑优先项；不虚报 Figma/PS 熟练度（该差距由 partial 状态承载）",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-d2",
+      "job_id": "job-s2",
+      "rationale": "作品集门槛待确认且 Figma/PS 无证据，不凑改写；列为待补",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": true,
+      "target_gap": "作品集与 Figma/PS 作品",
+      "ask": "整理现有 Canva/剪映作品为作品集，或完成 2-3 个 Figma/PS 临摹作品后补充链接"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-d1",
+      "job_id": "job-s2",
+      "order": 1,
+      "goal": "准备作品集并确认岗位是否强制（gate-s2-g2）",
+      "deliverable": "作品集链接；同时向 HR 确认是否接受后补",
+      "completion_criteria": "链接可用且包含至少 3 件作品，或确认可后补并记录",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-d2",
+      "job_id": "job-s2",
+      "order": 2,
+      "goal": "补 Figma/PS 作品样例（req-s2-q1 缺口）",
+      "deliverable": "2-3 个临摹或原创作品",
+      "completion_criteria": "作品文件可展示并写入作品集",
+      "fact_or_skill": "skill"
+    },
+    {
+      "action_id": "act-d3",
+      "job_id": "job-s2",
+      "order": 3,
+      "goal": "应用改写更新简历后投递",
+      "deliverable": "新版简历",
+      "completion_criteria": "rw-d1 已应用；简历未宣称未掌握的工具",
+      "fact_or_skill": "skill"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 42,
+    "score_label": "简历证据匹配度",
+    "job_title": "视觉设计师",
+    "job_category": "design",
+    "headline_findings": [
+      "剪辑技能满足优先项，设计工具与岗位要求存在差距",
+      "作品集门槛待确认：需先准备再投"
+    ],
+    "gate_notes": ["1 项门槛待确认：作品集链接"],
+    "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"
+  }
+}

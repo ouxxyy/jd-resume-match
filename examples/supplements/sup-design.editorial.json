@@ -1,0 +1,274 @@
+{
+  "editorial_version": "jd-match-editorial/0.1.0",
+  "voice_version": "jd-match-voice/0.2.0",
+  "case_id": "sup-design-freshgrad",
+  "job_id": "job-s2",
+  "case_tag": "CASE #S2",
+  "masthead": {
+    "title": "岗位匹配深度诊断与改写",
+    "case_label": "Case #S2（应届生 · 视觉设计师）"
+  },
+  "verdict": {
+    "heading": [
+      {
+        "t": "作品集链接补上之前，先别投。",
+        "style": "marker"
+      }
+    ],
+    "prose": "分数不高不是因为经历空白，而是**对口的证据太少**：设计工具里简历只写了「Canva（海报制作）」，而岗位指名「熟练使用 Figma 或 Photoshop 完成活动物料设计」；另有一条硬性条件「必须提供个人作品集链接」，简历没有附。好消息是「会视频剪辑或动效制作者优先」你有剪映实据——把现有作品整理成集，差距是可补的。"
+  },
+  "comparison": [
+    {
+      "job_id": "job-s2",
+      "badge": "主目标建议",
+      "badge_type": "primary",
+      "title": "视觉设计师",
+      "note": "单岗位：剪辑优先项有实据，Figma/PS 工具与作品集是两大缺口；先备作品集再谈投递。"
+    }
+  ],
+  "findings": [
+    {
+      "title": "岗位指名 Figma 或 Photoshop，简历里只有 Canva——相关，但够不上「熟练」",
+      "body": "Canva 是真实的设计工具证据，但与岗位指名的 Figma/PS 存在工具与专业度差距。改写不能夸大成「熟练 Figma」——差距用作品补，不用形容词补。",
+      "pin_accent": true,
+      "strip_label": "工具差一档",
+      "strip_body": "会 Canva，岗位要 Figma/PS——相关但不对口",
+      "evidence_ids": [
+        "ev-a6"
+      ],
+      "loupe": {
+        "source_label": "技能清单 · 第 2 项",
+        "raw_line": "剪映（短视频剪辑）、Canva（海报制作）",
+        "highlight": "Canva（海报制作）",
+        "highlight_label": "半对口证据",
+        "annotation": "Canva 海报制作是真设计工具证据，但岗位指名 Figma/PS——写「熟练 Figma」就是越线。差距不用形容词补，用作品补。",
+        "evidence_ids": [
+          "ev-a6"
+        ]
+      }
+    },
+    {
+      "title": "「必须提供个人作品集链接」：没附不等于没有，但投前必须补",
+      "body": "这是硬性条件。简历没附链接只能记「待确认」——不是判定你没有作品，而是招聘方看不到就等于没有。整理现有 Canva/剪映作品，一个链接就解决。",
+      "strip_label": "作品集未附",
+      "strip_body": "硬性条件要求链接，简历没附——先整理再投",
+      "evidence_ids": []
+    },
+    {
+      "title": "「会视频剪辑或动效制作者优先」这条你有：剪映实据直接对上",
+      "body": "优先项权重不高，但它实打实拉覆盖——技能清单里的剪映与岗位优先项直接对应，这条不用动，也是你当前最对口的一块证据。",
+      "strip_label": "优先项命中",
+      "strip_body": "剪映剪辑经验，直接对上优先项原文",
+      "evidence_ids": [
+        "ev-a6"
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-d1",
+      "label": "技能清单条目",
+      "jd_anchor_req": "req-s2-q1",
+      "jd_anchor": "熟练使用 Figma 或 Photoshop 完成活动物料设计",
+      "badge": "场景化 · 不越线",
+      "badge_tone": "neutral",
+      "after_label": "改后定稿（清单 → 场景）",
+      "strikes": [
+        "（短视频剪辑）",
+        "（海报制作）"
+      ],
+      "highlights": [
+        "活动物料",
+        "短视频内容"
+      ],
+      "annotation": "原句把两项真技能锁在括号注释里——那是「列清单」，不是「说能力」。改写把它们放进**场景**：能覆盖什么活。**不越线**：没有写 Figma/PS——工具差距由判定和行动承载，改写不虚报没掌握的工具。"
+    }
+  ],
+  "pending_fill_note": "Figma/PS 没有证据，改写救不了，也不该救——把现有 Canva/剪映作品整理成作品集（行动清单第一条），有真作品再谈补工具。",
+  "actions": [
+    {
+      "action_id": "act-d1",
+      "badge": "第 1 步 · 过硬门槛",
+      "badge_tone": "red",
+      "timing_tag": "一票条件先解决",
+      "title": "整理作品集并确认岗位是否强制链接",
+      "body": "「必须提供个人作品集链接」是硬性条件。现有 Canva/剪映作品先集合成链接；同时问一句 HR 是否接受后补。",
+      "deliverable_label": "交付成果",
+      "deliverable": "作品集链接（至少 3 件作品）+ HR 答复记录",
+      "criteria_label": "完成标准",
+      "criteria": "链接可打开、作品可展示；或确认可后补并记下答复"
+    },
+    {
+      "action_id": "act-d2",
+      "badge": "第 2 步 · 补对口工具",
+      "timing_tag": "补差距不拔高",
+      "title": "补 Figma/PS 作品样例",
+      "body": "岗位指名的工具绕不开。临摹或原创都行——目标是让「熟练使用 Figma 或 Photoshop」从缺口变成有据。",
+      "deliverable_label": "交付成果",
+      "deliverable": "2-3 个可展示的临摹或原创作品",
+      "criteria_label": "完成标准",
+      "criteria": "作品文件能进作品集"
+    },
+    {
+      "action_id": "act-d3",
+      "badge": "第 3 步 · 投递前校验",
+      "timing_tag": "不虚报工具",
+      "title": "把改写落进简历后投递",
+      "body": "改写只有一处，核对的重点是：简历没有宣称没掌握的工具。",
+      "deliverable_label": "交付成果",
+      "deliverable": "新版简历投出",
+      "criteria_label": "完成标准",
+      "criteria": "改写已应用；全文没有 Figma/PS 熟练表述；数字与原文一致"
+    }
+  ],
+  "evidence_notes": [
+    {
+      "req_id": "req-s2-q1",
+      "focus": true,
+      "note": "Canva 海报制作是真实的设计工具证据，但岗位指名 Figma/PS，工具与专业度都有差距——记「部分满足」；改写不得夸大成「熟练 Figma」。"
+    },
+    {
+      "req_id": "req-s2-q2",
+      "note": "简历没有品牌视觉相关描述，看不出了解程度，记「没写清」，不当作不具备。"
+    },
+    {
+      "req_id": "req-s2-q3",
+      "note": "剪映短视频剪辑与优先项「会视频剪辑或动效制作者优先」直接对应，记「有实据」——这是当前最对口的一块证据。"
+    }
+  ],
+  "gate_notes": [
+    {
+      "gate_id": "gate-s2-g1",
+      "note": "岗位要「本科及以上学历」，你在读本科、2026 届，毕业入职时点满足，有教育背景原文为证，核实通过。"
+    },
+    {
+      "gate_id": "gate-s2-g2",
+      "focus": true,
+      "note": "「必须提供个人作品集链接」——简历没附。没附不等于没有作品，所以记「待确认」而不是不满足；投前把链接备好，或问清 HR 是否接受后补。"
+    }
+  ],
+  "cards": {
+    "cover": {
+      "kicker": "视觉设计师 · 应届生案例自查",
+      "headline": [
+        {
+          "t": "岗位要 "
+        },
+        {
+          "t": "Figma/PS",
+          "style": "red"
+        },
+        {
+          "t": "，"
+        },
+        {
+          "br": true
+        },
+        {
+          "t": "简历里是"
+        },
+        {
+          "t": "Canva",
+          "style": "marker"
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "page_label": "封面诊断",
+      "banner_sub": "分数低不是没能力，是对口的证据还没进场"
+    },
+    "findings_card": {
+      "kicker": "发现透视 · 逐条对照",
+      "headline": [
+        {
+          "t": "不是没能力，"
+        },
+        {
+          "br": true
+        },
+        {
+          "t": "是"
+        },
+        {
+          "t": "证据没对上口",
+          "style": "red"
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "page_label": "发现透视"
+    },
+    "actions_card": {
+      "kicker": "先做便宜的 · 执行清单",
+      "headline": [
+        {
+          "t": "投递前先做这"
+        },
+        {
+          "t": "三件事",
+          "style": "red"
+        },
+        {
+          "t": "："
+        },
+        {
+          "br": true
+        },
+        {
+          "t": "从一个作品集链接开始。"
+        }
+      ],
+      "page_label": "行动路线",
+      "takeaway": "**改句子不会让匹配分上涨**，分数只认写进简历的真实事实；工具差距也一样——作品补得上，形容词补不上。"
+    },
+    "evidence_card": {
+      "kicker": "判定与门槛 · 证据详情",
+      "headline": [
+        {
+          "t": "42 分不是能力分，"
+        },
+        {
+          "br": true
+        },
+        {
+          "t": "是"
+        },
+        {
+          "t": "证据覆盖度",
+          "style": "marker"
+        },
+        {
+          "t": "。"
+        }
+      ],
+      "page_label": "判定与门槛"
+    }
+  },
+  "social": {
+    "titles": [
+      {
+        "text": "岗位指名 Figma/PS，简历里写的是 Canva：这算满足吗？",
+        "basis": {
+          "finding": 1
+        }
+      },
+      {
+        "text": "「必须提供作品集链接」没附怎么办？先别自动判死，先补链接",
+        "basis": {
+          "finding": 2,
+          "gate": "gate-s2-g2"
+        }
+      },
+      {
+        "text": "简历自查：你的技能是不是都锁在括号注释里？",
+        "basis": {
+          "rewrite": 1
+        }
+      }
+    ],
+    "body_md": "一位应届生的设计岗简历自查（合成案例），三个发现，你可以对照自己的简历查一遍：\n\n1. 岗位指名「熟练使用 Figma 或 Photoshop 完成活动物料设计」，简历技能清单里写的是「Canva（海报制作）」——相关，但工具与专业度都差一档。写「熟练 Figma」就是越线；差距要用作品补，不用形容词补。\n2. 「必须提供个人作品集链接」：简历没附。没附不等于没有作品，但招聘方看不到就等于没有——整理现有作品，一个链接就解决。\n3. 技能清单原文是「剪映（短视频剪辑）、Canva（海报制作）」：两个真技能全锁在括号注释里。改写成场景句——说清能覆盖什么活，而不是列清单。\n\n方法就一条：工具差距别用形容词补，用作品补；括号里的真本事，放进句子主干。改句子不会让匹配分上涨，分数只认写进简历的事实。",
+    "synthetic_note": "（分数 = 简历证据对 JD 的覆盖度，不代表能力或录取概率；案例已匿名，素材为合成案例。）"
+  }
+}

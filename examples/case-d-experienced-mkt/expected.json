@@ -1,0 +1,293 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "case-d-experienced-mkt",
+  "synthetic": true,
+  "private_markers": [
+    "郑芸",
+    "13912345678",
+    "zhengyun@example.com",
+    "某乳业品牌",
+    "某健康食品公司",
+    "某财经大学"
+  ],
+  "sources": [
+    {
+      "source_id": "src-resume-d",
+      "kind": "resume",
+      "summary": "资深市场人简历：两段任职（2017.07–2021.05、2021.06–至今）、教育背景 1 条、技能清单 1 组；两段任职时间先后无重叠，年限不重复累加；联系方式不入分析数据",
+      "parse_warnings": [],
+      "filename": "resume.md"
+    },
+    {
+      "source_id": "src-jd-d1",
+      "kind": "jd",
+      "filename": "jd-1-brand.md",
+      "summary": "品牌市场负责人：职责 4 条、任职要求 5 条；重要性标注 3 处明确；硬门槛 2 条（学历、行业年限）",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "experienced",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-d1",
+      "title": "品牌市场负责人",
+      "category": "marketing",
+      "jd_source_id": "src-jd-d1",
+      "score": 70,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-d1-g1",
+          "job_id": "job-d1",
+          "text": "本科及以上学历",
+          "jd_quote": "统招本科及以上学历，市场营销相关专业优先",
+          "status": "met",
+          "evidence_ids": [
+            "ev-d6"
+          ],
+          "rationale": "某财经大学市场营销本科，有教育背景原文证据，非推断"
+        },
+        {
+          "gate_id": "gate-d1-g2",
+          "job_id": "job-d1",
+          "text": "5 年以上快消行业市场经验",
+          "jd_quote": "5 年以上快消行业市场经验",
+          "status": "met",
+          "evidence_ids": [
+            "ev-d1",
+            "ev-d2"
+          ],
+          "rationale": "两段快消任职先后接续（2017.07 起），合计约 8 年，无重叠不计重复年限；有原文时间证据"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 1,
+      "rank_rationale": "在各自 JD 的证据覆盖口径下：品牌市场负责人为单岗位诊断；分数为该 JD 内的证据覆盖，不代表岗位难度或招聘成功率",
+      "suggestion": "prioritize",
+      "suggestion_rationale": "门槛全部核实通过；70≥70 且未知项 1 未超权重的三分之一，按决策表落「优先投」。待补与未知项（海外市场、直播电商）不影响当前投递判断，补充后覆盖还会更高，但不是投递前提"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-d1-r1",
+      "job_id": "job-d1",
+      "text": "统筹年度品牌整合营销 campaign",
+      "jd_quote": "统筹年度品牌整合营销 campaign 的策划与落地",
+      "locator": "src-jd-d1 职责第 1 条",
+      "category": "experience",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": [
+        "ev-d3"
+      ],
+      "answer_ids": [],
+      "rationale": "两段任期内各有年度整合营销项目操盘记录，规模与角色有原文数字；关注点按资历放在统筹复杂度而非首次经验",
+      "weight": 3
+    },
+    {
+      "req_id": "req-d1-r2",
+      "job_id": "job-d1",
+      "text": "组建并管理市场团队",
+      "jd_quote": "组建并管理市场团队（ Current 团队规模 5 人以上）",
+      "locator": "src-jd-d1 职责第 2 条",
+      "category": "soft",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": [
+        "ev-d4"
+      ],
+      "answer_ids": [],
+      "rationale": "管理经验以简历原文为准：现任职带 6 人团队（招聘、考核、跨部门协作有具体描述），不是仅凭年限推断管理能力",
+      "weight": 3
+    },
+    {
+      "req_id": "req-d1-r3",
+      "job_id": "job-d1",
+      "text": "对电商渠道增长结果负责",
+      "jd_quote": "对电商渠道的流量与转化增长结果负责",
+      "locator": "src-jd-d1 职责第 3 条",
+      "category": "experience",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "partial",
+      "evidence_ids": [
+        "ev-d3",
+        "ev-d5"
+      ],
+      "answer_ids": [],
+      "rationale": "有大促增长结果数字（2023 年大促 GMV 同比 +35%），但流量侧投放经验无记录，覆盖不完整",
+      "weight": 2
+    },
+    {
+      "req_id": "req-d1-r4",
+      "job_id": "job-d1",
+      "text": "有海外市场操盘经验",
+      "jd_quote": "有海外市场操盘经验者优先",
+      "locator": "src-jd-d1 任职要求第 4 条",
+      "category": "domain",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unmet",
+      "evidence_ids": [
+        "ev-d1",
+        "ev-d2"
+      ],
+      "answer_ids": [],
+      "rationale": "两段任职均在境内市场且有明确市场描述；优先项在完整材料下未被满足，按原文记录判不满足而非信息不足",
+      "weight": 1
+    },
+    {
+      "req_id": "req-d1-r5",
+      "job_id": "job-d1",
+      "text": "熟悉直播电商运营",
+      "jd_quote": "熟悉直播电商运营者优先",
+      "locator": "src-jd-d1 任职要求第 5 条",
+      "category": "skill",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unclear",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "技能清单提到「直播协作」但无任何操盘或结果记录，属「可能沾边但没写清」；单列为未知项，不写作「不具备」",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-d1",
+      "source_id": "src-resume-d",
+      "quote": "某乳业品牌 · 市场主管 · 2017.07 – 2021.05：负责华北区品牌推广与渠道活动",
+      "locator": "工作经历第 1 条",
+      "tags": [
+        "任职",
+        "快消"
+      ]
+    },
+    {
+      "evidence_id": "ev-d2",
+      "source_id": "src-resume-d",
+      "quote": "某健康食品公司 · 市场经理 · 2021.06 – 至今：负责品牌年度营销与电商大促",
+      "locator": "工作经历第 2 条",
+      "tags": [
+        "任职",
+        "快消"
+      ]
+    },
+    {
+      "evidence_id": "ev-d3",
+      "source_id": "src-resume-d",
+      "quote": "统筹 2023 年品牌年度整合营销项目 2 个，协调 4 家供应商，大促期间 GMV 同比增长 35%",
+      "locator": "工作经历第 2 条",
+      "tags": [
+        "整合营销",
+        "结果"
+      ]
+    },
+    {
+      "evidence_id": "ev-d4",
+      "source_id": "src-resume-d",
+      "quote": "组建并管理 6 人市场团队，覆盖品牌、内容与渠道投放，建立季度考核机制",
+      "locator": "工作经历第 2 条",
+      "tags": [
+        "团队管理"
+      ]
+    },
+    {
+      "evidence_id": "ev-d5",
+      "source_id": "src-resume-d",
+      "quote": "主导电商大促方案与站内资源置换，双 11 期间品牌旗舰店进入类目 TOP10",
+      "locator": "工作经历第 2 条",
+      "tags": [
+        "电商",
+        "大促"
+      ]
+    },
+    {
+      "evidence_id": "ev-d6",
+      "source_id": "src-resume-d",
+      "quote": "某财经大学 · 市场营销 · 本科（统招）",
+      "locator": "教育背景",
+      "tags": [
+        "学历"
+      ]
+    }
+  ],
+  "answers": [],
+  "primary_job_id": "job-d1",
+  "primary_selection_reason": "单岗位诊断：job-d1 为唯一 JD；按资深阶段关注点给出统筹深度与团队实据的诊断，不因年限本身加减分",
+  "answer_variants": [],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-d1",
+      "job_id": "job-d1",
+      "original_quote": "统筹 2023 年品牌年度整合营销项目 2 个，协调 4 家供应商，大促期间 GMV 同比增长 35%",
+      "rewritten_text": "统筹品牌年度整合营销：2023 年操盘项目 2 个、协调供应商 4 家，大促 GMV 同比增长 35%",
+      "rationale": "把项目角色与大促结果前置，直接对齐 JD「统筹年度品牌整合营销」；全部数字来自原句",
+      "new_facts": [],
+      "numbers_from": [
+        "ev-d3"
+      ],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-d2",
+      "job_id": "job-d1",
+      "rationale": "海外市场在本材料中无任何记录，无法在事实范围内改写；按「宁少改写、不凑数」列为待补",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": true,
+      "target_gap": "海外市场操盘经历",
+      "ask": "如有出海项目、跨境渠道或海外联合营销的真实参与记录，补充一段可引用描述；无则明确放弃该方向"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-d1",
+      "job_id": "job-d1",
+      "order": 1,
+      "goal": "补充直播电商相关事实（rw-d2 同类缺口之外的第二优先项）",
+      "deliverable": "直播项目参与记录或明确放弃说明",
+      "completion_criteria": "新增 1 条可引用直播相关经历，或明确决定不补并保留未知项",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-d2",
+      "job_id": "job-d1",
+      "order": 2,
+      "goal": "应用改写更新简历后投递",
+      "deliverable": "新版简历",
+      "completion_criteria": "rw-d1 已应用，且新版简历所有数字与原文一致；无新增事实",
+      "fact_or_skill": "skill"
+    },
+    {
+      "action_id": "act-d3",
+      "job_id": "job-d1",
+      "order": 3,
+      "goal": "投递前核对招聘方对团队规模的真实要求",
+      "deliverable": "与 HR 或猎头的沟通记录",
+      "completion_criteria": "确认岗位实际团队规模与汇报线，写入投递判断",
+      "fact_or_skill": "fact"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 70,
+    "score_label": "简历证据匹配度",
+    "job_title": "品牌市场负责人",
+    "job_category": "marketing",
+    "headline_findings": [
+      "年度整合营销操盘与 6 人团队管理均有原文实据",
+      "大促 GMV 同比增长 35% 的结果数字可直接引用",
+      "海外市场经验缺失，直播电商仅自述无佐证"
+    ],
+    "gate_notes": [
+      "硬门槛全部通过：学历与行业年限均有原文证据"
+    ],
+    "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"
+  }
+}

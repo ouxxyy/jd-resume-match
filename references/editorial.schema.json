@@ -1,0 +1,674 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "jd-match-editorial 内容编排契约",
+  "description": "MYW-72/MYW-73 起为默认交付链路的内容编排契约。只管「怎么说」——承载报告导语、重点诊断、成员版分享卡内容组（member_card）、案例版卡片内容组（cards）、发布标题与正文；分数/状态/建议一律来自评分报告 JSON（jd-match-report/0.1.0），本契约禁止携带 score。成员版与案例版共用同一评分结果与证据，不另算分。文字遵循 references/content-standards.md（jd-match-voice/0.2.0），品牌文案来自 references/brand.json。语义校验（引用可解析、引号逐字、数字溯源、职责词零新增、脱敏扫描）由 scripts/render_editorial.py 的 validate_editorial 实施，强于本结构 Schema。",
+  "type": "object",
+  "required": [
+    "editorial_version",
+    "voice_version",
+    "case_id",
+    "job_id",
+    "masthead",
+    "verdict",
+    "comparison",
+    "findings",
+    "rewrites",
+    "actions",
+    "evidence_notes",
+    "gate_notes",
+    "cards",
+    "social"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "editorial_version": {
+      "enum": [
+        "jd-match-editorial/0.2.0",
+        "jd-match-editorial/0.1.0"
+      ],
+      "description": "0.2.0：含 member_card 成员版内容组（默认交付口径）；0.1.0：旧编排，仅保留读取兼容，不得用于新交付"
+    },
+    "voice_version": {
+      "const": "jd-match-voice/0.2.0",
+      "description": "表达契约版本（content-standards.md）"
+    },
+    "case_id": {
+      "type": "string",
+      "description": "必须与报告 case_id 一致"
+    },
+    "job_id": {
+      "type": "string",
+      "description": "主目标岗位 ID，必须等于报告 primary_job_id"
+    },
+    "case_tag": {
+      "type": "string",
+      "description": "卡片页脚的脱敏案例标签（如 CASE #A），不含任何私密标记"
+    },
+    "masthead": {
+      "type": "object",
+      "required": [
+        "title",
+        "case_label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "case_label": {
+          "type": "string",
+          "description": "报告徽章（如 Case #A（应届生新媒体运营）），脱敏"
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": [
+        "heading",
+        "prose"
+      ],
+      "additionalProperties": false,
+      "description": "首屏三问：怎么投 → 为什么 → 先改哪处；分数不进文案（分数区由渲染器从报告读取）",
+      "properties": {
+        "heading": {
+          "$ref": "#/definitions/headlineSegments"
+        },
+        "prose": {
+          "type": "string",
+          "description": "支持 **加粗**；句句有锚点"
+        }
+      }
+    },
+    "comparison": {
+      "type": "array",
+      "minItems": 1,
+      "description": "每个岗位一条（主目标 + 全部次目标）",
+      "items": {
+        "type": "object",
+        "required": [
+          "job_id",
+          "badge",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "type": "string"
+          },
+          "badge": {
+            "type": "string",
+            "description": "如 主目标建议 / 次目标对比"
+          },
+          "badge_type": {
+            "enum": [
+              "primary",
+              "secondary"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "缺省取报告岗位名"
+          },
+          "note": {
+            "type": "string",
+            "description": "人话对比：各自强弱 + 为什么选主目标；引号内一律 JD 原文"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "description": "关键发现：报告首屏与分享卡的交集——具体到有锚点、值得陌生人收藏",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "body",
+          "strip_label",
+          "strip_body"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "pin_accent": {
+            "type": "boolean",
+            "description": "首条默认红标"
+          },
+          "strip_label": {
+            "type": "string",
+            "description": "封面卡速览短语（如 爆款数字被埋）"
+          },
+          "strip_body": {
+            "type": "string",
+            "description": "封面卡速览正文"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "loupe": {
+            "type": "object",
+            "required": [
+              "source_label",
+              "raw_line",
+              "highlight",
+              "highlight_label",
+              "annotation",
+              "evidence_ids"
+            ],
+            "additionalProperties": false,
+            "description": "局部放大镜：raw_line 必须是引用证据 quote 的逐字连续子串",
+            "properties": {
+              "source_label": {
+                "type": "string"
+              },
+              "raw_line": {
+                "type": "string"
+              },
+              "highlight": {
+                "type": "string",
+                "description": "raw_line 的子串，红圈套住"
+              },
+              "highlight_label": {
+                "type": "string"
+              },
+              "annotation": {
+                "type": "string"
+              },
+              "evidence_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rewrites": {
+      "type": "array",
+      "description": "重点改写区：必须覆盖报告全部有效改写（pending_fill 除外）；待补项由 pending_fill_note 说明",
+      "items": {
+        "type": "object",
+        "required": [
+          "rewrite_id",
+          "label",
+          "jd_anchor_req",
+          "jd_anchor",
+          "badge",
+          "after_label",
+          "annotation"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rewrite_id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "description": "如 社群运营条目"
+          },
+          "jd_anchor_req": {
+            "type": "string",
+            "description": "锚定的要求 req_id"
+          },
+          "jd_anchor": {
+            "type": "string",
+            "description": "该要求 jd_quote 的逐字连续子串（引号内一律 JD 原文）"
+          },
+          "badge": {
+            "type": "string"
+          },
+          "badge_tone": {
+            "enum": [
+              "red",
+              "neutral",
+              "green"
+            ]
+          },
+          "before_text": {
+            "type": "string",
+            "description": "缺省用报告 original_quote；提供时必须与其逐字一致"
+          },
+          "after_text": {
+            "type": "string",
+            "description": "改写后定稿：缺省用报告 rewritten_text；提供时过数字溯源 + 职责词零新增"
+          },
+          "after_label": {
+            "type": "string"
+          },
+          "strikes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "改前原句的子串（划线）"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "改后文本的子串（绿标）"
+          },
+          "annotation": {
+            "type": "string",
+            "description": "红笔批注：先引 JD 关键词，再指原句毛病，最后说改法与边界"
+          }
+        }
+      }
+    },
+    "pending_fill_note": {
+      "type": "string",
+      "description": "待补项引言（改不了的部分要说清为什么）"
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "一一覆盖报告的 3 项行动；goal 不挂编号，completion_criteria 是可自检人话",
+      "items": {
+        "type": "object",
+        "required": [
+          "action_id",
+          "badge",
+          "title",
+          "deliverable",
+          "criteria"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "action_id": {
+            "type": "string"
+          },
+          "badge": {
+            "type": "string"
+          },
+          "badge_tone": {
+            "enum": [
+              "red",
+              "neutral"
+            ]
+          },
+          "timing_tag": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "deliverable_label": {
+            "type": "string"
+          },
+          "deliverable": {
+            "type": "string"
+          },
+          "criteria_label": {
+            "type": "string"
+          },
+          "criteria": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string",
+            "description": "可复制话术/一句话简历模板"
+          },
+          "template_label": {
+            "type": "string"
+          },
+          "template_tone": {
+            "enum": [
+              "red",
+              "green"
+            ]
+          },
+          "chips": {
+            "type": "array",
+            "description": "核对胶囊；其中的数字必须落在证据池",
+            "items": {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "highlight": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence_notes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "主目标全部要求的人话判定注解（必须全量覆盖，缺注解不渲染内部口径）",
+      "items": {
+        "type": "object",
+        "required": [
+          "req_id",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string",
+            "description": "JD 要什么 → 简历有什么/没什么 → 记成什么"
+          },
+          "focus": {
+            "type": "boolean",
+            "description": "重点条目（判定卡展示）"
+          }
+        }
+      }
+    },
+    "gate_notes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "全部岗位门槛的人话注解（含次目标）",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate_id",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "gate_id": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "secondary_notes": {
+      "type": "array",
+      "description": "多岗位时次目标全部要求的注解（证据详情岗位切换页签，必须全量）",
+      "items": {
+        "type": "object",
+        "required": [
+          "req_id",
+          "note"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "req_id": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "focus": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "variant_note": {
+      "type": "string",
+      "description": "追问补充事实的重跑口径说明（报告有 answer_variants 时展示）"
+    },
+    "cards": {
+      "type": "object",
+      "description": "案例版卡片内容组：cover 与 actions_card 必启用；总量 1–6 张；内容不足就减卡并说明，不凑数。与成员版共用评分结果与证据，不另算分",
+      "additionalProperties": false,
+      "properties": {
+        "cover": {
+          "$ref": "#/definitions/cardCfg"
+        },
+        "findings_card": {
+          "$ref": "#/definitions/cardCfg"
+        },
+        "rewrites_card": {
+          "$ref": "#/definitions/cardCfg"
+        },
+        "actions_card": {
+          "$ref": "#/definitions/cardCfg"
+        },
+        "evidence_card": {
+          "$ref": "#/definitions/cardCfg"
+        }
+      }
+    },
+    "social": {
+      "type": "object",
+      "required": [
+        "titles",
+        "body_md"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "titles": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "三选一交付；每条 basis 指向一条具体证据（发现/改写/门槛/行动）",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "basis"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "basis": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "finding": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "rewrite": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "gate": {
+                    "type": "string"
+                  },
+                  "action": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body_md": {
+          "type": "string",
+          "description": "钩子 → 三个发现 → 方法收束 → 免责；合成案例必须注明"
+        },
+        "synthetic_note": {
+          "type": "string",
+          "description": "免责尾注，缺省用标准句"
+        }
+      }
+    },
+    "member_card": {
+      "type": "object",
+      "description": "成员版分享卡内容组（0.2.0 必填，默认交付 1 张）：岗位方向、匹配结论、优势与缺口并陈、下一步方向；低分时也不羞辱用户或夸大优势",
+      "required": [
+        "findings",
+        "action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kicker": {
+          "type": "string",
+          "description": "岗位方向行；缺省由渲染器从报告岗位类别生成（如「目标岗位评估 · 运营方向」）"
+        },
+        "verdict_note": {
+          "type": "string",
+          "description": "结论横幅注记；缺省由渲染器按报告硬门槛状态生成（全过/待核实/未过），不给则不自由裁量"
+        },
+        "findings": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "description": "优势与缺口并陈（tone=advantage/focus）；每条 lead 为加粗引导语，text 为正文；数字必须在证据池内",
+          "items": {
+            "type": "object",
+            "required": [
+              "badge",
+              "tone",
+              "lead",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "badge": {
+                "type": "string",
+                "description": "如 核心优势 / 核心缺口"
+              },
+              "tone": {
+                "enum": [
+                  "advantage",
+                  "focus"
+                ]
+              },
+              "lead": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "action": {
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false,
+          "description": "下一步方向：一条低成本可执行动作",
+          "properties": {
+            "tag": {
+              "type": "string",
+              "description": "缺省「下一步建议」"
+            },
+            "step_label": {
+              "type": "string",
+              "description": "缺省「现在就能做」"
+            },
+            "lead": {
+              "type": "string",
+              "description": "加粗引导语"
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "redactions": {
+      "type": "array",
+      "description": "渲染级脱敏白名单：报告可见原文中需泛化的片段 → 泛化词（如真实公司名→「某大厂」）。声明后渲染器逐项应用并复查；仍有私密标记漏网即拒绝渲染。未声明时报告按成员私有件处理（完整报告含材料细节，不替用户外发）",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 2,
+            "description": "报告中出现的原文片段（公司/学校/独特项目名等）"
+          },
+          "to": {
+            "type": "string",
+            "minLength": 2,
+            "description": "泛化替换词"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "headlineSegments": {
+      "type": "array",
+      "description": "标题段：{t, style(red|marker)} 与 {br:true} 交替；不写裸 HTML",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "t": {
+            "type": "string"
+          },
+          "style": {
+            "enum": [
+              "red",
+              "marker"
+            ]
+          },
+          "br": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cardCfg": {
+      "type": "object",
+      "required": [
+        "headline",
+        "page_label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "headline": {
+          "$ref": "#/definitions/headlineSegments"
+        },
+        "kicker": {
+          "type": "string"
+        },
+        "page_label": {
+          "type": "string"
+        },
+        "banner_sub": {
+          "type": "string",
+          "description": "封面卡结论横幅副题"
+        },
+        "max_diffs": {
+          "type": "integer",
+          "description": "改写卡最多展示的对照组数（默认 3）"
+        },
+        "takeaway": {
+          "type": "string",
+          "description": "行动卡底部箴言"
+        }
+      }
+    }
+  },
+  "_version_policy": "结构或字段语义变更升次版本号（0.1.x → 0.2.0）并记变更；重大转向升主版本。0.1.0（2026-09-12，MYW-69 第 4 步）：初版。0.2.0（2026-09-15，MYW-72/MYW-73 T2）：新增 member_card 成员版内容组（0.2.0 必填）与渲染级脱敏白名单 redactions；cards 明确为案例版内容组；两者共用评分结果与证据，不另算分；0.1.0 编排保留读取兼容，但缺成员版，不得用于新交付。"
+}

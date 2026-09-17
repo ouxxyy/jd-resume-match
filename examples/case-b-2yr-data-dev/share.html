@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求职体检卡 · 脱敏分享资产</title>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --border: #e2e8f0;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .share-container {
+      width: 100%;
+      max-width: 480px;
+    }
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: #0f172a;
+      color: #fff;
+      border-color: #0f172a;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .share-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .card-brand {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .badge-privacy {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+    .score-section {
+      text-align: center;
+      padding: 20px 0 24px;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 24px;
+    }
+    .score-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .score-num {
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .job-title-row {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 10px;
+    }
+    .findings-section {
+      margin-bottom: 24px;
+    }
+    .findings-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .findings-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .finding-item {
+      font-size: 13px;
+      color: #334155;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .bullet {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .gate-item {
+      font-size: 13px;
+      color: #b45309;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .bullet-gate {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+    .card-footer {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+      border-top: 1px dashed var(--border);
+      padding-top: 16px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .action-bar { display: none; }
+      .share-card { box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="share-container">
+  <div class="action-bar">
+    <span style="font-size: 12px; color: var(--text-muted);">仅含脱敏数据 · 安全分享</span>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-primary" id="btnExportSharePng">导出 PNG 图片</button>
+      <button class="btn" onclick="window.print()">打印卡片</button>
+    </div>
+  </div>
+
+  <div class="share-card" id="shareCardDOM">
+    <div class="card-top">
+      <span class="card-brand">JOB FIT REPORT</span>
+      <span class="badge-privacy">已脱敏 · 无身份信息</span>
+    </div>
+
+    <div class="score-section">
+      <div class="score-label">简历证据匹配度</div>
+      <div class="score-num">83</div>
+      <div class="job-title-row">数据分析师 · data</div>
+    </div>
+
+    <div class="findings-section">
+      <div class="findings-title">核心诊断发现与依据</div>
+      <ul class="findings-list">
+        <li class="finding-item"><span class="bullet">✓</span><span>A/B 实验设计与显著性结果直接对应该岗核心要求</span></li><li class="finding-item"><span class="bullet">✓</span><span>Python 自动化把单次周报耗时从约 4 小时降至 30 分钟</span></li><li class="finding-item"><span class="bullet">✓</span><span>SQL 查询优化证据待补充（现仅覆盖日常复杂查询）</span></li>
+        
+      </ul>
+    </div>
+
+    <div class="card-footer">
+      分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const shareData = {"standalone": true, "anonymized": true, "score": 83, "score_label": "简历证据匹配度", "job_title": "数据分析师", "job_category": "data", "headline_findings": ["A/B 实验设计与显著性结果直接对应该岗核心要求", "Python 自动化把单次周报耗时从约 4 小时降至 30 分钟", "SQL 查询优化证据待补充（现仅覆盖日常复杂查询）"], "gate_notes": [], "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"};
+
+  document.getElementById('btnExportSharePng').addEventListener('click', function() {
+    const width = 800;
+    const height = 1000;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+
+    // 背景
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, width, height);
+
+    // 卡片外框
+    ctx.fillStyle = '#ffffff';
+    roundRect(ctx, 40, 40, 720, 920, 24);
+    ctx.fill();
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 头部文字
+    ctx.fillStyle = '#2563eb';
+    ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('JOB FIT REPORT', 80, 100);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('已脱敏求职体检卡 · 纯净数据', 480, 100);
+
+    // 分界线
+    ctx.strokeStyle = '#f1f5f9';
+    ctx.beginPath();
+    ctx.moveTo(80, 130);
+    ctx.lineTo(720, 130);
+    ctx.stroke();
+
+    // 分数区
+    ctx.fillStyle = '#64748b';
+    ctx.font = '18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText(shareData.score_label || '简历证据匹配度', 80, 180);
+
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 88px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    const scoreVal = shareData.score !== null ? String(shareData.score) : '--';
+    ctx.fillText(scoreVal, 80, 270);
+
+    ctx.fillStyle = '#334155';
+    ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText(shareData.job_title || '目标岗位', 80, 325);
+
+    // 核心发现
+    ctx.fillStyle = '#0f172a';
+    ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillText('核心诊断发现：', 80, 400);
+
+    let y = 450;
+    ctx.font = '18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.fillStyle = '#334155';
+
+    if (Array.isArray(shareData.headline_findings)) {
+      shareData.headline_findings.forEach(hf => {
+        ctx.fillStyle = '#2563eb';
+        ctx.fillText('•', 80, y);
+        ctx.fillStyle = '#334155';
+        wrapText(ctx, hf, 110, y, 590, 28);
+        y += 65;
+      });
+    }
+
+    if (Array.isArray(shareData.gate_notes)) {
+      shareData.gate_notes.forEach(gn => {
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillText('!', 80, y);
+        ctx.fillStyle = '#b45309';
+        wrapText(ctx, gn, 110, y, 590, 28);
+        y += 65;
+      });
+    }
+
+    // 声明
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    wrapText(ctx, shareData.disclaimer || '', 80, 880, 640, 22);
+
+    const link = document.createElement('a');
+    link.download = 'share-card-case-b-2yr-data-dev.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    let words = String(text);
+    let line = '';
+    for (let n = 0; n < words.length; n++) {
+      let testLine = line + words[n];
+      let metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && n > 0) {
+        ctx.fillText(line, x, y);
+        line = words[n];
+        y += lineHeight;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, x, y);
+  }
+})();
+</script>
+
+</body>
+</html>

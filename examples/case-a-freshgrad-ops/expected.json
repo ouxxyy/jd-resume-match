@@ -1,0 +1,524 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "case-a-freshgrad-ops",
+  "synthetic": true,
+  "private_markers": ["李晓晓", "13800001234", "lixiaoxiao@example.com", "ABC 消费品牌", "某省大学"],
+  "sources": [
+    {
+      "source_id": "src-resume-a",
+      "kind": "resume",
+      "filename": "resume.md",
+      "summary": "应届生简历：1 段实习（2025.07–2025.10）、1 段校园经历、教育背景 1 条、技能清单 1 组；时间范围 2022.09–2026.06；无漏读或截断项；联系方式不入分析数据",
+      "parse_warnings": []
+    },
+    {
+      "source_id": "src-jd-a1",
+      "kind": "jd",
+      "filename": "jd-1-ops.md",
+      "summary": "新媒体运营专员：职责 3 条、任职要求 6 条、其他条件 2 条（其中 1 条识别为硬门槛）；重要性标注 4 处明确",
+      "parse_warnings": []
+    },
+    {
+      "source_id": "src-jd-a2",
+      "kind": "jd",
+      "filename": "jd-2-product.md",
+      "summary": "产品助理：职责 4 条、任职要求 5 条、其他条件 1 条（识别为硬门槛）；无重要性明确标注（除优先项）",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "fresh_grad",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-a1",
+      "title": "新媒体运营专员",
+      "category": "operations",
+      "jd_source_id": "src-jd-a1",
+      "score": 75,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-a1-g1",
+          "job_id": "job-a1",
+          "text": "本科及以上学历",
+          "jd_quote": "本科及以上学历，市场营销等相关专业优先",
+          "status": "met",
+          "evidence_ids": ["ev-a7"],
+          "rationale": "2026 届本科在读，毕业入职时点满足学历要求；有教育背景原文证据，非推断"
+        },
+        {
+          "gate_id": "gate-a1-g2",
+          "job_id": "job-a1",
+          "text": "能接受大促期间周末值班",
+          "jd_quote": "能接受大促期间周末值班",
+          "status": "pending_confirmation",
+          "evidence_ids": [],
+          "rationale": "简历与追问回答均无相关信息；不从「未提及」推断「不接受」，列为待确认"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 1,
+      "rank_rationale": "在各自 JD 的证据覆盖口径下：job-a1 75 分、job-a2 29 分，job-a1 排第一；分数为各自 JD 内的证据覆盖，不代表岗位难度或招聘成功率",
+      "suggestion": "revise_then_apply",
+      "suggestion_rationale": "存在 1 项待确认门槛（大促周末值班，gate-a1-g2）：按决策表第 2 条先核实再投；核实转 met 后即达决策表第 3 条（75≥70 且未知项 1 ≤ 要求 9 的 1/3），可转优先投——补充小红书证据可进一步提升覆盖，不是转优先投的必要条件"
+    },
+    {
+      "job_id": "job-a2",
+      "title": "产品助理",
+      "category": "product",
+      "jd_source_id": "src-jd-a2",
+      "score": 29,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-a2-g1",
+          "job_id": "job-a2",
+          "text": "本科及以上学历",
+          "jd_quote": "本科及以上学历，专业不限",
+          "status": "met",
+          "evidence_ids": ["ev-a7"],
+          "rationale": "同 gate-a1-g1：2026 届本科在读"
+        },
+        {
+          "gate_id": "gate-a2-g2",
+          "job_id": "job-a2",
+          "text": "能立即到岗全职并长期实习 6 个月以上",
+          "jd_quote": "需能立即到岗全职实习并长期实习 6 个月以上",
+          "status": "pending_confirmation",
+          "evidence_ids": [],
+          "rationale": "候选人为 2026 届在读，能否立即全职到岗无材料信息；不从「在读」推断不可行，列为待确认"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 2,
+      "rank_rationale": "在各自 JD 的证据覆盖口径下：job-a2 29 分排第二；分数为各自 JD 内的证据覆盖，不代表岗位难度或招聘成功率",
+      "suggestion": "revise_then_apply",
+      "suggestion_rationale": "存在 1 项待确认门槛（立即到岗，gate-a2-g2）：先核实；核心缺口（原型工具）为明确未满足，建议先产出 1 份竞品分析或原型小作品再决定是否投"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-a1-r1",
+      "job_id": "job-a1",
+      "text": "独立完成公众号与小红书的日常内容策划与更新",
+      "jd_quote": "负责公众号与小红书账号的日常内容策划与更新（本项为必须独立完成的核心职责）",
+      "locator": "src-jd-a1 职责第 1 条",
+      "category": "experience",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": ["ev-a1", "ev-a4"],
+      "answer_ids": [],
+      "rationale": "这条职责拆开是两件事：公众号更新、小红书更新。公众号有实据——实习 3 个月独立写了 12 篇，校园活动又写了 3 篇；小红书在简历正文里没有记录（追问提到的个人号 8 篇笔记是补充事实，计入需重跑，本次判定按简历正文算，缺口不因另测同一平台的优先项而豁免）。半边有、半边没有，所以记「部分满足」。另注意节奏：实习期约每周 1 篇，岗位写的是「日常更新」，强度还差一档",
+      "weight": 3
+    },
+    {
+      "req_id": "req-a1-r2",
+      "job_id": "job-a1",
+      "text": "运营用户社群并策划提升活跃度的活动",
+      "jd_quote": "运营用户社群，策划提升活跃度的社群活动",
+      "locator": "src-jd-a1 职责第 2 条",
+      "category": "experience",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "supported",
+      "evidence_ids": ["ev-a2"],
+      "answer_ids": [],
+      "rationale": "社群 2 个约 400 人 + 抽奖活动 1 场且参与率约 25%，社群运营与活动策划均有行为与数字证据",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a1-r3",
+      "job_id": "job-a1",
+      "text": "每周输出运营数据周报并基于数据提出优化建议",
+      "jd_quote": "每周必须输出运营数据周报，并基于数据提出内容优化建议",
+      "locator": "src-jd-a1 职责第 3 条",
+      "category": "skill",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": ["ev-a3"],
+      "answer_ids": [],
+      "rationale": "「每周输出周报」子项有行为证据；「基于数据提出优化建议」子项简历无记录，覆盖不完整故判 partial",
+      "weight": 3
+    },
+    {
+      "req_id": "req-a1-r4",
+      "job_id": "job-a1",
+      "text": "熟练使用 Excel 进行数据整理与分析",
+      "jd_quote": "熟练使用 Excel 进行数据整理与分析",
+      "locator": "src-jd-a1 任职要求第 3 条",
+      "category": "tool",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": ["ev-a3"],
+      "answer_ids": [],
+      "rationale": "除技能清单外有连续 12 周的实际使用行为证据（每周 Excel 汇总并输出周报），超出清单自述",
+      "weight": 3
+    },
+    {
+      "req_id": "req-a1-r5",
+      "job_id": "job-a1",
+      "text": "了解小红书平台内容玩法与流量机制",
+      "jd_quote": "了解小红书平台内容玩法与流量机制者优先考虑",
+      "locator": "src-jd-a1 任职要求第 4 条",
+      "category": "domain",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "partial",
+      "evidence_ids": ["ev-a1"],
+      "answer_ids": [],
+      "rationale": "新媒体经验相关但不覆盖小红书：简历仅有公众号证据，小红书无任何记录；材料已完整故不是 unknown，属优先项未证实也不是 unmet",
+      "weight": 1
+    },
+    {
+      "req_id": "req-a1-r6",
+      "job_id": "job-a1",
+      "text": "有新媒体运营相关经验（实习经历可算）",
+      "jd_quote": "需有新媒体运营相关经验，实习经历可算",
+      "locator": "src-jd-a1 任职要求第 2 条",
+      "category": "experience",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": ["ev-a1", "ev-a2", "ev-a3"],
+      "answer_ids": [],
+      "rationale": "3 个月新媒体实习，JD 明确实习可算；按资历公平规则不以全职年限衡量应届生",
+      "weight": 3
+    },
+    {
+      "req_id": "req-a1-r7",
+      "job_id": "job-a1",
+      "text": "市场营销等相关专业",
+      "jd_quote": "本科及以上学历，市场营销等相关专业优先",
+      "locator": "src-jd-a1 任职要求第 1 条（专业部分为优先项）",
+      "category": "education",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": ["ev-a7"],
+      "answer_ids": [],
+      "rationale": "本科专业为市场营销，与优先项直接对应",
+      "weight": 1
+    },
+    {
+      "req_id": "req-a1-r8",
+      "job_id": "job-a1",
+      "text": "有单篇阅读 3000+ 的爆款内容案例",
+      "jd_quote": "有单篇阅读 3000+ 的爆款内容案例者优先",
+      "locator": "src-jd-a1 任职要求第 5 条",
+      "category": "experience",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": ["ev-a1"],
+      "answer_ids": [],
+      "rationale": "最高单篇阅读 4600 ≥ 3000，数字来自简历原文",
+      "weight": 1
+    },
+    {
+      "req_id": "req-a1-r9",
+      "job_id": "job-a1",
+      "text": "会用 SQL 或 BI 工具做基础数据分析",
+      "jd_quote": "加分：会用 SQL 或 BI 工具做基础数据分析",
+      "locator": "src-jd-a1 任职要求第 6 条",
+      "category": "skill",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unclear",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "技能清单自述「基础 SQL（课程学习）」无任何应用佐证，属「可能具备但没写清」；贡献 0 分并单列为未知项，不写作「不具备」",
+      "weight": 1
+    },
+    {
+      "req_id": "req-a2-p1",
+      "job_id": "job-a2",
+      "text": "协助开展需求调研与竞品分析",
+      "jd_quote": "协助产品经理开展需求调研与竞品分析",
+      "locator": "src-jd-a2 职责第 1 条",
+      "category": "skill",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "partial",
+      "evidence_ids": ["ev-a5"],
+      "answer_ids": [],
+      "rationale": "市场调研课程提供方法证据；竞品分析无实践记录，覆盖不完整",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p2",
+      "job_id": "job-a2",
+      "text": "独立撰写 PRD 与业务流程图",
+      "jd_quote": "独立撰写 PRD 与业务流程图",
+      "locator": "src-jd-a2 职责第 2 条",
+      "category": "skill",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "partial",
+      "evidence_ids": ["ev-a1", "ev-a3"],
+      "answer_ids": [],
+      "rationale": "有结构化写作行为证据（推文、周报），但无 PRD/流程图类文档作品，类型差距明显故判 partial 而非 supported",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p3",
+      "job_id": "job-a2",
+      "text": "使用 Figma 或 Axure 制作产品原型",
+      "jd_quote": "使用 Figma 或 Axure 制作产品原型",
+      "locator": "src-jd-a2 职责第 3 条",
+      "category": "tool",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "unmet",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "材料完整覆盖在校经历，无任何原型工具或作品记录，且该要求明确具体；判「明确不满足」，区别于 unknown（本例不是信息不足）",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p4",
+      "job_id": "job-a2",
+      "text": "跟进开发交付节奏，同步项目进度",
+      "jd_quote": "跟进开发交付节奏，同步项目进度",
+      "locator": "src-jd-a2 职责第 4 条",
+      "category": "soft",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "unknown",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "材料无相关记录；应届生通常缺少接触该职责的场景，信息不足判 unknown（未知不等于不具备），不判 unmet",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p5",
+      "job_id": "job-a2",
+      "text": "了解用户访谈、问卷等基础调研方法",
+      "jd_quote": "了解用户访谈、问卷等基础调研方法",
+      "locator": "src-jd-a2 任职要求第 2 条",
+      "category": "skill",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "partial",
+      "evidence_ids": ["ev-a5"],
+      "answer_ids": [],
+      "rationale": "市场调研课程含问卷与访谈方法教学，方法认知有据；无实操记录故 partial",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p6",
+      "job_id": "job-a2",
+      "text": "沟通表达清晰，有结构化写作能力",
+      "jd_quote": "沟通表达清晰，有结构化写作能力",
+      "locator": "src-jd-a2 任职要求第 3 条",
+      "category": "soft",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "partial",
+      "evidence_ids": ["ev-a1", "ev-a3"],
+      "answer_ids": [],
+      "rationale": "结构化写作有行为旁证（周报、推文）；「沟通表达」无直接证据，部分覆盖",
+      "weight": 2
+    },
+    {
+      "req_id": "req-a2-p7",
+      "job_id": "job-a2",
+      "text": "有产品类实习经验",
+      "jd_quote": "有产品类实习经验者优先",
+      "locator": "src-jd-a2 任职要求第 4 条",
+      "category": "experience",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unmet",
+      "evidence_ids": ["ev-a1"],
+      "answer_ids": [],
+      "rationale": "唯一实习为新媒体运营，非产品类；优先项在完整材料下未被满足",
+      "weight": 1
+    },
+    {
+      "req_id": "req-a2-p8",
+      "job_id": "job-a2",
+      "text": "有 SaaS 或 B 端产品相关经验",
+      "jd_quote": "有 SaaS 或 B 端产品相关经验者优先",
+      "locator": "src-jd-a2 任职要求第 5 条",
+      "category": "domain",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unmet",
+      "evidence_ids": [],
+      "answer_ids": [],
+      "rationale": "材料完整，无任何 SaaS/B 端经历记录",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-a1",
+      "source_id": "src-resume-a",
+      "quote": "独立撰写并发布公众号推文 12 篇，平均阅读 800+，最高单篇阅读 4600",
+      "locator": "实习经历第 1 条",
+      "tags": ["内容产出", "公众号", "爆款"]
+    },
+    {
+      "evidence_id": "ev-a2",
+      "source_id": "src-resume-a",
+      "quote": "运营用户社群 2 个（共约 400 人），策划社群抽奖活动 1 场，参与率约 25%",
+      "locator": "实习经历第 2 条",
+      "tags": ["社群", "活动策划"]
+    },
+    {
+      "evidence_id": "ev-a3",
+      "source_id": "src-resume-a",
+      "quote": "每周用 Excel 汇总公众号阅读、涨粉、转化数据并输出周报",
+      "locator": "实习经历第 3 条",
+      "tags": ["数据", "Excel", "周报"]
+    },
+    {
+      "evidence_id": "ev-a4",
+      "source_id": "src-resume-a",
+      "quote": "负责活动宣传推文 3 篇与现场签到组织，活动参与 300+ 人",
+      "locator": "校园经历",
+      "tags": ["内容产出", "活动执行"]
+    },
+    {
+      "evidence_id": "ev-a5",
+      "source_id": "src-resume-a",
+      "quote": "主修课程：市场调研、消费者行为学、广告学、统计学基础、数据库基础（含 SQL 入门）",
+      "locator": "教育背景",
+      "tags": ["课程"]
+    },
+    {
+      "evidence_id": "ev-a6",
+      "source_id": "src-resume-a",
+      "quote": "剪映（短视频剪辑）、Canva（海报制作）",
+      "locator": "技能清单",
+      "tags": ["工具"]
+    },
+    {
+      "evidence_id": "ev-a7",
+      "source_id": "src-resume-a",
+      "quote": "某省大学 · 市场营销专业 · 本科 · 2022.09 – 2026.06（在读，2026 届）",
+      "locator": "教育背景",
+      "tags": ["学历"]
+    }
+  ],
+  "answers": [
+    {
+      "answer_id": "ans-a1",
+      "question": "你有小红书平台的实际使用或运营经历吗？（初诊追问，可跳过）",
+      "answer": "有个人小红书账号，发过 8 篇笔记，最高一篇 1200 赞",
+      "recorded_as": "supplementary_evidence",
+      "applies_to_jobs": ["job-a1"]
+    }
+  ],
+  "primary_job_id": "job-a1",
+  "primary_selection_reason": "两个岗位为各自 JD 内的证据覆盖比较：job-a1 75 分显著高于 job-a2 29 分，且 job-a1 的缺口（小红书证据、待确认门槛）可通过补充与核实弥合，job-a2 的核心缺口（原型工具）为明确未满足需作品积累；默认取排名第一，用户可在追问轮改选",
+  "answer_variants": [
+    {
+      "answer_ids": ["ans-a1"],
+      "changes": [
+        {
+          "req_id": "req-a1-r1",
+          "status": "supported",
+          "rationale": "同一补充回答填上 r1 的小红书子项缺口（8 篇笔记、最高 1200 赞为实际发布行为证据），公众号子项证据不变，两子项齐备按 §1 转 supported——与 r5 对称：缺口同补则两条同升，不对小红书半边单独设强度杠（公众号半边「强度备注不降状态」先例同等适用）"
+        },
+        {
+          "req_id": "req-a1-r5",
+          "status": "supported",
+          "rationale": "补充回答提供小红书实际发布数据（8 篇笔记、最高 1200 赞），构成「了解小红书内容玩法」的直接证据"
+        }
+      ],
+      "job_scores": { "job-a1": 86 },
+      "note": "补充回答后重跑的期望结果：旧报告保留，新报告须注明分数变化来源（ans-a1）；r1 与 r5 的小红书缺口由同一回答补齐，两条同转 supported（Σ贡献 13.5+1.5+0.5=15.5 → 86）；g2 门槛仍待确认，建议不变"
+    }
+  ],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-a1",
+      "job_id": "job-a1",
+      "original_quote": "运营用户社群 2 个（共约 400 人）",
+      "rewritten_text": "独立运营 2 个共约 400 人的用户社群，策划社群抽奖活动 1 场，参与率约 25%",
+      "rationale": "把活动策划与可量化结果前置，直接对齐 JD「策划提升活跃度的社群活动」；全部数字来自原文",
+      "new_facts": [],
+      "numbers_from": ["ev-a2"],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-a2",
+      "job_id": "job-a1",
+      "original_quote": "每周用 Excel 汇总公众号阅读、涨粉、转化数据并输出周报",
+      "rewritten_text": "实习期间按周产出公众号数据周报（阅读、涨粉、转化），基于 Excel 汇总",
+      "rationale": "对齐 JD「每周必须输出运营数据周报」的句式，明确周期与数据维度；无新增事实",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-a3",
+      "job_id": "job-a1",
+      "original_quote": "独立撰写并发布公众号推文 12 篇，平均阅读 800+，最高单篇阅读 4600",
+      "rewritten_text": "实习期间独立撰写发布公众号推文 12 篇，最高单篇阅读 4600（账号平均阅读 800+）",
+      "rationale": "爆款数字前置以对齐 JD「单篇阅读 3000+ 爆款案例优先」；全部数字来自原文",
+      "new_facts": [],
+      "numbers_from": ["ev-a1"],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-a4",
+      "job_id": "job-a1",
+      "rationale": "现材料只有公众号证据，无法在事实范围内完成小红书改写；按「宁少改写、不凑数」原则列为待补",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": true,
+      "target_gap": "小红书平台内容经历",
+      "ask": "补充个人小红书账号运营数据或参与过的小红书项目经历（如有）；无则明确放弃该方向"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-a1",
+      "job_id": "job-a1",
+      "order": 1,
+      "goal": "核实大促周末值班安排（gate-a1-g2）",
+      "deliverable": "向 HR 提出的确认问题及书面答复记录",
+      "completion_criteria": "获得明确答复并记录；可将门槛更新为 met 或 unmet",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-a2",
+      "job_id": "job-a1",
+      "order": 2,
+      "goal": "补充小红书证据（rw-a4 待补项）",
+      "deliverable": "个人小红书账号数据或参与项目的可引用描述（如无则明确放弃）",
+      "completion_criteria": "新增 1 条可引用经历，或明确决定不补并在重跑时保留未知项",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-a3",
+      "job_id": "job-a1",
+      "order": 3,
+      "goal": "应用 3 处改写更新简历后投递",
+      "deliverable": "新版简历",
+      "completion_criteria": "rw-a1～rw-a3 已应用，且新版简历所有数字与原文一致；无新增事实",
+      "fact_or_skill": "skill"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 75,
+    "score_label": "简历证据匹配度",
+    "job_title": "新媒体运营专员",
+    "job_category": "operations",
+    "headline_findings": [
+      "每周数据周报经验与岗位核心职责直接对应",
+      "公众号单篇最高阅读 4600，满足 JD 的 3000+ 爆款优先项",
+      "小红书平台经验尚未证明，需补充或确认"
+    ],
+    "gate_notes": ["1 项门槛待确认：大促期间周末值班"],
+    "disclaimer": "分数衡量简历证据对该 JD 要求的覆盖，不代表能力总分、ATS 官方分或面试概率；分享内容已隐去个人身份信息"
+  }
+}

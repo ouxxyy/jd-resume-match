@@ -1,0 +1,14 @@
+{
+  "brand_version": "jd-match-brand/0.1.0",
+  "description": "品牌配置：独立于候选人材料。卡片与成员卡的入口、尾注、徽章文案全部从这里读取；换品牌只改本文件，不改渲染器，不碰候选人数据。",
+  "search_entry": "搜 欧八同学",
+  "cta": "生成自己的简历体检报告",
+  "card_brand_sub": "深度诊断 · 脱敏求职小样",
+  "member_header": "求职匹配体检单",
+  "member_badge": "个人诊断报告",
+  "member_header_note": "简历对岗评估 · 深度诊断",
+  "member_footer_note": [
+    "分数只衡量简历证据对岗位的覆盖度，不代表录取概率",
+    "案例材料已脱敏 · 保护求职者隐私"
+  ]
+}
