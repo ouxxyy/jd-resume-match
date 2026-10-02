@@ -1,0 +1,124 @@
+{
+  "extraction_version": "jd-extract/0.1.1",
+  "ready_for_analysis": true,
+  "inputs": [
+    {
+      "source_id": "src-resume-1",
+      "kind": "resume",
+      "filename": "resume.md",
+      "path": "examples/strategy-upgrade/education-first-work/resume.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 合成候选人简历\n> synthetic: true；机构、经历与数据均为虚构。\n\n## 教育背景\n\n合成院校 · 本科 · 市场营销 · 2014.09–2018.06\n- 课程包括消费者行为与统计基础\n\n## 工作经历\n\n合成机构甲 · 用户运营专员 · 2021.01–2026.09\n- 每周使用 Excel 汇总新增用户与活动参与数据，输出运营周报\n- 运营用户社群，整理问题并更新常见问题文档\n- 策划社群交流活动，收集参与者反馈并归档\n\n## 技能清单\n\n工具使用\n- Excel（透视表与数据整理）\n- 基础 SQL（课程学习）\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 合成候选人简历"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true；机构、经历与数据均为虚构。"
+        },
+        {
+          "locator": "L4",
+          "text": "## 教育背景"
+        },
+        {
+          "locator": "L6",
+          "text": "合成院校 · 本科 · 市场营销 · 2014.09–2018.06"
+        },
+        {
+          "locator": "L7",
+          "text": "- 课程包括消费者行为与统计基础"
+        },
+        {
+          "locator": "L9",
+          "text": "## 工作经历"
+        },
+        {
+          "locator": "L11",
+          "text": "合成机构甲 · 用户运营专员 · 2021.01–2026.09"
+        },
+        {
+          "locator": "L12",
+          "text": "- 每周使用 Excel 汇总新增用户与活动参与数据，输出运营周报"
+        },
+        {
+          "locator": "L13",
+          "text": "- 运营用户社群，整理问题并更新常见问题文档"
+        },
+        {
+          "locator": "L14",
+          "text": "- 策划社群交流活动，收集参与者反馈并归档"
+        },
+        {
+          "locator": "L16",
+          "text": "## 技能清单"
+        },
+        {
+          "locator": "L18",
+          "text": "工具使用"
+        },
+        {
+          "locator": "L19",
+          "text": "- Excel（透视表与数据整理）"
+        },
+        {
+          "locator": "L20",
+          "text": "- 基础 SQL（课程学习）"
+        }
+      ],
+      "summary": {
+        "lines": 20,
+        "text_chars": 274,
+        "blocks": 14
+      }
+    },
+    {
+      "source_id": "src-jd-1",
+      "kind": "jd",
+      "filename": "jd-1.md",
+      "path": "examples/strategy-upgrade/education-first-work/jd-1.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 用户运营专员（合成 JD）\n> synthetic: true\n熟练使用 Excel 整理运营数据并输出周报\n运营用户社群并整理用户问题\nSQL 实际应用经验者优先\n必须本科及以上学历\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 用户运营专员（合成 JD）"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true"
+        },
+        {
+          "locator": "L3",
+          "text": "熟练使用 Excel 整理运营数据并输出周报"
+        },
+        {
+          "locator": "L4",
+          "text": "运营用户社群并整理用户问题"
+        },
+        {
+          "locator": "L5",
+          "text": "SQL 实际应用经验者优先"
+        },
+        {
+          "locator": "L6",
+          "text": "必须本科及以上学历"
+        }
+      ],
+      "summary": {
+        "lines": 6,
+        "text_chars": 95,
+        "blocks": 6
+      }
+    }
+  ]
+}

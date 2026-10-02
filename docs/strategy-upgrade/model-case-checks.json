@@ -1,0 +1,106 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成机构乙",
+    "合成院校"
+  ],
+  "model": "gpt-6.1-sol",
+  "results": [
+    {
+      "case": "education-first-work",
+      "primary": "用户运营专员",
+      "scores": {
+        "用户运营专员": 83
+      },
+      "before_modules": [
+        "教育背景",
+        "工作经历",
+        "技能清单"
+      ],
+      "after_modules": [
+        "工作经历",
+        "技能清单",
+        "教育背景"
+      ],
+      "after_entries": [
+        "合成机构甲 · 用户运营专员 · 2021.01–2026.09",
+        "工具使用",
+        "合成院校 · 本科 · 市场营销 · 2014.09–2018.06"
+      ],
+      "report": "examples/strategy-upgrade/education-first-work/preview/report.html"
+    },
+    {
+      "case": "freshgrad-project",
+      "primary": "数据分析助理",
+      "scores": {
+        "数据分析助理": 83,
+        "统计研究助理": 75
+      },
+      "before_modules": [
+        "教育背景",
+        "项目经历",
+        "校园经历"
+      ],
+      "after_modules": [
+        "项目经历",
+        "教育背景",
+        "校园经历"
+      ],
+      "after_entries": [
+        "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12",
+        "合成院校 · 统计学本科 · 2022.09–2026.06",
+        "校园活动志愿者 · 2024.10"
+      ],
+      "report": "examples/strategy-upgrade/freshgrad-project/preview/report.html"
+    },
+    {
+      "case": "freshgrad-project-research",
+      "primary": "统计研究助理",
+      "scores": {
+        "数据分析助理": 83,
+        "统计研究助理": 75
+      },
+      "before_modules": [
+        "教育背景",
+        "项目经历",
+        "校园经历"
+      ],
+      "after_modules": [
+        "教育背景",
+        "项目经历",
+        "校园经历"
+      ],
+      "after_entries": [
+        "合成院校 · 统计学本科 · 2022.09–2026.06",
+        "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12",
+        "校园活动志愿者 · 2024.10"
+      ],
+      "report": "examples/strategy-upgrade/freshgrad-project-research/preview/report.html"
+    },
+    {
+      "case": "older-relevant-work",
+      "primary": "社群运营专员",
+      "scores": {
+        "社群运营专员": 100
+      },
+      "before_modules": [
+        "教育背景",
+        "工作经历",
+        "技能清单"
+      ],
+      "after_modules": [
+        "工作经历",
+        "技能清单",
+        "教育背景"
+      ],
+      "after_entries": [
+        "合成机构甲 · 社群运营专员 · 2020.01–2022.12",
+        "合成机构乙 · 行政助理 · 2023.01–2026.09",
+        "工具使用",
+        "合成院校 · 本科 · 管理学 · 2011.09–2015.06"
+      ],
+      "report": "examples/strategy-upgrade/older-relevant-work/preview/report.html"
+    }
+  ]
+}

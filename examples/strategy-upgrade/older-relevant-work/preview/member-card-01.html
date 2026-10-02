@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求职体检卡 · 社群运营专员</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#27272A;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.card-canvas{width:1080px;height:1440px;background:#FBF9F5;position:relative;overflow:hidden;padding:56px 64px;display:flex;flex-direction:column;justify-content:space-between}
+
+.member-card-page{display:flex;flex-direction:column;justify-content:space-between;height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif}
+.member-header-bar{display:flex;justify-content:space-between;align-items:center;border-bottom:2.5px solid #18181B;padding-bottom:18px}
+.member-header-brand{font-size:20px;font-weight:900;letter-spacing:.06em;color:#18181B;display:flex;align-items:center;gap:12px}
+.member-header-badge{background:#DC2626;color:#FFF;font-size:15px;font-weight:800;padding:4px 12px;border-radius:6px}
+.member-header-note{font-size:18px;font-weight:800;color:#52525B}
+.member-decision-left{flex:1}
+.member-decision{background:#FFF;border:2px solid #E5E1D5;border-radius:20px;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;box-shadow:0 4px 20px rgba(0,0,0,0.03)}
+.member-target-tag{display:inline-block;background:#F4F4F5;color:#52525B;font-size:18px;font-weight:800;padding:6px 16px;border-radius:8px;margin-bottom:14px}
+.member-target-title{font-size:44px;font-weight:900;color:#18181B;line-height:1.2;margin-bottom:14px}
+.member-verdict{display:inline-flex;align-items:center;gap:12px;padding:8px 20px;border-radius:10px;font-size:20px;font-weight:900}
+.member-verdict.green{background:#F0FDF4;border:2px solid #86EFAC;color:#0F766E}
+.member-verdict.amber{background:#FEF3C7;border:2px solid #FDE68A;color:#B45309}
+.member-verdict.red{background:#FEF2F2;border:2px solid #FCA5A5;color:#B91C1C}
+.member-verdict-note{font-size:16px;font-weight:700}
+.member-score-box{text-align:center;background:#FAFAFA;border:2.5px dashed #D4CEBE;border-radius:20px;padding:20px 32px;min-width:200px}
+.member-score-num{font-size:88px;font-weight:900;line-height:1;color:#DC2626;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+.member-score-label{font-size:17px;font-weight:800;color:#52525B;margin-top:8px}
+.member-section-title{font-size:26px;font-weight:900;color:#18181B;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.member-section-title::before{content:'';display:inline-block;width:6px;height:24px;background:#DC2626;border-radius:3px}
+.member-findings{display:flex;flex-direction:column;gap:16px}
+.member-finding{background:#FFF;border:2px solid #E5E1D5;border-radius:16px;padding:22px 28px;display:flex;gap:20px;align-items:flex-start}
+.member-finding-badge{font-size:18px;font-weight:900;padding:6px 14px;border-radius:8px;white-space:nowrap;margin-top:2px;background:#F4F4F5;color:#18181B}
+.member-finding-badge.advantage{background:#F0FDF4;color:#0F766E;border:1.5px solid #86EFAC}
+.member-finding-badge.focus{background:#FEF2F2;color:#DC2626;border:1.5px solid #FCA5A5}
+.member-finding-text{font-size:24px;line-height:1.55;color:#27272A;font-weight:600}
+.member-finding-text strong{color:#18181B;font-weight:900}
+.member-action{background:#FFFDF0;border:2.5px solid #EAB308;border-radius:18px;padding:24px 30px}
+.member-action-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.member-action-tag{font-size:22px;font-weight:900;color:#854D0E}
+.member-action-step{font-size:16px;font-weight:900;color:#A16207;background:#FEF08A;padding:5px 12px;border-radius:6px}
+.member-action-content{font-size:22px;line-height:1.6;color:#451A03;font-weight:600}
+.member-action-content strong{font-weight:900;color:#000}
+.member-footer{border-top:2px dashed #D4CEBE;padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.member-brand{display:flex;align-items:center;gap:18px}
+.member-search-badge{display:flex;align-items:center;gap:10px;background:#18181B;color:#FFF;padding:12px 26px;border-radius:36px;font-size:20px;font-weight:900;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.member-brand-subtext{font-size:20px;color:#52525B;font-weight:800}
+.member-footer-note{font-size:18px;color:#71717A;text-align:right;line-height:1.5;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="card-canvas">
+  <div class="member-card-page">
+  <div class="member-header-bar">
+    <div class="member-header-brand">
+      求职匹配体检单 <span class="member-header-badge">个人诊断报告</span>
+    </div>
+    <div class="member-header-note">简历对岗评估 · 深度诊断</div>
+  </div>
+
+  <div class="member-decision">
+    <div class="member-decision-left">
+      <div class="member-target-tag">目标岗位评估 · 运营方向</div>
+      <div class="member-target-title">社群运营专员</div>
+      <div class="member-verdict green">
+        <span>建议：优先投</span>
+        <span class="member-verdict-note">(硬门槛全部通过)</span>
+      </div>
+    </div>
+    <div class="member-score-box">
+      <div class="member-score-num">100</div>
+      <div class="member-score-label">简历证据匹配度</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="member-section-title">核心诊断发现与证明事实</div>
+    <div class="member-findings">
+    <div class="member-finding">
+      <div class="member-finding-badge advantage">优势</div>
+      <div class="member-finding-text"><strong>已有行为证据</strong>原文包含与核心职责相关的具体行动。</div>
+    </div>
+    <div class="member-finding">
+      <div class="member-finding-badge focus">待补</div>
+      <div class="member-finding-text"><strong>结果口径还需核实</strong>没有记录的成果和个人贡献继续保留待确认。</div>
+    </div>
+    </div>
+  </div>
+
+  <div class="member-action">
+    <div class="member-action-header">
+      <span class="member-action-tag">📌 下一步建议</span>
+      <span class="member-action-step">现在就能做</span>
+    </div>
+    <div class="member-action-content"><strong></strong>先对照结构方案调整简历顺序。</div>
+  </div>
+
+  <div class="member-footer">
+    <div class="member-brand">
+      <div class="member-search-badge">🔍 搜 欧八同学</div>
+      <span class="member-brand-subtext">生成自己的简历体检报告</span>
+    </div>
+    <div class="member-footer-note">分数只衡量简历证据对岗位的覆盖度，不代表录取概率<br>案例材料已脱敏 · 保护求职者隐私</div>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岗位匹配深度审校报告 · 合成验收案例</title>
+<style>
+:root{--paper-bg:#FBF9F5;--paper-card:#FFF;--paper-muted:#F5F2EA;--paper-highlight:#FFFDF0;
+--ink-primary:#18181B;--ink-secondary:#52525B;--ink-tertiary:#71717A;--ink-border:#E5E1D5;--ink-border-subtle:#EFECE4;
+--red-pen:#DC2626;--red-pen-dark:#B91C1C;--red-pen-bg:#FEF2F2;--red-pen-border:#FCA5A5;--red-pen-light:#FFF5F5;
+--green-approved:#0F766E;--green-approved-bg:#F0FDF4;--green-approved-border:#86EFAC;
+--amber:#B45309;--amber-bg:#FEF3C7;--amber-border:#FDE68A;
+--font-sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper-bg);color:var(--ink-primary);font-family:var(--font-sans);line-height:1.65;
+-webkit-font-smoothing:antialiased;padding:32px 20px 80px;font-size:15px}
+.editorial-wrapper{max-width:980px;margin:0 auto}
+.masthead{border-bottom:2.5px solid var(--ink-primary);padding-bottom:16px;margin-bottom:32px;display:flex;
+justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+.masthead-meta{display:flex;flex-direction:column;gap:6px}
+.masthead-brand{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-secondary);
+display:flex;align-items:center;gap:10px}
+.masthead-brand .stamp{display:inline-block;padding:2px 8px;border:1.5px solid var(--red-pen);color:var(--red-pen);
+font-weight:900;font-size:11px;letter-spacing:.05em;transform:rotate(-1.5deg);border-radius:3px;background:#FFF}
+.masthead-title{font-size:26px;font-weight:900;color:var(--ink-primary);letter-spacing:-.02em}
+.masthead-badge-group{display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap}
+.badge-pill{padding:4px 12px;border-radius:9999px;background:var(--paper-muted);border:1px solid var(--ink-border);
+color:var(--ink-secondary);font-weight:600;white-space:nowrap}
+.toc-bar{display:flex;gap:10px;margin-bottom:24px;overflow-x:auto;padding-bottom:4px}
+.toc-link{font-size:13px;font-weight:700;color:var(--ink-secondary);text-decoration:none;background:#FFF;
+border:1px solid var(--ink-border);padding:5px 14px;border-radius:6px;white-space:nowrap;transition:all .2s}
+.toc-link:hover{border-color:var(--ink-primary);color:var(--ink-primary)}
+.section-card{background:var(--paper-card);border:1.5px solid var(--ink-border);border-radius:10px;padding:30px 36px;
+margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.02),0 8px 20px rgba(24,24,27,.025);position:relative}
+.section-tag-label{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;
+text-transform:uppercase;color:var(--ink-tertiary);margin-bottom:16px}
+.section-tag-label .num{background:var(--ink-primary);color:#FFF;width:20px;height:20px;display:inline-flex;
+align-items:center;justify-content:center;border-radius:50%;font-size:11px;font-weight:900}
+.verdict-hero{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;border-bottom:1px dashed var(--ink-border);
+padding-bottom:24px;margin-bottom:20px}
+.verdict-main-heading{font-size:34px;font-weight:900;color:var(--ink-primary);line-height:1.25;letter-spacing:-.02em;margin-bottom:16px}
+.verdict-main-heading .accent-mark{background:linear-gradient(180deg,transparent 65%,rgba(220,38,38,.22) 65%);
+padding:0 4px;color:var(--ink-primary)}
+.verdict-summary-prose{font-size:16px;line-height:1.75;color:var(--ink-secondary)}
+.verdict-summary-prose strong{color:var(--ink-primary);font-weight:700}
+.verdict-chip{display:inline-block;margin-top:14px;padding:3px 12px;border-radius:6px;font-size:13px;font-weight:800;
+background:var(--ink-primary);color:#FFF}
+.score-meter-card{background:var(--paper-muted);border:1.5px solid var(--ink-border);border-radius:10px;padding:20px 24px;
+min-width:170px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-meter-label{font-size:11px;font-weight:800;color:var(--ink-tertiary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.score-meter-num{font-size:58px;font-weight:900;line-height:1;color:var(--ink-primary);letter-spacing:-.04em}
+.score-meter-disclaimer{font-size:11px;color:var(--ink-tertiary);margin-top:8px;line-height:1.35}
+.comparison-strip{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--paper-muted);border-radius:8px;
+padding:18px 22px;border:1px solid var(--ink-border-subtle)}
+.comp-box{display:flex;flex-direction:column;gap:6px}
+.comp-box-header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.comp-title{font-size:15px;font-weight:800;color:var(--ink-primary)}
+.comp-badge{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:800}
+.comp-badge.primary{background:#DC2626;color:#FFF}
+.comp-badge.secondary{background:#E4E4E7;color:#52525B}
+.comp-detail{font-size:13.5px;color:var(--ink-secondary);line-height:1.55}
+.findings-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.finding-card{background:var(--paper-muted);border:1.5px solid var(--ink-border);border-radius:8px;padding:20px 24px;
+display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.finding-pin{width:32px;height:32px;background:var(--ink-primary);color:#FFF;font-size:14px;font-weight:900;border-radius:6px;
+display:flex;align-items:center;justify-content:center}
+.finding-pin.accent{background:var(--red-pen);box-shadow:0 2px 6px rgba(220,38,38,.25)}
+.finding-content h4{font-size:17px;font-weight:800;color:var(--ink-primary);margin-bottom:6px;line-height:1.45}
+.finding-content p{font-size:14.5px;color:var(--ink-secondary);line-height:1.6}
+.loupe-box{margin-top:14px;background:#FFF;border:1.5px dashed var(--ink-border);border-left:4px solid var(--red-pen);
+padding:14px 18px;border-radius:6px;font-size:14px}
+.loupe-meta{font-size:12px;font-weight:800;color:var(--ink-tertiary);text-transform:uppercase;letter-spacing:.05em;
+margin-bottom:6px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.raw-line-wrap{background:#FAF8F5;padding:10px 14px;border-radius:6px;border:1px solid #EFECE4;font-family:var(--font-mono);
+font-size:14px;line-height:1.6;color:var(--ink-secondary);word-break:break-word}
+.loupe-red-circle{border:2px solid var(--red-pen);color:var(--red-pen-dark);font-weight:800;padding:1px 6px;border-radius:4px;
+background:var(--red-pen-light);display:inline-block}
+.red-pen-tag{display:flex;align-items:flex-start;gap:6px;color:var(--red-pen);font-weight:700;font-size:13px;
+margin-top:8px;line-height:1.5}
+.rewrite-item{border:1.5px solid var(--ink-border);border-radius:8px;margin-bottom:24px;background:#FFF;overflow:hidden;
+box-shadow:0 2px 8px rgba(24,24,27,.02)}
+.rewrite-header{background:var(--paper-muted);padding:14px 22px;border-bottom:1px solid var(--ink-border);display:flex;
+justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.rewrite-title{font-size:15px;font-weight:800;color:var(--ink-primary);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rewrite-diff-body{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.diff-panel{border-radius:8px;padding:16px 18px;font-size:14.5px;line-height:1.65}
+.diff-before{background:#FAF9F6;border:1.5px solid #E4E1D8;color:#71717A}
+.diff-after{background:var(--green-approved-bg);border:1.5px solid var(--green-approved-border);color:#064E3B;font-weight:500}
+.diff-label{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;
+display:flex;align-items:center;gap:6px}
+.diff-before .diff-label{color:#71717A}
+.diff-after .diff-label{color:var(--green-approved)}
+.diff-strike{text-decoration:line-through;text-decoration-color:var(--red-pen);text-decoration-thickness:2px;color:#A1A1AA}
+.diff-key-fact{background:rgba(16,185,129,.18);color:#065F46;font-weight:800;padding:1px 6px;border-radius:4px}
+.annotation-sticky{background:var(--red-pen-light);border-top:1.5px solid var(--red-pen-border);padding:16px 22px;
+display:flex;gap:14px;align-items:flex-start}
+.annotation-stamp{background:var(--red-pen);color:#FFF;font-size:11px;font-weight:900;padding:2px 8px;border-radius:4px;
+white-space:nowrap;letter-spacing:.05em;margin-top:2px}
+.annotation-body{font-size:14px;color:var(--red-pen-dark);line-height:1.65}
+.annotation-body strong{font-weight:800;color:#7F1D1D}
+.pending-box{border:1.5px dashed var(--amber-border);background:var(--amber-bg);border-radius:8px;padding:16px 22px;
+display:flex;gap:14px;align-items:flex-start}
+.pending-stamp{background:var(--amber);color:#FFF;font-size:11px;font-weight:900;padding:2px 8px;border-radius:4px;
+white-space:nowrap;margin-top:2px}
+.pending-body{font-size:14px;color:#78350F;line-height:1.65}
+.actions-timeline{display:flex;flex-direction:column;gap:18px}
+.action-step-card{border:1.5px solid var(--ink-border);border-radius:8px;padding:20px 24px;background:var(--paper-muted);
+display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.action-step-badge{background:var(--ink-primary);color:#FFF;font-size:13px;font-weight:800;padding:4px 10px;
+border-radius:6px;white-space:nowrap}
+.action-step-badge.red{background:var(--red-pen)}
+.action-step-body h4{font-size:16px;font-weight:800;color:var(--ink-primary);margin-bottom:8px;line-height:1.45}
+.action-step-body>p{font-size:14px;color:var(--ink-secondary);line-height:1.6}
+.action-meta-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px;font-size:13.5px}
+.action-meta-item{display:flex;flex-direction:column;gap:4px;background:#FFF;padding:10px 14px;border-radius:6px;
+border:1px solid var(--ink-border-subtle)}
+.action-meta-key{font-weight:800;color:var(--ink-tertiary);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.action-meta-val{color:var(--ink-primary);line-height:1.5}
+.copy-box{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FAF8F5;padding:8px 12px;
+border-radius:6px;border:1px dashed #DDD8CC;margin-top:4px}
+.copy-snippet{font-family:var(--font-mono);font-size:13px;color:var(--ink-primary);word-break:break-all}
+.copy-btn{font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;border:1px solid var(--ink-border);
+background:#FFF;color:var(--ink-secondary);cursor:pointer;white-space:nowrap}
+.copy-btn:hover{border-color:var(--ink-primary);color:var(--ink-primary)}
+.check-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{background:#FFF;border:1.5px solid #D4CEBE;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:700;color:#27272A}
+.chip.highlight{border-color:var(--red-pen);color:var(--red-pen);background:var(--red-pen-light)}
+.job-tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.job-tab{font-size:14px;font-weight:800;padding:8px 18px;border-radius:8px;border:1.5px solid var(--ink-border);
+background:#FFF;color:var(--ink-secondary);cursor:pointer}
+.job-tab.active{background:var(--ink-primary);color:#FFF;border-color:var(--ink-primary)}
+.job-tab .tab-score{font-size:12px;font-weight:900;margin-left:6px;opacity:.85}
+.job-pane{display:none}
+.job-pane.active{display:block}
+.details-accordion{border:1.5px solid var(--ink-border);border-radius:8px;overflow:hidden;background:#FFF;margin-bottom:14px}
+.details-summary{padding:16px 22px;background:var(--paper-muted);cursor:pointer;font-weight:800;font-size:15px;
+display:flex;justify-content:space-between;align-items:center;user-select:none;border-bottom:1px solid var(--ink-border);
+gap:10px;flex-wrap:wrap}
+.details-summary:hover{background:#EFECE4}
+.evidence-rule-card{border-left:4px solid var(--ink-primary);background:var(--paper-muted);padding:16px 18px;
+border-radius:0 6px 6px 0;margin:14px 18px}
+.evidence-rule-card.red{border-left-color:var(--red-pen)}
+.evidence-rule-title{font-size:15px;font-weight:800;color:var(--ink-primary);margin-bottom:8px;display:flex;
+justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.evidence-rule-text{font-size:14px;color:var(--ink-secondary);line-height:1.65}
+.evidence-rule-text strong{color:var(--ink-primary)}
+.status-pill{font-size:12px;padding:2px 10px;border-radius:4px;font-weight:800;white-space:nowrap}
+.status-pill.green{color:var(--green-approved);background:var(--green-approved-bg);border:1px solid var(--green-approved-border)}
+.status-pill.amber{color:var(--amber);background:var(--amber-bg);border:1px solid var(--amber-border)}
+.status-pill.gray{color:var(--ink-secondary);background:var(--paper-muted);border:1px solid var(--ink-border)}
+.status-pill.red{color:var(--red-pen);background:var(--red-pen-light);border:1px solid var(--red-pen-border)}
+.evidence-location{font-size:12px;font-weight:700;color:var(--ink-tertiary);margin-top:10px;display:flex;gap:6px;align-items:center}
+.evidence-quotes{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.variant-note{border:1.5px dashed var(--ink-border);background:var(--paper-highlight);border-radius:8px;padding:14px 18px;
+font-size:13.5px;color:var(--ink-secondary);line-height:1.65;margin:14px 18px}
+.variant-note strong{color:var(--ink-primary)}
+.report-footer{text-align:center;padding:28px 0 12px;font-size:13px;color:var(--ink-tertiary);
+border-top:1.5px solid var(--ink-border);margin-top:36px;line-height:1.6}
+@media (max-width:768px){
+body{padding:16px 12px 64px}
+.toc-bar{flex-wrap:wrap;gap:8px 10px;overflow-x:visible}
+.toc-link{white-space:normal;padding:6px 12px;font-size:12px}
+.masthead-title{font-size:22px}
+.section-card{padding:20px 16px;margin-bottom:20px}
+.verdict-hero{grid-template-columns:1fr;gap:16px}
+.verdict-main-heading{font-size:26px}
+.score-meter-card{width:100%;min-width:unset;flex-direction:row;justify-content:space-around;padding:14px}
+.score-meter-num{font-size:44px}
+.comparison-strip{grid-template-columns:1fr;gap:12px;padding:14px 16px}
+.finding-card{grid-template-columns:1fr;gap:12px;padding:16px}
+.finding-pin{width:28px;height:28px;font-size:12px}
+.rewrite-diff-body{grid-template-columns:1fr;gap:12px;padding:16px}
+.diff-panel{font-size:14px;padding:12px 14px}
+.action-step-card{grid-template-columns:1fr;gap:12px;padding:16px}
+.annotation-sticky{padding:14px 16px}
+.evidence-rule-card{margin:14px 12px}
+}
+@media print{
+body{padding:0;background:#FFF}
+.toc-bar,.copy-btn,.job-tabs{display:none}
+.section-card{box-shadow:none;break-inside:avoid}
+.job-pane{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="editorial-wrapper">
+  <header class="masthead">
+    <div class="masthead-meta">
+      <div class="masthead-brand">RESUME EDITORIAL AUDIT <span class="stamp">编辑部审校定稿</span></div>
+      <h1 class="masthead-title">岗位匹配深度诊断与整份结构方案</h1>
+    </div>
+    <div class="masthead-badge-group"><span class="badge-pill">案例：合成验收案例</span><span class="badge-pill">脱敏合成案例</span></div>
+  </header>
+  <nav class="toc-bar">
+    <a href="#section-verdict" class="toc-link">1. 审校结论</a>
+    <a href="#section-findings" class="toc-link">2. 关键发现</a>
+    <a href="#section-strategy" class="toc-link">3. 整份结构方案</a>
+    <a href="#section-rewrites" class="toc-link">4. 重点改写区</a>
+    <a href="#section-actions" class="toc-link">5. 行动清单</a>
+    <a href="#section-evidence" class="toc-link">6. 证据详情</a>
+  </nav>
+
+  <section class="section-card" id="section-verdict">
+    <div class="section-tag-label"><span class="num">1</span> 审校结论 · Recommendation</div>
+    <div class="verdict-hero">
+      <div class="verdict-left">
+        <h2 class="verdict-main-heading"><span class="accent-mark">先把相关证据放到前面</span></h2>
+        <div class="verdict-summary-prose">按岗位要求调整整份顺序；已写明的行为是优势，未给出的业务结果仍需核实。</div>
+        <span class="verdict-chip">投递姿势：优先投</span>
+      </div>
+      <div class="score-meter-card">
+        <div class="score-meter-label">岗位证据覆盖分</div>
+        <div class="score-meter-num">75</div>
+        <div class="score-meter-disclaimer">衡量材料对 JD 要求的覆盖度<br>不等于录取概率</div>
+      </div>
+    </div>
+    <div class="comparison-strip"><div class="comp-box"><div class="comp-box-header"><span class="comp-badge secondary">次目标</span><span class="comp-title">数据分析助理 · 83 分</span></div><div class="comp-detail">按各自 JD 下的证据覆盖比较，结构方案只围绕本次主目标。</div></div><div class="comp-box"><div class="comp-box-header"><span class="comp-badge secondary">主目标</span><span class="comp-title">统计研究助理 · 75 分</span></div><div class="comp-detail">按各自 JD 下的证据覆盖比较，结构方案只围绕本次主目标。</div></div></div>
+  </section>
+
+  <section class="section-card" id="section-findings">
+    <div class="section-tag-label"><span class="num">2</span> 关键发现与痛点透视 · Headline Findings</div>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="finding-pin accent">01</div>
+        <div class="finding-content">
+          <h4>相关经历不应被基础信息埋没</h4>
+          <p>先展示能回答岗位要求的行为，再保留必要资格与时间信息。</p>
+        </div>
+      </div></div>
+  </section>
+
+  <section class="section-card" id="section-strategy"><div class="section-tag-label"><span class="num">3</span> 整份结构方案 · 先排整份，再改条目</div><p>原顺序按提取文本展示，未核验原始视觉版式。新顺序面向本次主目标；重排和润色不改变证据覆盖分。</p><div class="rewrite-diff-body"><div class="diff-panel diff-before"><div class="diff-label">原结构</div><ol><li>教育背景<ol><li>统计学本科<ol><li>相关课程</li><li>课程研究与方法说明</li></ol></li></ol></li><li>项目经历<ol><li>课程用户分析项目<ol><li>样本清洗与分组汇总</li><li>图表与分析报告</li><li>指标定义与分析限制</li></ol></li></ol></li><li>校园经历<ol><li>校园活动志愿者<ol><li>签到与资料整理</li></ol></li></ol></li></ol></div><div class="diff-panel diff-after"><div class="diff-label">建议结构 · 从上到下</div><ol><li><strong>教育背景</strong><p>教育背景继续居首：先让读者看到统计学本科，再看到方法比较与说明产出，随后交代相关课程。研究岗位的直接方法证据比一般数据处理工具更应靠前。</p><ol><li><strong>统计学本科</strong><p>保留完整院校、学位与就读日期，课程研究条目前移，课程学习条目随后。</p><ol><li>课程研究与方法说明</li><li>相关课程</li></ol></li></ol></li><li><strong>项目经历</strong><p>项目作为研究表达的实践补充，先展示分析限制，再交代样本处理和报告产出。</p><ol><li><strong>课程用户分析项目</strong><p>保留完整项目名称、数据处理成员角色与日期；条目只在本项目内部重排。</p><ol><li>指标定义与分析限制</li><li>样本清洗与分组汇总</li><li>图表与分析报告</li></ol></li></ol></li><li><strong>校园经历</strong><p>校园经历放在末尾紧凑保留，为方法与限制说明留出阅读空间。</p><ol><li><strong>校园活动志愿者</strong><p>保留活动身份、日期与简短协助事项，避免把低相关内容扩写成研究经验。</p><ol><li>签到与资料整理</li></ol></li></ol></li></ol></div></div><h3>按影响排序的修改建议</h3><ol><li><strong>先标清方法应用深度与贡献归属的证据边界。保留课程学习和数据处理成员表述，实际方法应用、个人交付及效果继续待确认。</strong><p>位置：相关课程、课程研究与方法说明、课程用户分析项目、图表与分析报告、指标定义与分析限制</p><div class="evidence-rule-card"><p><strong>推断：</strong>核心方法要求目前只有课程与方法比较描述，项目又以成员身份呈现；守住这些边界可避免把学习经历写成完整方法掌握，或把团队交付写成个人主导。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明、课程用户分析项目、图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">课程用户分析项目 · 数据处理成员 · 2025.09–2025.12</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div></li><li><strong>教育背景保持在开头，方法比较与说明条目前移到课程列表之前，采用给定的方法说明改写。</strong><p>位置：教育背景、统计学本科、课程研究与方法说明</p><div class="evidence-rule-card"><p><strong>推断：</strong>方法比较与说明产出比课程名称更能回答研究岗位做过什么的问题，前移后可更早读到这段行为证据。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div></li><li><strong>将分析限制放到项目条目开头，采用给定的限制说明改写；随后保留样本清洗、分组汇总与图表报告。</strong><p>位置：项目经历、课程用户分析项目、指标定义与分析限制、样本清洗与分组汇总、图表与分析报告</p><div class="evidence-rule-card"><p><strong>推断：</strong>分析限制直接对应研究写作要求；前移能让项目的阅读重点转向结论边界，同时保留支撑它的处理过程和报告产出。</p><p class="evidence-location">位置：指标定义与分析限制、样本清洗与分组汇总、图表与分析报告</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div></li><li><strong>采用给定的课程学习改写，作为方法说明之后的学习背景；这处润色不补足方法实践证据。</strong><p>位置：统计学本科、相关课程</p><div class="evidence-rule-card"><p><strong>推断：</strong>课程条目能说明学习范围，但表达调整仍只证明原有课程学习，不能替代统计推断与实验设计的应用实例。</p><p class="evidence-location">位置：相关课程</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p></details></div></li><li><strong>校园经历在末尾紧凑保留身份、日期和协助事项，不扩写成研究职责。修改建议按风险与影响排列，报告中的行动仍保持重排简历、核对贡献归属、补齐事实的原顺序。</strong><p>位置：校园经历、校园活动志愿者、签到与资料整理</p><div class="evidence-rule-card"><p><strong>推断：</strong>签到与资料整理对统计研究要求的直接证明有限，简短保留可交代活动背景，并让教育方法和项目限制成为阅读重点。</p><p class="evidence-location">位置：课程研究与方法说明、指标定义与分析限制、校园活动志愿者、签到与资料整理</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p><p class="evidence-quote-text">校园活动志愿者 · 2024.10</p><p class="evidence-quote-text">协助现场签到和资料整理</p></details></div></li></ol><details class="details-accordion"><summary class="details-summary">全篇盘点与取舍依据<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><div class="evidence-rule-card"><strong>教育背景 · 保留</strong><p>统计研究助理重视专业课程与方法基础，教育背景继续放在开头，内部先展示方法说明与比较行为。</p><p class="evidence-quote-text">教育背景</p></div><div class="evidence-rule-card"><strong>统计学本科 · 保留</strong><p>专业与本科资格有明确原文，保留院校、学位和就读日期。</p><p class="evidence-quote-text">某院校 · 统计学本科 · 2022.09–2026.06</p></div><div class="evidence-rule-card"><strong>相关课程 · 保留</strong><p>保留方法学习背景，排在课程研究行为之后；课程名称不能替代方法应用证据。</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p></div><div class="evidence-rule-card"><strong>课程研究与方法说明 · 前置</strong><p>同时包含方法比较行为和说明产出，前移到教育条目开头，比单列课程更能回答研究岗位要求。</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></div><div class="evidence-rule-card"><strong>项目经历 · 保留</strong><p>作为教育方法背景后的实践补充，优先展示分析限制，再展示支撑它的数据处理与报告。</p><p class="evidence-quote-text">项目经历</p></div><div class="evidence-rule-card"><strong>课程用户分析项目 · 保留</strong><p>保留项目名称、成员角色和日期，明确课程项目场景与贡献范围。</p><p class="evidence-quote-text">课程用户分析项目 · 数据处理成员 · 2025.09–2025.12</p></div><div class="evidence-rule-card"><strong>样本清洗与分组汇总 · 保留</strong><p>保留分析限制所依托的样本处理过程，排在限制说明之后；不把分组汇总写成统计推断或实验设计。</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p></div><div class="evidence-rule-card"><strong>图表与分析报告 · 保留</strong><p>保留可核对的报告产出，排在方法边界与处理过程之后；不将一般分析报告等同于统计方法说明。</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p></div><div class="evidence-rule-card"><strong>指标定义与分析限制 · 前置</strong><p>直接对应分析限制要求，从项目末尾前移到项目条目开头，保持原有样本分组依据。</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></div><div class="evidence-rule-card"><strong>校园经历 · 压缩</strong><p>与统计研究核心要求关联较弱，放在末尾简短保留，不因相关性低而删除整段经历。</p><p class="evidence-quote-text">校园经历</p></div><div class="evidence-rule-card"><strong>校园活动志愿者 · 压缩</strong><p>保留志愿者身份与活动日期，用简短条目交代履历背景，不扩写成研究职责。</p><p class="evidence-quote-text">校园活动志愿者 · 2024.10</p></div><div class="evidence-rule-card"><strong>签到与资料整理 · 压缩</strong><p>原句已简短，保留协助范围即可；资料整理不能直接证明统计研究或方法写作能力。</p><p class="evidence-quote-text">协助现场签到和资料整理</p></div></div></details><details class="details-accordion"><summary class="details-summary">岗位重点与招聘问题推断<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><h4>统计学专业课程背景</h4><p>JD 原文：统计学专业课程背景优先</p><div class="evidence-rule-card"><p><strong>推断：</strong>推断：岗位希望候选人具备统计学课程基础，便于理解研究中的方法讨论。</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p></details></div><h4>统计推断与实验设计方法</h4><p>JD 原文：掌握统计推断与实验设计方法</p><div class="evidence-rule-card"><p><strong>推断：</strong>推断：岗位需要能够说明方法选择和适用条件的研究支持；具体研究对象与实验任务仍待确认。</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p></details></div><h4>统计方法说明与分析限制</h4><p>JD 原文：撰写统计方法说明与分析限制</p><div class="evidence-rule-card"><p><strong>推断：</strong>推断：岗位希望研究过程与结论边界能够被清楚说明，便于读者理解分析依据与限制。</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p></details></div></div></details><details class="details-accordion"><summary class="details-summary">关键经历的价值链<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><h4>统计学本科</h4><h5>问题</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>课程研究具体要回答什么问题、为什么需要比较统计方法，待确认。</p><p class="evidence-location">位置：课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>本人角色</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>原文记录统计学本科背景，以及课程研究中的方法比较与说明撰写。</p><p class="evidence-location">位置：统计学本科、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">某院校 · 统计学本科 · 2022.09–2026.06</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>具体行动</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>学习统计推断、实验设计与数据库课程，并在课程研究中比较统计方法。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>产出</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>课程研究中撰写了方法说明。</p><p class="evidence-location">位置：课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>变化</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>方法比较是否促成分析方案调整、具体调整了什么，待确认。</p><p class="evidence-location">位置：课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>展示技能</h5><div class="evidence-rule-card"><p><strong>推断：</strong>方法比较与说明撰写可作为研究方法表达的行为证据；具体统计推断和实验设计应用深度仍需实例支撑。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h5>业务影响</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>方法说明被谁使用、获得什么反馈，以及是否影响课程研究结论，待确认。</p><p class="evidence-location">位置：课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h4>课程用户分析项目</h4><h5>问题</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>项目的具体分析问题、样本来源和分组依据，待确认。</p><p class="evidence-location">位置：课程用户分析项目、样本清洗与分组汇总、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程用户分析项目 · 数据处理成员 · 2025.09–2025.12</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h5>本人角色</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>原文角色为课程用户分析项目的数据处理成员。</p><p class="evidence-location">位置：课程用户分析项目</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程用户分析项目 · 数据处理成员 · 2025.09–2025.12</p></details></div><h5>具体行动</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>使用 SQL 清洗课程样本并分组汇总，制作用户行为图表、撰写报告，并依据分组结果整理指标定义和分析限制。</p><p class="evidence-location">位置：样本清洗与分组汇总、图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h5>产出</h5><div class="evidence-rule-card"><p><strong>原文已有：</strong>原文写明图表、分析报告，以及指标定义和分析限制的整理。</p><p class="evidence-location">位置：图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h5>变化</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>整理分析限制后是否修改报告结论或使用范围，待确认。</p><p class="evidence-location">位置：指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h5>展示技能</h5><div class="evidence-rule-card"><p><strong>推断：</strong>样本处理、图表报告和限制整理形成了可追问的分析过程；这些行为不能直接替代统计推断与实验设计的应用实例。</p><p class="evidence-location">位置：样本清洗与分组汇总、图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h5>业务影响</h5><div class="evidence-rule-card"><p><strong>待确认：</strong>报告的使用者、反馈及实际作用，待确认；现有文字不足以声明业务指标改善。</p><p class="evidence-location">位置：图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div></div></details><details class="details-accordion"><summary class="details-summary">招聘者审阅与筛选疑虑<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><h4>简历开头传递的信息</h4><div class="evidence-rule-card"><p><strong>推断：</strong>简历开头的文本已呈现统计学本科与相关课程，专业方向清楚；方法比较与说明产出值得在教育条目中更早出现。</p><p class="evidence-location">位置：统计学本科、相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">某院校 · 统计学本科 · 2022.09–2026.06</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><div class="evidence-rule-card"><p><strong>推断：</strong>速读视角下，项目先写 SQL 容易让研究表达证据后出现；应把分析限制条目前移，校园协助事项保持简短。</p><p class="evidence-location">位置：样本清洗与分组汇总、指标定义与分析限制、签到与资料整理</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p><p class="evidence-quote-text">协助现场签到和资料整理</p></details></div><h4>被埋没的强证据</h4><div class="evidence-rule-card"><p><strong>推断：</strong>课程研究中的方法比较和说明撰写放在课程列表之后，实际比课程名称更能说明做过什么。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><div class="evidence-rule-card"><p><strong>推断：</strong>分析限制位于项目条目末尾，却直接对应研究岗位的写作要求，应在本项目内前移。</p><p class="evidence-location">位置：样本清洗与分组汇总、图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">使用 SQL 清洗课程样本并进行分组汇总</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h4>泛泛表述</h4><div class="evidence-rule-card"><p><strong>推断：</strong>“学习统计推断、实验设计与数据库课程”说明学习范围，但不能单凭课程名称看出方法应用深度。</p><p class="evidence-location">位置：相关课程</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p></details></div><div class="evidence-rule-card"><p><strong>原文已有：</strong>“比较统计方法”与“分析限制”已有具体行为方向，但方法名称、比较依据和限制内容仍未展开。</p><p class="evidence-location">位置：课程研究与方法说明、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h4>筛选疑虑与面试追问</h4><div class="evidence-rule-card"><p><strong>原文已有：</strong>原文写明课程学习与方法比较，未写明实际采用的统计推断或实验设计方法及应用过程。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><p><strong>待核实 / 面试追问：</strong>课程研究比较了哪些方法，如何选择方法并检查适用条件？是否实际实施过实验设计？</p><p><strong>改法：</strong>从课程作业或方法说明中找出可核对的应用片段；没有记录的应用深度继续待确认，不能用润色补足。</p><div class="evidence-rule-card"><p><strong>待确认：</strong>原文角色为数据处理成员，原文未声明独立/主导项目；条目未区分个人交付与团队整合产出。</p><p class="evidence-location">位置：课程用户分析项目、图表与分析报告、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程用户分析项目 · 数据处理成员 · 2025.09–2025.12</p><p class="evidence-quote-text">制作用户行为分析图表并撰写分析报告</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><p><strong>待核实 / 面试追问：</strong>图表、报告和限制说明中，哪些内容由你完成，哪些由团队共同形成？</p><p><strong>改法：</strong>保留成员角色，用项目分工与文档记录核实个人贡献，再补充有依据的归属描述。</p><div class="evidence-rule-card"><p><strong>原文已有：</strong>原文有方法说明与分析限制产出，但未交代具体内容、使用者或反馈。</p><p class="evidence-location">位置：课程研究与方法说明、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><p><strong>待核实 / 面试追问：</strong>方法说明和分析限制分别写了什么，读者如何使用，有没有可核对的反馈？</p><p><strong>改法：</strong>分别回到课程说明与项目报告寻找内容样例和反馈，避免跨经历拼接成果或补写未经确认的效果。</p></div></details><details class="details-accordion"><summary class="details-summary">关键词与可读性诊断<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><h4>统计学专业课程背景 · 原文已有</h4><div class="evidence-rule-card"><p><strong>原文已有：</strong>统计学本科与相关课程均在原文出现，专业背景无需另造技能模块重复陈述。</p><p class="evidence-location">位置：统计学本科、相关课程</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p><p class="evidence-quote-text">某院校 · 统计学本科 · 2022.09–2026.06</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p></details></div><h4>统计推断与实验设计应用 · 已有经验未写清</h4><div class="evidence-rule-card"><p><strong>原文已有：</strong>统计推断与实验设计出现在课程学习中，课程研究写有方法比较；应用实例与方法选择依据尚未说明。</p><p class="evidence-location">位置：相关课程、课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">学习统计推断、实验设计与数据库课程</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h4>统计方法说明 · 同义表达</h4><div class="evidence-rule-card"><p><strong>推断：</strong>“比较统计方法并撰写方法说明”在同句中建立了统计方法与说明产出的联系，可用给定改写让这个联系更直接。</p><p class="evidence-location">位置：课程研究与方法说明</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p></details></div><h4>分析限制 · 原文已有</h4><div class="evidence-rule-card"><p><strong>原文已有：</strong>项目原文明确写有依据样本分组结果整理分析限制，概念已出现，具体内容仍可补充。</p><p class="evidence-location">位置：指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h4>文本可读性</h4><div class="evidence-rule-card"><p><strong>推断：</strong>教育、项目和校园章节名称清楚；按统计研究助理要求，教育方法行为与项目限制说明应分别成为本段先读到的条目。</p><p class="evidence-location">位置：教育背景、课程研究与方法说明、项目经历、指标定义与分析限制、校园经历</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">统计学专业课程背景优先</p><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">教育背景</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">项目经历</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p><p class="evidence-quote-text">校园经历</p></details></div><div class="evidence-rule-card"><p><strong>推断：</strong>“统计方法”和“分析限制”仍偏概括，补充有记录支持的方法名称与限制内容，比重复添加岗位关键词更能回答研究要求。</p><p class="evidence-location">位置：课程研究与方法说明、指标定义与分析限制</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">掌握统计推断与实验设计方法</p><p class="evidence-quote-text">撰写统计方法说明与分析限制</p><p class="evidence-quote-text">课程研究中比较统计方法并撰写方法说明</p><p class="evidence-quote-text">根据样本分组结果整理指标定义和分析限制</p></details></div><h4>格式与版式</h4><p>原始视觉版式未核验；不据此断言双栏、字体或 ATS 解析失败。</p><div class="evidence-rule-card"><p><strong>待确认：</strong>本次仅依据简历文本和提取顺序分析；原始视觉版式、双栏、字体、图像及具体招聘系统的解析表现均未核验。</p><p class="evidence-location">位置：教育背景、项目经历、校园经历</p><details><summary>查看原文依据</summary><p class="evidence-quote-text">教育背景</p><p class="evidence-quote-text">项目经历</p><p class="evidence-quote-text">校园经历</p></details></div></div></details><details class="details-accordion"><summary class="details-summary">待补事实清单<span>▾ 展开/折叠</span></summary><div class="evidence-rule-card"><ol><li><strong>统计推断与实验设计的实际应用深度待确认，课程名称不能补足应用过程。</strong><p>补什么：课程研究采用或比较了哪些具体方法？如何检查适用条件？是否实际实施过实验设计？没有记录的部分继续待确认。</p><p>去哪里找：课程作业、分析过程记录、方法说明与教师反馈。</p></li><li><strong>课程研究的问题、方法比较依据及说明内容待确认。</strong><p>补什么：研究要回答什么问题，为什么比较这些方法，方法说明包含哪些可核对的内容？</p><p>去哪里找：课程研究任务书、报告正文与方法说明原稿。</p></li><li><strong>项目分析限制的具体内容和样本分组依据待确认。</strong><p>补什么：样本如何分组，整理了哪些限制，这些限制如何约束报告结论或使用范围？</p><p>去哪里找：项目报告、指标定义文档、分组查询与分析记录。</p></li><li><strong>项目个人贡献与团队产出的边界待确认。</strong><p>补什么：图表、报告、指标定义和限制说明中，哪些由本人完成，哪些由团队共同完成？</p><p>去哪里找：项目分工、文档修改记录、课程提交记录与成员确认。</p></li><li><strong>课程说明与项目报告的使用场景、反馈和后续变化待确认。</strong><p>补什么：分别是谁阅读或使用这些材料，有什么可核对的反馈，是否发生后续修改？没有记录则不补写效果。</p><p>去哪里找：课程批注、项目评审意见、报告修订记录与使用反馈，按经历分别核实。</p></li></ol></div></details></section>
+  <section class="section-card" id="section-rewrites">
+    <div class="section-tag-label"><span class="num">4</span> 重点改写区 · 局部精准优化</div>
+    
+    <div class="rewrite-item">
+      <div class="rewrite-header">
+        <div class="rewrite-title"><span>改写 01 · 经历条目</span>
+        <span style="font-size:12.5px;font-weight:600;color:var(--ink-tertiary);">对齐 JD「掌握统计推断与实验设计方法」</span></div>
+        <span class="badge-pill" >事实保真</span>
+      </div>
+      <div class="rewrite-diff-body">
+        <div class="diff-panel diff-before"><div class="diff-label">改前原句</div>学习统计推断、实验设计与数据库课程</div>
+        <div class="diff-panel diff-after"><div class="diff-label">改后定稿</div>课程学习覆盖统计推断、实验设计与数据库</div>
+      </div>
+      <div class="annotation-sticky"><span class="annotation-stamp">编辑部批注</span>
+        <div class="annotation-body">调整句子主干与信息顺序，职责、数字和成果归属保持原文。</div></div>
+    </div>
+    <div class="rewrite-item">
+      <div class="rewrite-header">
+        <div class="rewrite-title"><span>改写 02 · 经历条目</span>
+        <span style="font-size:12.5px;font-weight:600;color:var(--ink-tertiary);">对齐 JD「掌握统计推断与实验设计方法」</span></div>
+        <span class="badge-pill" >事实保真</span>
+      </div>
+      <div class="rewrite-diff-body">
+        <div class="diff-panel diff-before"><div class="diff-label">改前原句</div>课程研究中比较统计方法并撰写方法说明</div>
+        <div class="diff-panel diff-after"><div class="diff-label">改后定稿</div>撰写统计方法说明，并在课程研究中比较方法</div>
+      </div>
+      <div class="annotation-sticky"><span class="annotation-stamp">编辑部批注</span>
+        <div class="annotation-body">调整句子主干与信息顺序，职责、数字和成果归属保持原文。</div></div>
+    </div>
+    <div class="rewrite-item">
+      <div class="rewrite-header">
+        <div class="rewrite-title"><span>改写 03 · 经历条目</span>
+        <span style="font-size:12.5px;font-weight:600;color:var(--ink-tertiary);">对齐 JD「掌握统计推断与实验设计方法」</span></div>
+        <span class="badge-pill" >事实保真</span>
+      </div>
+      <div class="rewrite-diff-body">
+        <div class="diff-panel diff-before"><div class="diff-label">改前原句</div>根据样本分组结果整理指标定义和分析限制</div>
+        <div class="diff-panel diff-after"><div class="diff-label">改后定稿</div>依据样本分组结果说明分析限制，并整理指标定义</div>
+      </div>
+      <div class="annotation-sticky"><span class="annotation-stamp">编辑部批注</span>
+        <div class="annotation-body">调整句子主干与信息顺序，职责、数字和成果归属保持原文。</div></div>
+    </div>
+  </section>
+
+  <section class="section-card" id="section-actions">
+    <div class="section-tag-label"><span class="num">5</span> 行动清单 · Action Plan</div>
+    <div class="actions-timeline">
+      <div class="action-step-card">
+        <div class="action-step-badge ">第1步</div>
+        <div class="action-step-body">
+          <h4>按岗位要求重排整份简历</h4>
+          <p></p>
+          <div class="action-meta-grid">
+            <div class="action-meta-item"><span class="action-meta-key">交付成果</span>
+              <span class="action-meta-val">一版调整顺序的简历</span><div class="copy-box"><span class="copy-snippet" id="copy-act-box-1">按结构方案调整模块和条目顺序，保留原任职日期。</span><button class="copy-btn" data-copy="copy-act-box-1">复制</button></div></div>
+            <div class="action-meta-item"><span class="action-meta-key">完成标准</span>
+              <span class="action-meta-val">最相关的经历与条目已前移，任职信息仍完整。</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="action-step-card">
+        <div class="action-step-badge ">第2步</div>
+        <div class="action-step-body">
+          <h4>核对本人贡献和成果归属</h4>
+          <p></p>
+          <div class="action-meta-grid">
+            <div class="action-meta-item"><span class="action-meta-key">交付成果</span>
+              <span class="action-meta-val">一条有记录支持的本人贡献描述</span></div>
+            <div class="action-meta-item"><span class="action-meta-key">完成标准</span>
+              <span class="action-meta-val">团队成果和个人贡献各有明确说明。</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="action-step-card">
+        <div class="action-step-badge ">第3步</div>
+        <div class="action-step-body">
+          <h4>补齐尚未写清的事实</h4>
+          <p></p>
+          <div class="action-meta-grid">
+            <div class="action-meta-item"><span class="action-meta-key">交付成果</span>
+              <span class="action-meta-val">可引用的交付记录或说明</span></div>
+            <div class="action-meta-item"><span class="action-meta-key">完成标准</span>
+              <span class="action-meta-val">能指出记录出处；没有记录的部分仍标待确认。</span></div>
+          </div>
+        </div>
+      </div></div>
+  </section>
+
+  <section class="section-card" id="section-evidence">
+    <div class="section-tag-label"><span class="num">6</span> 证据详情与判定理由 · Evidence Details</div>
+    <div class="job-tabs"><button class="job-tab active" data-pane="job-pane-job-1" onclick="showJobPane('job-pane-job-1')">数据分析助理<span class="tab-score">83 分</span></button><button class="job-tab " data-pane="job-pane-job-2" onclick="showJobPane('job-pane-job-2')">统计研究助理<span class="tab-score">75 分</span></button></div>
+    <div class="job-pane active" id="job-pane-job-1">
+      <div class="evidence-rule-card ">
+        <div class="evidence-rule-title"><span>硬性门槛：本科及以上学历</span><span class="status-pill green">判定：核实通过</span></div>
+        <div class="evidence-rule-text">简历教育背景写有本科。</div>
+      </div>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>熟练使用 SQL 清洗与汇总数据<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（必须）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill green">判定：有实据</span></span></div>
+            <div class="evidence-rule-text">岗位要求熟练使用 SQL 清洗与汇总数据；简历已有对应行为记录。</div>
+            <div class="evidence-location">出处定位：JD · L3</div><div class="evidence-quotes"><div class="raw-line-wrap">使用 SQL 清洗课程样本并进行分组汇总<div class="evidence-location">出处：简历 · L13</div></div></div>
+          </div>
+        </div>
+      </details>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>制作分析图表并撰写分析报告<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（一般）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill green">判定：有实据</span></span></div>
+            <div class="evidence-rule-text">岗位要求制作分析图表并撰写分析报告；简历已有对应行为记录。</div>
+            <div class="evidence-location">出处定位：JD · L4</div><div class="evidence-quotes"><div class="raw-line-wrap">制作用户行为分析图表并撰写分析报告<div class="evidence-location">出处：简历 · L14</div></div></div>
+          </div>
+        </div>
+      </details>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>具有正式论文发表经历者优先<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（优先项）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill gray">判定：看不出来</span></span></div>
+            <div class="evidence-rule-text">材料未提供可核对的实践证据，保留为未写清或待确认。</div>
+            <div class="evidence-location">出处定位：JD · L5</div>
+          </div>
+        </div>
+      </details></div><div class="job-pane " id="job-pane-job-2">
+      <div class="evidence-rule-card ">
+        <div class="evidence-rule-title"><span>硬性门槛：本科及以上学历</span><span class="status-pill green">判定：核实通过</span></div>
+        <div class="evidence-rule-text">简历教育背景写有本科。</div>
+      </div>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>统计学专业课程背景优先<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（优先项）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill green">判定：有实据</span></span></div>
+            <div class="evidence-rule-text">课程与报告提供相关证据；实践深度以材料中的描述为准。</div>
+            <div class="evidence-location">出处定位：JD · L3</div><div class="evidence-quotes"><div class="raw-line-wrap">某院校 · 统计学本科 · 2022.09–2026.06<div class="evidence-location">出处：简历 · L6</div></div></div>
+          </div>
+        </div>
+      </details>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>掌握统计推断与实验设计方法<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（必须）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill amber">判定：部分满足</span></span></div>
+            <div class="evidence-rule-text">课程与报告提供相关证据；实践深度以材料中的描述为准。</div>
+            <div class="evidence-location">出处定位：JD · L4</div><div class="evidence-quotes"><div class="raw-line-wrap">学习统计推断、实验设计与数据库课程<div class="evidence-location">出处：简历 · L7</div></div><div class="raw-line-wrap">课程研究中比较统计方法并撰写方法说明<div class="evidence-location">出处：简历 · L8</div></div></div>
+          </div>
+        </div>
+      </details>
+      <details class="details-accordion">
+        <summary class="details-summary"><span>撰写统计方法说明与分析限制<span style="font-size:12px;font-weight:600;color:var(--ink-tertiary);margin-left:8px;">（一般）</span></span>
+        <span style="font-size:12.5px;color:var(--ink-tertiary);">▾ 展开/折叠</span></summary>
+        <div class="details-content" style="padding:0;">
+          <div class="evidence-rule-card ">
+            <div class="evidence-rule-title"><span><span class="status-pill green">判定：有实据</span></span></div>
+            <div class="evidence-rule-text">课程与报告提供相关证据；实践深度以材料中的描述为准。</div>
+            <div class="evidence-location">出处定位：JD · L5</div><div class="evidence-quotes"><div class="raw-line-wrap">课程研究中比较统计方法并撰写方法说明<div class="evidence-location">出处：简历 · L8</div></div><div class="raw-line-wrap">根据样本分组结果整理指标定义和分析限制<div class="evidence-location">出处：简历 · L15</div></div></div>
+          </div>
+        </div>
+      </details></div>
+  </section>
+  <footer class="report-footer">
+    <div>分数 = 简历证据对该 JD 要求的覆盖度，不代表能力总分或录取概率 · 案例已脱敏</div>
+    <div style="margin-top:4px;color:#A1A1AA;">求职体检与深度匹配报告 · 编辑部审校定稿</div>
+  </footer>
+</div>
+<script>
+(function(){
+  function flash(btn, ok){ var old = btn.textContent; btn.textContent = ok ? '已复制 ✓' : '复制失败';
+    setTimeout(function(){ btn.textContent = old; }, 1400); }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+    var src = document.getElementById(btn.getAttribute('data-copy'));
+    if (!src) return;
+    var text = src.textContent;
+    function fallback(){ var ta = document.createElement('textarea'); ta.value = text;
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch(err){ ok = false; }
+      document.body.removeChild(ta); flash(btn, ok); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ flash(btn, true); }, fallback);
+    } else { fallback(); }
+  });
+  window.showJobPane = function(id){
+    document.querySelectorAll('.job-tab').forEach(function(t){
+      t.classList.toggle('active', t.getAttribute('data-pane') === id); });
+    document.querySelectorAll('.job-pane').forEach(function(p){
+      p.classList.toggle('active', p.id === id); });
+  };
+})();
+</script>
+</body>
+</html>

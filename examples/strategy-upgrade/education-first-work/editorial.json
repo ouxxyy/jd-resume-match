@@ -1,0 +1,1037 @@
+{
+  "editorial_version": "jd-match-editorial/0.3.0",
+  "voice_version": "jd-match-voice/0.3.0",
+  "case_id": "education-first-work",
+  "job_id": "job-1",
+  "masthead": {
+    "title": "岗位匹配深度诊断与整份结构方案",
+    "case_label": "合成验收案例"
+  },
+  "verdict": {
+    "heading": [
+      {
+        "t": "先把相关证据放到前面"
+      }
+    ],
+    "prose": "按岗位要求调整整份顺序；已写明的行为是优势，未给出的业务结果仍需核实。"
+  },
+  "comparison": [
+    {
+      "job_id": "job-1",
+      "badge": "主目标",
+      "note": "按各自 JD 下的证据覆盖比较，结构方案只围绕本次主目标。"
+    }
+  ],
+  "findings": [
+    {
+      "title": "相关经历不应被基础信息埋没",
+      "body": "先展示能回答岗位要求的行为，再保留必要资格与时间信息。",
+      "strip_label": "相关证据前移",
+      "strip_body": "结构调整不改变证据分",
+      "evidence_ids": [
+        "ev-education-first-work-6"
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-1",
+      "label": "经历条目",
+      "jd_anchor_req": "req-1-1",
+      "jd_anchor": "熟练使用 Excel 整理运营数据并输出周报",
+      "badge": "事实保真",
+      "after_label": "改后定稿",
+      "annotation": "调整句子主干与信息顺序，职责、数字和成果归属保持原文。"
+    },
+    {
+      "rewrite_id": "rw-2",
+      "label": "经历条目",
+      "jd_anchor_req": "req-1-1",
+      "jd_anchor": "熟练使用 Excel 整理运营数据并输出周报",
+      "badge": "事实保真",
+      "after_label": "改后定稿",
+      "annotation": "调整句子主干与信息顺序，职责、数字和成果归属保持原文。"
+    },
+    {
+      "rewrite_id": "rw-3",
+      "label": "经历条目",
+      "jd_anchor_req": "req-1-1",
+      "jd_anchor": "熟练使用 Excel 整理运营数据并输出周报",
+      "badge": "事实保真",
+      "after_label": "改后定稿",
+      "annotation": "调整句子主干与信息顺序，职责、数字和成果归属保持原文。"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-1",
+      "badge": "第1步",
+      "title": "按岗位要求重排整份简历",
+      "deliverable": "一版调整顺序的简历",
+      "criteria": "最相关的经历与条目已前移，任职信息仍完整。",
+      "template": "按结构方案调整模块和条目顺序，保留原任职日期。"
+    },
+    {
+      "action_id": "act-2",
+      "badge": "第2步",
+      "title": "核对本人贡献和成果归属",
+      "deliverable": "一条有记录支持的本人贡献描述",
+      "criteria": "团队成果和个人贡献各有明确说明。"
+    },
+    {
+      "action_id": "act-3",
+      "badge": "第3步",
+      "title": "补齐尚未写清的事实",
+      "deliverable": "可引用的交付记录或说明",
+      "criteria": "能指出记录出处；没有记录的部分仍标待确认。"
+    }
+  ],
+  "evidence_notes": [
+    {
+      "req_id": "req-1-1",
+      "note": "岗位要求熟练使用 Excel 整理运营数据并输出周报；简历已有对应行为记录。"
+    },
+    {
+      "req_id": "req-1-2",
+      "note": "岗位要求运营用户社群并整理用户问题；简历已有对应行为记录。"
+    },
+    {
+      "req_id": "req-1-3",
+      "note": "材料未提供可核对的实践证据，保留为未写清或待确认。"
+    }
+  ],
+  "gate_notes": [
+    {
+      "gate_id": "gate-1-1",
+      "note": "简历教育背景写有本科。"
+    }
+  ],
+  "cards": {
+    "cover": {
+      "headline": [
+        {
+          "t": "整份简历先排好顺序"
+        }
+      ],
+      "page_label": "合成案例"
+    },
+    "actions_card": {
+      "headline": [
+        {
+          "t": "先调整结构，再补事实"
+        }
+      ],
+      "page_label": "行动清单"
+    }
+  },
+  "social": {
+    "titles": [
+      {
+        "text": "相关经历为什么应该前移",
+        "basis": {
+          "finding": 1
+        }
+      },
+      {
+        "text": "简历先排整份，再改句子",
+        "basis": {
+          "finding": 1
+        }
+      },
+      {
+        "text": "保留日期，也能突出相关经历",
+        "basis": {
+          "finding": 1
+        }
+      }
+    ],
+    "body_md": "合成案例：核心经历有据，先按岗位要求整理顺序；没有记录的结果仍需核实。分数只衡量证据覆盖，不代表面试概率。"
+  },
+  "member_card": {
+    "findings": [
+      {
+        "badge": "优势",
+        "tone": "advantage",
+        "lead": "已有行为证据",
+        "text": "原文包含与核心职责相关的具体行动。"
+      },
+      {
+        "badge": "待补",
+        "tone": "focus",
+        "lead": "结果口径还需核实",
+        "text": "没有记录的成果和个人贡献继续保留待确认。"
+      }
+    ],
+    "action": {
+      "text": "先对照结构方案调整简历顺序。"
+    }
+  },
+  "redactions": [
+    {
+      "from": "合成机构甲",
+      "to": "某机构甲"
+    },
+    {
+      "from": "合成机构乙",
+      "to": "某机构乙"
+    },
+    {
+      "from": "合成院校",
+      "to": "某院校"
+    }
+  ],
+  "resume_strategy": {
+    "job_id": "job-1",
+    "order_basis": "extracted_text",
+    "inventory": [
+      {
+        "item_id": "item-education",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 1,
+        "label": "教育背景",
+        "raw_quote": "教育背景",
+        "evidence_ids": [
+          "ev-education-first-work-1"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "本科是已写明的资格依据，保留模块；核心工作行为比课程更直接回应岗位职责，教育后移。"
+      },
+      {
+        "item_id": "item-education-degree",
+        "kind": "entry",
+        "parent_id": "item-education",
+        "original_order": 1,
+        "label": "合成院校 · 本科 · 市场营销 · 2014.09–2018.06",
+        "raw_quote": "合成院校 · 本科 · 市场营销 · 2014.09–2018.06",
+        "evidence_ids": [
+          "ev-education-first-work-2"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "保留院校、学历、专业和日期，便于核对本科资格；不将学历门槛冒充计分要求。",
+        "entry_kind": "education"
+      },
+      {
+        "item_id": "item-education-course",
+        "kind": "bullet",
+        "parent_id": "item-education-degree",
+        "original_order": 1,
+        "label": "消费者行为与统计基础课程",
+        "raw_quote": "课程包括消费者行为与统计基础",
+        "evidence_ids": [
+          "ev-education-first-work-3"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "compress",
+        "rationale": "课程可作为用户与数据知识背景，压缩为教育下的短行；课程名称不能证明工作应用。"
+      },
+      {
+        "item_id": "item-work",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 2,
+        "label": "工作经历",
+        "raw_quote": "工作经历",
+        "evidence_ids": [
+          "ev-education-first-work-4"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "promote",
+        "rationale": "前移工作模块，让开头先展示运营周报和社群问题整理的直接证据。"
+      },
+      {
+        "item_id": "item-work-operator",
+        "kind": "entry",
+        "parent_id": "item-work",
+        "original_order": 1,
+        "label": "合成机构甲 · 用户运营专员 · 2021.01–2026.09",
+        "raw_quote": "合成机构甲 · 用户运营专员 · 2021.01–2026.09",
+        "evidence_ids": [
+          "ev-education-first-work-5"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "promote",
+        "rationale": "这是唯一工作经历，包含核心职责的具体行为，置于新结构开头；雇主、职位和日期完整保留，不从任职时长推断管理职责。",
+        "entry_kind": "work"
+      },
+      {
+        "item_id": "item-work-report",
+        "kind": "bullet",
+        "parent_id": "item-work-operator",
+        "original_order": 1,
+        "label": "Excel 汇总与运营周报",
+        "raw_quote": "每周使用 Excel 汇总新增用户与活动参与数据，输出运营周报",
+        "evidence_ids": [
+          "ev-education-first-work-6"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "promote",
+        "rationale": "工作条目先展示每周频次、数据对象和周报产出，直接回应 Excel 整理运营数据的要求。"
+      },
+      {
+        "item_id": "item-work-community",
+        "kind": "bullet",
+        "parent_id": "item-work-operator",
+        "original_order": 2,
+        "label": "用户社群与常见问题文档",
+        "raw_quote": "运营用户社群，整理问题并更新常见问题文档",
+        "evidence_ids": [
+          "ev-education-first-work-7"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ],
+        "disposition": "keep",
+        "rationale": "接在周报后，保留社群运营、问题整理和文档更新这条完整行为链。"
+      },
+      {
+        "item_id": "item-work-activity",
+        "kind": "bullet",
+        "parent_id": "item-work-operator",
+        "original_order": 3,
+        "label": "社群交流活动与反馈归档",
+        "raw_quote": "策划社群交流活动，收集参与者反馈并归档",
+        "evidence_ids": [
+          "ev-education-first-work-8"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ],
+        "disposition": "compress",
+        "rationale": "活动与反馈是社群工作的补充证据，保留为工作经历末尾的短句；岗位没有单列活动策划要求，不扩写为活动增长成果。"
+      },
+      {
+        "item_id": "item-skills",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 3,
+        "label": "技能清单",
+        "raw_quote": "技能清单",
+        "evidence_ids": [
+          "ev-education-first-work-9"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留工具检索入口，放在工作之后；明确区分工作应用和课程学习。"
+      },
+      {
+        "item_id": "item-skills-tools",
+        "kind": "entry",
+        "parent_id": "item-skills",
+        "original_order": 1,
+        "label": "工具使用",
+        "raw_quote": "工具使用",
+        "evidence_ids": [
+          "ev-education-first-work-10"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留工具分组，避免将 SQL 课程学习与 Excel 工作使用写成同等实践深度。",
+        "entry_kind": "skills"
+      },
+      {
+        "item_id": "item-skills-excel",
+        "kind": "bullet",
+        "parent_id": "item-skills-tools",
+        "original_order": 1,
+        "label": "Excel 透视表与数据整理",
+        "raw_quote": "Excel（透视表与数据整理）",
+        "evidence_ids": [
+          "ev-education-first-work-11"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "keep",
+        "rationale": "保留明确工具名称和功能；工作条目证明 Excel 使用，但未说明周报中是否实际使用透视表，二者不拼接为新事实。"
+      },
+      {
+        "item_id": "item-skills-sql",
+        "kind": "bullet",
+        "parent_id": "item-skills-tools",
+        "original_order": 2,
+        "label": "基础 SQL 课程学习",
+        "raw_quote": "基础 SQL（课程学习）",
+        "evidence_ids": [
+          "ev-education-first-work-12"
+        ],
+        "req_ids": [
+          "req-1-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留课程学习限定，既呈现已有背景，也避免把学习经历改成 SQL 实际应用。"
+      }
+    ],
+    "job_focus": [
+      {
+        "concept": "Excel 运营数据整理与周报交付",
+        "req_ids": [
+          "req-1-1"
+        ],
+        "jd_quote": "熟练使用 Excel 整理运营数据并输出周报",
+        "business_problem": {
+          "text": "推断岗位需要持续整理运营数据并形成可查看的周报；周报服务哪些决策、采用什么指标口径，JD 未说明。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "用户社群运营与问题整理",
+        "req_ids": [
+          "req-1-2"
+        ],
+        "jd_quote": "运营用户社群并整理用户问题",
+        "business_problem": {
+          "text": "推断岗位需要把社群中的用户问题整理成可处理的信息；是否涉及问题解决时效或服务质量目标，仍待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "SQL 实际应用",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "jd_quote": "SQL 实际应用经验者优先",
+        "business_problem": {
+          "text": "推断实际使用 SQL 的经历可能帮助岗位完成数据工作；具体查询场景、数据来源和使用频次，JD 未说明。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      }
+    ],
+    "blueprint": [
+      {
+        "section_id": "item-work",
+        "rationale": "开头先给出雇主、职位和日期，再展示周报与社群问题整理。核心行为比教育课程更直接回应岗位；本案例只有一段工作，无需制造经历重排。",
+        "entries": [
+          {
+            "entry_id": "item-work-operator",
+            "rationale": "条目按周报、社群问题文档、活动反馈排列。给定的周报、社群与活动改写分别用于这些位置，全部只属于本段工作。",
+            "bullet_ids": [
+              "item-work-report",
+              "item-work-community",
+              "item-work-activity"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-skills",
+        "rationale": "工作后保留工具入口，便于检索 Excel 和 SQL；SQL 仍标课程学习，不写成工作实践。",
+        "entries": [
+          {
+            "entry_id": "item-skills-tools",
+            "rationale": "先放有工作使用证据的 Excel，再放仅写有课程学习的 SQL，保留两者的证据强度差别。",
+            "bullet_ids": [
+              "item-skills-excel",
+              "item-skills-sql"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-education",
+        "rationale": "教育后移但完整保留本科资格信息，课程压缩。没有项目模块，不新增项目经历。",
+        "entries": [
+          {
+            "entry_id": "item-education-degree",
+            "rationale": "保留院校、学历、专业和日期，课程作为背景短行，不替代工作证据。",
+            "bullet_ids": [
+              "item-education-course"
+            ]
+          }
+        ]
+      }
+    ],
+    "experience_insights": [
+      {
+        "entry_id": "item-work-operator",
+        "problem": {
+          "text": "待确认当时汇总数据、整理社群问题和收集活动反馈分别要解决什么实际问题；原文只给出任务，未说明起因。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-report",
+            "item-work-community",
+            "item-work-activity"
+          ]
+        },
+        "role": {
+          "text": "任职为用户运营专员；原文列出数据汇总、社群运营和活动策划行为。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-5",
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-operator"
+          ]
+        },
+        "actions": {
+          "text": "每周用 Excel 汇总新增用户与活动参与数据；运营社群、整理问题并更新常见问题文档；策划交流活动并收集、归档参与者反馈。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-report",
+            "item-work-community",
+            "item-work-activity"
+          ]
+        },
+        "outputs": {
+          "text": "可核对的产出包括运营周报、更新后的常见问题文档及归档的参与者反馈；原文未给出数量、样例或使用者。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-report",
+            "item-work-community",
+            "item-work-activity"
+          ]
+        },
+        "changes": {
+          "text": "待确认这些交付之后发生了什么变化，以及变化与本人工作有什么可核对的关系；不能将文档更新或反馈归档直接写成效果提升。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-operator"
+          ]
+        },
+        "skills": {
+          "text": "行为记录展示了 Excel 数据汇总、周期性报告交付、用户问题整理和活动反馈收集；本段工作未出现 SQL 应用。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-operator"
+          ]
+        },
+        "impact": {
+          "text": "待确认周报是否被用于运营决策、常见问题文档如何被使用、活动反馈是否进入后续调整；当前无法证明对时间、成本或用户行为的影响。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-report",
+            "item-work-community",
+            "item-work-activity"
+          ]
+        }
+      }
+    ],
+    "recruiter_review": {
+      "first_impression": [
+        {
+          "text": "提取文本先展示本科和课程，之后才出现用户运营工作。速读时，资格信息先于核心行为；将工作前移能更早呈现岗位需要的证据。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-2",
+            "ev-education-first-work-3",
+            "ev-education-first-work-6",
+            "ev-education-first-work-7"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-work"
+          ]
+        }
+      ],
+      "buried_evidence": [
+        {
+          "text": "每周 Excel 汇总及运营周报已有频次、数据对象和产出，却位于教育之后。工作前移后，这条应成为首个工作条目。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-report"
+          ]
+        },
+        {
+          "text": "社群条目不仅写了运营，还写了问题整理和常见问题文档更新，应紧接周报呈现，避免只靠职位名称说明相关性。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-5",
+            "ev-education-first-work-7"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-community"
+          ]
+        }
+      ],
+      "generic_statements": [
+        {
+          "text": "工具清单中的透视表描述未写具体使用场景；工作条目已有 Excel 应用，但不足以将透视表自动归入该周报流程。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-skills-excel",
+            "item-work-report"
+          ]
+        },
+        {
+          "text": "活动条目写了策划、收集和归档，未说明反馈用途。保留这些可核对行为即可，效果描述等记录补齐后再写。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-activity"
+          ]
+        }
+      ],
+      "concerns": [
+        {
+          "observation": {
+            "text": "SQL 只有课程学习表述，无法据此判断是否有岗位偏好的实际应用；这属于实践证据待确认。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-12"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-skills-sql"
+            ]
+          },
+          "interview_question": "是否有真实使用 SQL 的任务？若有，能否说明数据来源、查询用途、本人操作和可查看的产出？",
+          "change": "保留课程学习限定；本轮跳过追问，不补写实践。之后有记录时再形成独立、可引用的应用说明。"
+        },
+        {
+          "observation": {
+            "text": "工作条目没有交代协作分工、交付使用者和结果口径，个人贡献与业务影响仍待确认，不能把交付名称扩写成个人成果。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1",
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-6",
+              "ev-education-first-work-7",
+              "ev-education-first-work-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-work-operator"
+            ]
+          },
+          "interview_question": "这些周报、文档和反馈中，你实际完成哪些步骤、与谁协作、由谁使用，是否留下使用反馈或后续调整记录？",
+          "change": "先使用给定改写呈现已有行动与交付；分工、结果和因果关系仍列待补，不新增职责范围词。"
+        }
+      ]
+    },
+    "ats_review": {
+      "keywords": [
+        {
+          "concept": "Excel",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "Excel 在工作行为与技能清单中均已出现，工作条目还有数据对象和周报产出。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-6",
+              "ev-education-first-work-11"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-work-report",
+              "item-skills-excel"
+            ]
+          }
+        },
+        {
+          "concept": "整理运营数据与输出周报",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "equivalent",
+          "observation": {
+            "text": "汇总新增用户与活动参与数据，是整理运营数据的具体表达；输出运营周报已经明写，无需堆叠同义关键词。",
+            "basis": "inference",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-6"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-work-report"
+            ]
+          }
+        },
+        {
+          "concept": "用户社群与用户问题整理",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "原文已写运营用户社群、整理问题和更新常见问题文档，具备关键词及对应行为。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-7"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-work-community"
+            ]
+          }
+        },
+        {
+          "concept": "SQL 实际应用经验",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "status": "missing_evidence",
+          "observation": {
+            "text": "SQL 词面已出现，但限定为课程学习；是否有实际应用仍待确认，不能靠补关键词替代实践记录。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-education-first-work-12"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-skills-sql"
+            ]
+          }
+        }
+      ],
+      "readability": [
+        {
+          "text": "现有教育、工作和技能章节名称清楚。调整为工作、技能、教育，可先读核心行为，再核对工具与资格。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-1",
+            "ev-education-first-work-4",
+            "ev-education-first-work-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work",
+            "item-skills",
+            "item-education"
+          ]
+        },
+        {
+          "text": "工具使用分组中，Excel 写功能、SQL 写学习来源；保留限定能避免读者将二者理解为相同实践深度。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-10",
+            "ev-education-first-work-11",
+            "ev-education-first-work-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-skills-tools"
+          ]
+        }
+      ],
+      "format_status": "text_only",
+      "format_observations": [
+        {
+          "text": "本次依据 Markdown 与提取文本判断顺序，未见原始视觉版式；双栏、字体、图像及具体招聘系统的解析表现均未核验。",
+          "basis": "question",
+          "req_ids": [],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-work",
+            "item-skills"
+          ]
+        }
+      ]
+    },
+    "revision_priorities": [
+      {
+        "order": 1,
+        "change": "守住 SQL 课程学习与工作成果的事实边界：暂不新增 SQL 实践、独立职责或效果数字，缺失内容保留待确认。",
+        "location_item_ids": [
+          "item-skills-sql",
+          "item-work-operator"
+        ],
+        "impact": {
+          "text": "课程学习不能证明 SQL 实际应用，工作交付也不能自动证明个人业务成果；先守住这些边界，避免改写扩大事实。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8",
+            "ev-education-first-work-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-operator",
+            "item-skills-sql"
+          ]
+        },
+        "rewrite_ids": []
+      },
+      {
+        "order": 2,
+        "change": "按蓝图前移工作，接技能，再放教育；保留雇主、职位、日期与本科信息，压缩课程和活动补充描述。",
+        "location_item_ids": [
+          "item-work",
+          "item-skills",
+          "item-education",
+          "item-education-course",
+          "item-work-activity"
+        ],
+        "impact": {
+          "text": "工作中的周报和社群问题整理直接回应核心职责，应比课程更早出现；教育和低相关补充仍保留，不以筛掉模块代替整份分析。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-2",
+            "ev-education-first-work-3",
+            "ev-education-first-work-5",
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work",
+            "item-skills",
+            "item-education"
+          ]
+        },
+        "rewrite_ids": []
+      },
+      {
+        "order": 3,
+        "change": "将给定周报改写用于工作开头条目，将社群改写用于其后条目，将活动改写用于末尾压缩条目；全部唯一关联用户运营专员这段工作。报告三项行动及原顺序保持不变。",
+        "location_item_ids": [
+          "item-work-operator",
+          "item-work-report",
+          "item-work-community",
+          "item-work-activity"
+        ],
+        "impact": {
+          "text": "周报改写把交付放到句首，社群改写分清行为与文档产出，活动改写整理动词关系；这些调整只改变表达，不增加职责、结果或证据分。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work-operator",
+            "item-work-report",
+            "item-work-community",
+            "item-work-activity"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-1",
+          "rw-2",
+          "rw-3"
+        ]
+      }
+    ],
+    "missing_facts": [
+      {
+        "gap": "SQL 实际应用经历未写明，本轮跳过澄清后仍待确认。",
+        "ask": "是否有可核对的 SQL 使用任务？若有，补充应用场景、本人操作及查询或产出记录；若只有课程学习，保留现有限定。",
+        "where_to_find": "本人已有课程练习、查询文件或真实任务记录；记录存在性尚待确认。",
+        "item_ids": [
+          "item-skills-sql"
+        ],
+        "req_ids": [
+          "req-1-3"
+        ]
+      },
+      {
+        "gap": "周报的数据处理步骤、透视表是否用于该流程、协作分工与交付使用场景未写清。",
+        "ask": "核对从原始数据到周报的本人操作、实际使用的 Excel 功能、协作环节及周报接收者。",
+        "where_to_find": "已有周报样例、工作簿、交付记录或周报沟通；记录存在性尚待确认。",
+        "item_ids": [
+          "item-work-report",
+          "item-skills-excel"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ]
+      },
+      {
+        "gap": "常见问题文档的使用方式及活动反馈的后续用途未写明。",
+        "ask": "核对文档由谁使用、反馈是否形成后续调整，并区分本人完成的步骤与团队处理的部分。",
+        "where_to_find": "已有文档版本、问题整理记录、反馈归档及活动复盘；记录存在性尚待确认。",
+        "item_ids": [
+          "item-work-community",
+          "item-work-activity"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ]
+      },
+      {
+        "gap": "工作交付带来的变化、业务影响及个人因果贡献没有可核对口径。",
+        "ask": "若已有结果记录，补充前后可比的口径、记录出处和本人作用；没有记录时继续只写行动与交付。",
+        "where_to_find": "已有使用反馈、决策记录、活动复盘或口径一致的前后数据；不预设记录或结果存在。",
+        "item_ids": [
+          "item-work-operator"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ]
+      }
+    ],
+    "answer_links": []
+  }
+}

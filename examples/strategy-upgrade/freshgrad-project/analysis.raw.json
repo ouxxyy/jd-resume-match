@@ -1,0 +1,1027 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成机构乙",
+    "合成院校"
+  ],
+  "model": "gpt-6.1-sol",
+  "strategy": {
+    "job_id": "job-1",
+    "order_basis": "extracted_text",
+    "inventory": [
+      {
+        "item_id": "item-education",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 1,
+        "label": "教育背景",
+        "raw_quote": "教育背景",
+        "evidence_ids": [
+          "ev-freshgrad-project-1"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "保留学历与专业背景，放在直接证明岗位行为的项目之后。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-degree",
+        "kind": "entry",
+        "parent_id": "item-education",
+        "original_order": 1,
+        "label": "合成院校 · 统计学本科 · 2022.09–2026.06",
+        "raw_quote": "合成院校 · 统计学本科 · 2022.09–2026.06",
+        "evidence_ids": [
+          "ev-freshgrad-project-2"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "本科信息对应岗位学历条件；保留院校、专业和日期，课程背景不替代项目实践。",
+        "entry_kind": "education"
+      },
+      {
+        "item_id": "item-course",
+        "kind": "bullet",
+        "parent_id": "item-degree",
+        "original_order": 1,
+        "label": "统计与数据库课程",
+        "raw_quote": "学习统计推断、实验设计与数据库课程",
+        "evidence_ids": [
+          "ev-freshgrad-project-3"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "compress",
+        "rationale": "保留为数据处理的学习背景，压缩篇幅；课程学习本身不证明 SQL 使用深度。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-method",
+        "kind": "bullet",
+        "parent_id": "item-degree",
+        "original_order": 2,
+        "label": "课程研究与方法说明",
+        "raw_quote": "课程研究中比较统计方法并撰写方法说明",
+        "evidence_ids": [
+          "ev-freshgrad-project-4"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ],
+        "disposition": "keep",
+        "rationale": "保留方法比较与书面说明的行为，作为报告写作的补充证据；不能改称正式论文发表。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-projects",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 2,
+        "label": "项目经历",
+        "raw_quote": "项目经历",
+        "evidence_ids": [
+          "ev-freshgrad-project-5"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "promote",
+        "rationale": "前移到开头，让 SQL 清洗汇总、分析图表和报告先于基础背景出现。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-user-project",
+        "kind": "entry",
+        "parent_id": "item-projects",
+        "original_order": 1,
+        "label": "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12",
+        "raw_quote": "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12",
+        "evidence_ids": [
+          "ev-freshgrad-project-6"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "promote",
+        "rationale": "这是核心要求的直接行为证据，完整保留课程场景、成员角色和日期。",
+        "entry_kind": "project"
+      },
+      {
+        "item_id": "item-sql",
+        "kind": "bullet",
+        "parent_id": "item-user-project",
+        "original_order": 1,
+        "label": "SQL 清洗与分组汇总",
+        "raw_quote": "使用 SQL 清洗课程样本并进行分组汇总",
+        "evidence_ids": [
+          "ev-freshgrad-project-7"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "promote",
+        "rationale": "放在项目条目开头，直接回应 SQL 清洗与汇总要求；保留课程样本范围。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-report",
+        "kind": "bullet",
+        "parent_id": "item-user-project",
+        "original_order": 2,
+        "label": "用户行为图表与分析报告",
+        "raw_quote": "制作用户行为分析图表并撰写分析报告",
+        "evidence_ids": [
+          "ev-freshgrad-project-8"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ],
+        "disposition": "keep",
+        "rationale": "紧接数据处理行为展示交付物，图表和报告都保留，不添使用效果。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-limits",
+        "kind": "bullet",
+        "parent_id": "item-user-project",
+        "original_order": 3,
+        "label": "指标定义与分析限制",
+        "raw_quote": "根据样本分组结果整理指标定义和分析限制",
+        "evidence_ids": [
+          "ev-freshgrad-project-9"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ],
+        "disposition": "keep",
+        "rationale": "保留分析口径与边界说明，补充清洗汇总和报告的上下文；不因缺少直接关键词删除。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-campus",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 3,
+        "label": "校园经历",
+        "raw_quote": "校园经历",
+        "evidence_ids": [
+          "ev-freshgrad-project-10"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "放在末尾并压缩篇幅，保留真实参与记录，不让低相关内容占据项目展示空间。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-volunteer",
+        "kind": "entry",
+        "parent_id": "item-campus",
+        "original_order": 1,
+        "label": "校园活动志愿者 · 2024.10",
+        "raw_quote": "校园活动志愿者 · 2024.10",
+        "evidence_ids": [
+          "ev-freshgrad-project-11"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "保留志愿者身份和日期，职责简写；不将志愿活动包装成数据分析经历。",
+        "entry_kind": "campus"
+      },
+      {
+        "item_id": "item-signin",
+        "kind": "bullet",
+        "parent_id": "item-volunteer",
+        "original_order": 1,
+        "label": "现场签到与资料整理",
+        "raw_quote": "协助现场签到和资料整理",
+        "evidence_ids": [
+          "ev-freshgrad-project-12"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "简短保留协助行为，与志愿者条目紧邻；资料整理不能替代 SQL 清洗证据。",
+        "entry_kind": null
+      }
+    ],
+    "job_focus": [
+      {
+        "concept": "SQL 清洗与汇总",
+        "req_ids": [
+          "req-1-1"
+        ],
+        "jd_quote": "熟练使用 SQL 清洗与汇总数据",
+        "business_problem": {
+          "text": "推断：岗位需要把原始数据整理成可供分析的汇总结果；实际数据来源、清洗规则与复杂度仍待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "分析图表与报告交付",
+        "req_ids": [
+          "req-1-2"
+        ],
+        "jd_quote": "制作分析图表并撰写分析报告",
+        "business_problem": {
+          "text": "推断：岗位需要通过图表和报告传达分析内容；报告读者与实际使用场景尚未说明。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "正式论文发表经历",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "jd_quote": "具有正式论文发表经历者优先",
+        "business_problem": {
+          "text": "待确认：正式论文发表为何被列为优先条件，具体认可哪些发表形式？不能据此推断岗位要求候选人承担论文发表任务。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      }
+    ],
+    "blueprint": [
+      {
+        "section_id": "item-projects",
+        "rationale": "项目先于教育展示，因为已有直接对应核心职责的操作与交付证据；条目顺序沿用清洗汇总、图表报告、指标口径。",
+        "entries": [
+          {
+            "entry_id": "item-user-project",
+            "rationale": "完整保留项目名称、成员角色与日期，相关条目均留在本项目内。",
+            "bullet_ids": [
+              "item-sql",
+              "item-report",
+              "item-limits"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-education",
+        "rationale": "教育紧随项目，保留本科资格与学习背景；先展示方法说明的具体行为，再简列课程。",
+        "entries": [
+          {
+            "entry_id": "item-degree",
+            "rationale": "学历信息完整保留；方法比较和说明比课程列表更能补充报告写作证据。",
+            "bullet_ids": [
+              "item-method",
+              "item-course"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-campus",
+        "rationale": "校园活动保留在末尾，压缩篇幅，不删除经历身份与日期。",
+        "entries": [
+          {
+            "entry_id": "item-volunteer",
+            "rationale": "保留协助现场工作的原有范围，不迁入项目或借用项目技能。",
+            "bullet_ids": [
+              "item-signin"
+            ]
+          }
+        ]
+      }
+    ],
+    "experience_insights": [
+      {
+        "entry_id": "item-user-project",
+        "problem": {
+          "text": "待确认：课程用户分析项目具体要回答什么问题，样本分组依据是什么？原文只给出项目场景和处理行为。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-user-project",
+            "item-sql",
+            "item-limits"
+          ]
+        },
+        "role": {
+          "text": "原文角色为数据处理成员，原文未声明独立/主导，也未说明团队分工。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-user-project",
+            "item-sql",
+            "item-report",
+            "item-limits"
+          ]
+        },
+        "actions": {
+          "text": "使用 SQL 清洗课程样本并分组汇总，制作用户行为分析图表、撰写分析报告，并根据分组结果整理指标定义和分析限制。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-sql",
+            "item-report",
+            "item-limits"
+          ]
+        },
+        "outputs": {
+          "text": "原文写有分组汇总、用户行为分析图表、分析报告，以及整理的指标定义和分析限制。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-sql",
+            "item-report",
+            "item-limits"
+          ]
+        },
+        "changes": {
+          "text": "待确认：清洗与汇总前后有哪些可核对的变化，报告是否经过反馈修改？原文没有给出前后对照。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-sql",
+            "item-report"
+          ]
+        },
+        "skills": {
+          "text": "已有 SQL 清洗与分组汇总、分析图表制作、报告撰写，以及指标定义和分析限制整理的行为证据。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-sql",
+            "item-report",
+            "item-limits"
+          ]
+        },
+        "impact": {
+          "text": "待确认：这些交付物由谁使用，是否帮助课程团队理解样本或完成分析任务？没有使用记录前，不写效率提升或业务成效。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-report",
+            "item-limits"
+          ]
+        }
+      }
+    ],
+    "recruiter_review": {
+      "first_impression": [
+        {
+          "text": "简历开头的文本先展示统计学本科、课程学习和课程研究，项目中的 SQL 操作与报告交付随后才出现。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-degree",
+            "item-course",
+            "item-method",
+            "item-sql",
+            "item-report"
+          ]
+        },
+        {
+          "text": "从速读视角推断，项目前移更便于先找到核心职责证据；跳过澄清后，采用既有排序靠前的数据分析助理作为默认主目标，未确认的发表经历继续待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-projects",
+            "item-user-project",
+            "item-sql",
+            "item-report"
+          ]
+        }
+      ],
+      "buried_evidence": [
+        {
+          "text": "SQL 清洗与分组汇总、图表制作和报告撰写已经写明，放在教育之后使读者需要继续往下寻找岗位行为证据。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-projects",
+            "item-sql",
+            "item-report"
+          ]
+        },
+        {
+          "text": "指标定义和分析限制已有原文依据，保留在报告条目之后可补充分析口径，不能因为它不是独立岗位要求就删掉。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-limits"
+          ]
+        }
+      ],
+      "generic_statements": [
+        {
+          "text": "课程列表给出了学习内容，但相较项目中的 SQL 行为，对具体使用深度的说明较少。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-7"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-course",
+            "item-sql"
+          ]
+        },
+        {
+          "text": "现场签到和资料整理是具体协助行为，但与数据分析核心要求联系较弱，适合压缩保留。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-signin"
+          ]
+        }
+      ],
+      "concerns": [
+        {
+          "observation": {
+            "text": "原文写明数据处理成员及项目行为，原文未声明独立/主导，也未列出本人交付与团队交付的边界。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-1",
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-6",
+              "ev-freshgrad-project-7",
+              "ev-freshgrad-project-8",
+              "ev-freshgrad-project-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-user-project",
+              "item-sql",
+              "item-report",
+              "item-limits"
+            ]
+          },
+          "interview_question": "哪些 SQL 脚本、图表和报告部分由你完成，哪些与同组成员共同完成？",
+          "change": "保留成员角色；找到分工和提交记录后再补本人贡献，不把项目交付物整体改成个人成果。"
+        },
+        {
+          "observation": {
+            "text": "待确认：SQL 使用涉及哪些清洗规则和分组逻辑，图表与报告回答了什么问题？现有句子未展开这些实践细节。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1",
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-7",
+              "ev-freshgrad-project-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-sql",
+              "item-report"
+            ]
+          },
+          "interview_question": "能否结合已有脚本与报告，解释清洗规则、分组依据及图表选择理由？",
+          "change": "先使用给定改写整理主干，再从原始交付物补可核对的方法说明，保持课程样本场景。"
+        },
+        {
+          "observation": {
+            "text": "待确认：是否具有正式论文发表经历？课程方法说明和项目分析报告不能直接视为正式发表证明。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-4",
+              "ev-freshgrad-project-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-method",
+              "item-report"
+            ]
+          },
+          "interview_question": "是否有正式发表记录及可核对出处，作者身份是什么？",
+          "change": "澄清已跳过，继续保留待确认；未取得发表记录前，不添加论文发表表述，也不将未写明解释为没有。"
+        }
+      ]
+    },
+    "ats_review": {
+      "keywords": [
+        {
+          "concept": "SQL 清洗与汇总",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "SQL、清洗和分组汇总已在项目行为中出现，有具体课程样本场景。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-7"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-sql"
+            ]
+          }
+        },
+        {
+          "concept": "SQL 实践深度",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "underexplained",
+          "observation": {
+            "text": "待确认：已有 SQL 使用行为，但清洗规则、查询结构和验证方式尚未展开；不能靠追加熟练一词补出实践细节。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-7"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-sql"
+            ]
+          }
+        },
+        {
+          "concept": "分析图表与分析报告",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "制作用户行为分析图表和撰写分析报告均已写明。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-report"
+            ]
+          }
+        },
+        {
+          "concept": "分析口径与边界说明",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "status": "equivalent",
+          "observation": {
+            "text": "指标定义和分析限制可作为报告口径与边界说明的相关表达；这是对现有内容作用的解释，不新增交付成果。",
+            "basis": "inference",
+            "req_ids": [
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-limits"
+            ]
+          }
+        },
+        {
+          "concept": "正式论文发表",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "status": "missing_evidence",
+          "observation": {
+            "text": "待确认：给定材料没有可引用的正式发表记录，方法说明与分析报告不足以证明发表经历。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-4",
+              "ev-freshgrad-project-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-method",
+              "item-report"
+            ]
+          }
+        }
+      ],
+      "readability": [
+        {
+          "text": "教育、项目与校园模块名称清楚，项目角色和日期单独列出，行为条目归属明确。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-1",
+            "ev-freshgrad-project-5",
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-projects",
+            "item-user-project",
+            "item-campus"
+          ]
+        },
+        {
+          "text": "将项目模块前移、课程列表压缩、校园经历后置，可让文本阅读顺序先展示操作和交付，再展示资格与补充经历。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-projects",
+            "item-course",
+            "item-sql",
+            "item-report",
+            "item-campus"
+          ]
+        }
+      ],
+      "format_status": "text_only",
+      "format_observations": [
+        {
+          "text": "当前仅核对了简历文本与提取顺序；原始视觉版式未核验，双栏、字体、图像和具体 ATS 系统解析表现均待确认。",
+          "basis": "question",
+          "req_ids": [],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-projects",
+            "item-campus"
+          ]
+        }
+      ]
+    },
+    "revision_priorities": [
+      {
+        "order": 1,
+        "change": "先核对项目成员的本人贡献边界，保留课程场景与成员角色；核实前不添加独立、主导或业务成效。",
+        "location_item_ids": [
+          "item-user-project",
+          "item-sql",
+          "item-report",
+          "item-limits"
+        ],
+        "impact": {
+          "text": "职责和成果归属失真会影响核心经历的可信度；现有成员身份与行为应保持原范围，具体分工仍待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-user-project",
+            "item-sql",
+            "item-report",
+            "item-limits"
+          ]
+        },
+        "rewrite_ids": []
+      },
+      {
+        "order": 2,
+        "change": "按蓝图将项目模块移到教育之前，保留学历信息，并压缩课程列表和末尾校园活动。",
+        "location_item_ids": [
+          "item-projects",
+          "item-user-project",
+          "item-education",
+          "item-degree",
+          "item-course",
+          "item-campus",
+          "item-volunteer",
+          "item-signin"
+        ],
+        "impact": {
+          "text": "核心要求已有项目证据，重排可缩短读者寻找 SQL 行为与报告交付的路径；结构调整本身不改变既定判定。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-projects",
+            "item-sql",
+            "item-report",
+            "item-education",
+            "item-campus"
+          ]
+        },
+        "rewrite_ids": []
+      },
+      {
+        "order": 3,
+        "change": "在项目前部的 SQL 条目使用给定改写，保留课程样本清洗与分组汇总范围。",
+        "location_item_ids": [
+          "item-user-project",
+          "item-sql"
+        ],
+        "impact": {
+          "text": "将清洗与分组汇总整理为紧凑主干，便于对照岗位要求；实际清洗规则和 SQL 使用深度仍需交付记录说明。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-sql"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-1"
+        ]
+      },
+      {
+        "order": 4,
+        "change": "在 SQL 条目之后使用给定报告改写，先写分析报告，再写分析图表。",
+        "location_item_ids": [
+          "item-user-project",
+          "item-report"
+        ],
+        "impact": {
+          "text": "报告与图表的交付信息更容易找到；改写不证明报告被采用，也不补出使用效果。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-report"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-2"
+        ]
+      },
+      {
+        "order": 5,
+        "change": "在项目末尾使用给定指标定义与分析限制改写，保留它与样本分组结果的联系。",
+        "location_item_ids": [
+          "item-user-project",
+          "item-limits"
+        ],
+        "impact": {
+          "text": "让报告的口径与边界说明紧随交付物出现，保留相关内容；不将整理分析限制升级为验证业务效果。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-limits"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-3"
+        ]
+      },
+      {
+        "order": 6,
+        "change": "将正式论文发表记录保留为待补事实，课程方法说明和项目报告维持原名称。",
+        "location_item_ids": [
+          "item-method",
+          "item-report"
+        ],
+        "impact": {
+          "text": "发表经历属于优先条件，现有写作交付不能替代正式发表证明；没有补充事实时继续待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-method",
+            "item-report"
+          ]
+        },
+        "rewrite_ids": []
+      }
+    ],
+    "missing_facts": [
+      {
+        "gap": "项目本人贡献与团队交付边界待确认。",
+        "ask": "哪些脚本、图表、报告部分由本人完成，哪些由团队共同完成？",
+        "where_to_find": "课程分工表、脚本提交记录、报告版本与小组交付记录。",
+        "item_ids": [
+          "item-user-project",
+          "item-sql",
+          "item-report",
+          "item-limits"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2"
+        ]
+      },
+      {
+        "gap": "课程样本清洗规则、分组依据与 SQL 验证方式待确认。",
+        "ask": "项目要回答什么分析问题，采用什么清洗和分组规则，如何核对汇总结果？",
+        "where_to_find": "课程任务说明、原始 SQL 脚本、数据字典和结果核对记录。",
+        "item_ids": [
+          "item-user-project",
+          "item-sql",
+          "item-limits"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ]
+      },
+      {
+        "gap": "图表与报告的内容、使用场景及反馈待确认。",
+        "ask": "图表和报告回答了什么问题，由谁阅读，是否有可核对的反馈或修改记录？",
+        "where_to_find": "分析报告原稿、图表文件、课程评阅意见与报告修订记录。",
+        "item_ids": [
+          "item-report",
+          "item-limits"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ]
+      },
+      {
+        "gap": "正式论文发表经历待确认，给定材料没有发表证明。",
+        "ask": "是否有正式发表记录？如有，提供发表出处与作者身份；未核实前继续保留待确认。",
+        "where_to_find": "个人发表记录、正式刊载页面或论文出版信息。",
+        "item_ids": [
+          "item-method",
+          "item-report"
+        ],
+        "req_ids": [
+          "req-1-3"
+        ]
+      }
+    ],
+    "answer_links": []
+  },
+  "notes": [
+    "原始模型输出；非经历项 entry_kind=null 在正式编排中移除。",
+    "正式编排将已确认角色与未知职责范围分开；不增加事实。"
+  ]
+}

@@ -1,0 +1,933 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成机构乙",
+    "合成院校"
+  ],
+  "model": "gpt-6.1-sol",
+  "strategy": {
+    "job_id": "job-1",
+    "order_basis": "extracted_text",
+    "inventory": [
+      {
+        "item_id": "item-education",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 1,
+        "label": "教育背景",
+        "raw_quote": "教育背景",
+        "evidence_ids": [
+          "ev-older-relevant-work-1"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "保留学历资格信息，放在直接相关的工作证据之后。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-degree",
+        "kind": "entry",
+        "parent_id": "item-education",
+        "original_order": 1,
+        "label": "合成院校 · 本科 · 管理学 · 2011.09–2015.06",
+        "raw_quote": "合成院校 · 本科 · 管理学 · 2011.09–2015.06",
+        "evidence_ids": [
+          "ev-older-relevant-work-2"
+        ],
+        "req_ids": [],
+        "disposition": "keep",
+        "rationale": "本科资格已有直接证据，完整保留学校、学历、专业和日期。",
+        "entry_kind": "education"
+      },
+      {
+        "item_id": "item-course",
+        "kind": "bullet",
+        "parent_id": "item-degree",
+        "original_order": 1,
+        "label": "统计与管理基础",
+        "raw_quote": "学习统计与管理基础",
+        "evidence_ids": [
+          "ev-older-relevant-work-3"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "compress",
+        "rationale": "作为学习背景简短保留；不能替代实际活动数据整理与周报证据。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-work",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 2,
+        "label": "工作经历",
+        "raw_quote": "工作经历",
+        "evidence_ids": [
+          "ev-older-relevant-work-4"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2",
+          "req-1-3"
+        ],
+        "disposition": "promote",
+        "rationale": "工作经历包含岗位核心行为，应成为简历开头的文本。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-admin",
+        "kind": "entry",
+        "parent_id": "item-work",
+        "original_order": 1,
+        "label": "合成机构乙 · 行政助理 · 2023.01–2026.09",
+        "raw_quote": "合成机构乙 · 行政助理 · 2023.01–2026.09",
+        "evidence_ids": [
+          "ev-older-relevant-work-5"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "后移并压缩职责，保留雇主、职位和日期，避免删掉较近任职造成履历信息缺失。",
+        "entry_kind": "work"
+      },
+      {
+        "item_id": "item-admin-records",
+        "kind": "bullet",
+        "parent_id": "item-admin",
+        "original_order": 1,
+        "label": "报销材料与会议纪要",
+        "raw_quote": "整理报销材料并归档会议纪要",
+        "evidence_ids": [
+          "ev-older-relevant-work-6"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "保留实际行政工作内容，简短展示；不改写成用户反馈或活动周报。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-admin-stock",
+        "kind": "bullet",
+        "parent_id": "item-admin",
+        "original_order": 2,
+        "label": "采购与库存记录",
+        "raw_quote": "参与办公用品采购与库存记录",
+        "evidence_ids": [
+          "ev-older-relevant-work-7"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "简短保留参与范围，库存记录不能直接证明活动数据分析经验。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-community",
+        "kind": "entry",
+        "parent_id": "item-work",
+        "original_order": 2,
+        "label": "合成机构甲 · 社群运营专员 · 2020.01–2022.12",
+        "raw_quote": "合成机构甲 · 社群运营专员 · 2020.01–2022.12",
+        "evidence_ids": [
+          "ev-older-relevant-work-8"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2",
+          "req-1-3"
+        ],
+        "disposition": "promote",
+        "rationale": "虽然任职较早，但直接覆盖数据周报、社群反馈和活动执行；前移整段，完整保留任职信息。",
+        "entry_kind": "work"
+      },
+      {
+        "item_id": "item-community-feedback",
+        "kind": "bullet",
+        "parent_id": "item-community",
+        "original_order": 1,
+        "label": "社群运营与反馈整理",
+        "raw_quote": "运营用户社群，定期整理用户反馈",
+        "evidence_ids": [
+          "ev-older-relevant-work-9"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ],
+        "disposition": "keep",
+        "rationale": "直接回应社群与反馈职责，放在数据周报之后，保持所属经历。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-community-report",
+        "kind": "bullet",
+        "parent_id": "item-community",
+        "original_order": 2,
+        "label": "Excel 活动数据周报",
+        "raw_quote": "每周使用 Excel 汇总活动参与数据并输出周报",
+        "evidence_ids": [
+          "ev-older-relevant-work-10"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "promote",
+        "rationale": "工具、活动数据、频次和交付物均已写明，作为相关经历的开头条目。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-community-event",
+        "kind": "bullet",
+        "parent_id": "item-community",
+        "original_order": 3,
+        "label": "活动执行与本人分工",
+        "raw_quote": "参与活动执行，团队活动参与率达到 25%，本人负责签到与反馈整理",
+        "evidence_ids": [
+          "ev-older-relevant-work-11"
+        ],
+        "req_ids": [
+          "req-1-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留活动执行证据，个人分工与团队成果分开表达，不将团队参与率归因于本人。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-skills",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 3,
+        "label": "技能清单",
+        "raw_quote": "技能清单",
+        "evidence_ids": [
+          "ev-older-relevant-work-12"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "keep",
+        "rationale": "作为工作行为的工具补充，放在工作经历之后、教育背景之前。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-tools",
+        "kind": "entry",
+        "parent_id": "item-skills",
+        "original_order": 1,
+        "label": "工具使用",
+        "raw_quote": "工具使用",
+        "evidence_ids": [
+          "ev-older-relevant-work-13"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "compress",
+        "rationale": "保留工具分组并压缩篇幅，与实际工作交付相互对照。",
+        "entry_kind": "skills"
+      },
+      {
+        "item_id": "item-excel",
+        "kind": "bullet",
+        "parent_id": "item-tools",
+        "original_order": 1,
+        "label": "Excel 透视表与数据整理",
+        "raw_quote": "Excel（透视表与数据整理）",
+        "evidence_ids": [
+          "ev-older-relevant-work-14"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ],
+        "disposition": "keep",
+        "rationale": "保留明确工具名称和功能自述；透视表的实际使用场景仍需核实。",
+        "entry_kind": null
+      }
+    ],
+    "job_focus": [
+      {
+        "concept": "Excel 活动数据整理与周报",
+        "req_ids": [
+          "req-1-1"
+        ],
+        "jd_quote": "熟练使用 Excel 整理活动数据并输出周报",
+        "business_problem": {
+          "text": "推断岗位需要持续整理活动数据并形成可供查看的周报；周报的使用对象和决策用途待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "用户社群运营与反馈整理",
+        "req_ids": [
+          "req-1-2"
+        ],
+        "jd_quote": "运营用户社群并整理用户反馈",
+        "business_problem": {
+          "text": "推断岗位需要将社群日常运营与用户意见收集衔接起来；是否要求推动反馈处理闭环待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "社群活动执行",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "jd_quote": "有社群活动执行经验者优先",
+        "business_problem": {
+          "text": "推断岗位希望候选人有活动落地经验；具体活动类型和承担范围待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      }
+    ],
+    "blueprint": [
+      {
+        "section_id": "item-work",
+        "rationale": "先展示直接相关的社群运营任职，再展示较近行政任职；按相关性排列，日期保持可见。",
+        "entries": [
+          {
+            "entry_id": "item-community",
+            "rationale": "开头先呈现按周交付的数据证据，再呈现社群反馈和活动分工。",
+            "bullet_ids": [
+              "item-community-report",
+              "item-community-feedback",
+              "item-community-event"
+            ]
+          },
+          {
+            "entry_id": "item-admin",
+            "rationale": "完整保留任职信息，职责简短展示，避免低相关内容占据开头。",
+            "bullet_ids": [
+              "item-admin-records",
+              "item-admin-stock"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-skills",
+        "rationale": "工具清单紧接工作行为，方便核对 Excel 自述与实际使用记录。",
+        "entries": [
+          {
+            "entry_id": "item-tools",
+            "rationale": "压缩分组文字，保留工具与功能。",
+            "bullet_ids": [
+              "item-excel"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-education",
+        "rationale": "学历资格保留，但岗位直接行为优先展示。",
+        "entries": [
+          {
+            "entry_id": "item-degree",
+            "rationale": "保留完整学历信息，基础学习内容简短放在其下。",
+            "bullet_ids": [
+              "item-course"
+            ]
+          }
+        ]
+      }
+    ],
+    "experience_insights": [
+      {
+        "entry_id": "item-community",
+        "problem": {
+          "text": "这段工作的实际业务问题是什么，社群运营、反馈整理和活动周报分别为谁服务，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback",
+            "item-community-report"
+          ]
+        },
+        "role": {
+          "text": "原文声明参与活动执行，本人负责签到与反馈整理；原文未声明独立/主导活动。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-event"
+          ]
+        },
+        "actions": {
+          "text": "运营用户社群、定期整理用户反馈，每周使用 Excel 汇总活动参与数据，并参与活动执行。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback",
+            "item-community-report",
+            "item-community-event"
+          ]
+        },
+        "outputs": {
+          "text": "原文明确写有活动数据周报，以及用户反馈整理和签到工作。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback",
+            "item-community-report",
+            "item-community-event"
+          ]
+        },
+        "changes": {
+          "text": "团队活动参与率达到 25% 是已写明的水平；此前水平、统计口径和变化趋势待确认，不能写成个人带来的提升。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-event"
+          ]
+        },
+        "skills": {
+          "text": "这些行为可用于说明 Excel 活动数据汇总、周期性交付、用户反馈整理及活动执行经验；工具使用深度仍需结合交付记录核实。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback",
+            "item-community-report",
+            "item-community-event"
+          ]
+        },
+        "impact": {
+          "text": "周报是否支持活动调整，反馈是否推动处理，以及本人分工对团队成果的作用，均待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback",
+            "item-community-report",
+            "item-community-event"
+          ]
+        }
+      }
+    ],
+    "recruiter_review": {
+      "first_impression": [
+        {
+          "text": "提取文本先展示教育背景，工作部分又先展示行政任职，社群运营证据出现较晚；速读时可能先形成行政方向印象。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-2",
+            "ev-older-relevant-work-5",
+            "ev-older-relevant-work-8"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-degree",
+            "item-admin",
+            "item-community"
+          ]
+        }
+      ],
+      "buried_evidence": [
+        {
+          "text": "每周使用 Excel 汇总活动参与数据并输出周报的直接证据，位于较早的社群运营经历中；应随整段经历前移，并成为开头条目。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community",
+            "item-community-report"
+          ]
+        },
+        {
+          "text": "活动条目同时写明团队参与率和本人签到、反馈整理分工，已有归属区分，应保留而不扩写个人因果。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-event"
+          ]
+        }
+      ],
+      "generic_statements": [
+        {
+          "text": "“学习统计与管理基础”只说明学习方向，没有具体应用场景；适合压缩为教育补充。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-3"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-course"
+          ]
+        },
+        {
+          "text": "“定期整理用户反馈”已有行为，但反馈类别、交付对象和处理过程未写清。",
+          "basis": "fact",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback"
+          ]
+        }
+      ],
+      "concerns": [
+        {
+          "observation": {
+            "text": "较近任职为行政助理，社群运营任职较早；近期是否继续实践社群工作待确认。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1",
+              "req-1-2",
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-5",
+              "ev-older-relevant-work-8"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-admin",
+              "item-community"
+            ]
+          },
+          "interview_question": "行政任职期间是否有可核对的社群、活动或数据周报实践？",
+          "change": "前移已有社群经历，保留完整日期；近期实践只有取得记录后再补写。"
+        },
+        {
+          "observation": {
+            "text": "原文将活动参与率归于团队，并写明本人负责签到与反馈整理；原文未声明独立/主导活动，也未声明个人推动参与率提升。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-11"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community-event"
+            ]
+          },
+          "interview_question": "活动参与率如何计算，本人的签到和反馈工作有哪些可核对交付？",
+          "change": "先写参与活动和本人分工，再单独写团队成果；缺少的统计口径留待核实。"
+        },
+        {
+          "observation": {
+            "text": "工作条目写明使用 Excel 汇总数据并输出周报，技能清单写有透视表；透视表是否用于该周报及实际操作深度待确认。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-10",
+              "ev-older-relevant-work-14"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community-report",
+              "item-excel"
+            ]
+          },
+          "interview_question": "能否提供脱敏周报或说明，展示数据来源、整理步骤及透视表的实际用途？",
+          "change": "保留现有工具和周报事实，不把技能清单的功能自述直接并入工作经历。"
+        }
+      ]
+    },
+    "ats_review": {
+      "keywords": [
+        {
+          "concept": "Excel 活动数据整理与周报",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "工作条目明确写有 Excel、活动参与数据、每周汇总和周报交付，具有实际使用语境。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-10"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community-report"
+            ]
+          }
+        },
+        {
+          "concept": "用户社群运营与反馈整理",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "社群运营和用户反馈整理均已明确出现。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-2"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community-feedback"
+            ]
+          }
+        },
+        {
+          "concept": "社群活动执行",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "社群运营任职下已有参与活动执行的记录，且明确本人分工。",
+            "basis": "fact",
+            "req_ids": [
+              "req-1-3"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-8",
+              "ev-older-relevant-work-11"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community",
+              "item-community-event"
+            ]
+          }
+        },
+        {
+          "concept": "Excel 使用深度",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "status": "underexplained",
+          "observation": {
+            "text": "实际汇总与周报行为已写明，但透视表的应用场景和操作过程待确认。",
+            "basis": "question",
+            "req_ids": [
+              "req-1-1"
+            ],
+            "evidence_ids": [
+              "ev-older-relevant-work-10",
+              "ev-older-relevant-work-14"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-community-report",
+              "item-excel"
+            ]
+          }
+        }
+      ],
+      "readability": [
+        {
+          "text": "现有章节名称清楚；工作条目应按数据周报、社群反馈、活动执行排列，让实际交付先于团队结果被读到。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-4",
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-work",
+            "item-community-report",
+            "item-community-feedback",
+            "item-community-event"
+          ]
+        }
+      ],
+      "format_status": "text_only",
+      "format_observations": [
+        {
+          "text": "仅核对了提取文本顺序，原始视觉版式未核验；双栏、字体、图像及具体招聘系统的解析表现均待确认。",
+          "basis": "question",
+          "req_ids": [],
+          "evidence_ids": [
+            "ev-older-relevant-work-1",
+            "ev-older-relevant-work-4",
+            "ev-older-relevant-work-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-work",
+            "item-skills"
+          ]
+        }
+      ]
+    },
+    "revision_priorities": [
+      {
+        "order": 1,
+        "change": "活动条目先交代本人分工，再单列团队成果，保持成果归属。",
+        "location_item_ids": [
+          "item-community",
+          "item-community-event"
+        ],
+        "impact": {
+          "text": "避免将团队参与率误读为个人造成的提升；原文仅声明参与活动，并负责签到与反馈整理。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-event"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-3"
+        ]
+      },
+      {
+        "order": 2,
+        "change": "前移工作模块和整段社群运营经历，将数据周报放在该经历开头；后移行政任职并压缩职责。",
+        "location_item_ids": [
+          "item-work",
+          "item-community",
+          "item-community-report",
+          "item-admin",
+          "item-admin-records",
+          "item-admin-stock"
+        ],
+        "impact": {
+          "text": "让简历开头的文本先回答 Excel 活动数据与周报要求，同时保留较近行政任职的完整履历。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-5",
+            "ev-older-relevant-work-8",
+            "ev-older-relevant-work-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-admin",
+            "item-community",
+            "item-community-report"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-2"
+        ]
+      },
+      {
+        "order": 3,
+        "change": "保留社群运营与定期反馈整理行为，采用给定润色；反馈交付和处理作用列待补。",
+        "location_item_ids": [
+          "item-community",
+          "item-community-feedback"
+        ],
+        "impact": {
+          "text": "现有句子直接回应社群与反馈职责，润色可理顺表达，但不会补出反馈处理闭环或业务结果。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-community-feedback"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-1"
+        ]
+      },
+      {
+        "order": 4,
+        "change": "技能清单作为工作证据补充，教育背景后移并压缩基础学习描述。",
+        "location_item_ids": [
+          "item-skills",
+          "item-tools",
+          "item-excel",
+          "item-education",
+          "item-degree",
+          "item-course"
+        ],
+        "impact": {
+          "text": "保留本科资格与工具功能，同时减少基础学习内容对直接工作证据的遮挡。",
+          "basis": "inference",
+          "req_ids": [
+            "req-1-1"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-2",
+            "ev-older-relevant-work-3",
+            "ev-older-relevant-work-14"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-degree",
+            "item-course",
+            "item-excel"
+          ]
+        },
+        "rewrite_ids": []
+      }
+    ],
+    "missing_facts": [
+      {
+        "gap": "活动参与率的统计口径、变化基线和本人贡献待确认。",
+        "ask": "说明参与率的计算方式、统计范围及本人交付；没有前后记录时保留团队现有水平，不写提升。",
+        "where_to_find": "活动复盘、报名与签到记录、分工记录、反馈整理文件。",
+        "item_ids": [
+          "item-community-event"
+        ],
+        "req_ids": [
+          "req-1-3"
+        ]
+      },
+      {
+        "gap": "活动周报的数据处理过程、使用对象和业务作用待确认。",
+        "ask": "提供脱敏周报或操作说明，交代数据如何整理、谁使用以及是否有实际反馈；透视表用途另行核实。",
+        "where_to_find": "历史周报、工作簿、交付邮件、使用者反馈。",
+        "item_ids": [
+          "item-community-report",
+          "item-excel"
+        ],
+        "req_ids": [
+          "req-1-1"
+        ]
+      },
+      {
+        "gap": "用户反馈的具体交付及后续处理待确认。",
+        "ask": "说明反馈如何分类、交给谁、是否有处理记录；没有记录时只保留整理行为。",
+        "where_to_find": "反馈台账、整理文档、交接记录、处理回复。",
+        "item_ids": [
+          "item-community-feedback"
+        ],
+        "req_ids": [
+          "req-1-2"
+        ]
+      },
+      {
+        "gap": "较近行政任职期间是否继续实践目标岗位相关工作待确认。",
+        "ask": "如有近期社群、活动或数据整理实践，提供其所属经历和可核对记录；没有新增事实则保持现有内容。",
+        "where_to_find": "近期工作记录、项目交付、活动文件。",
+        "item_ids": [
+          "item-admin",
+          "item-community"
+        ],
+        "req_ids": [
+          "req-1-1",
+          "req-1-2",
+          "req-1-3"
+        ]
+      }
+    ],
+    "answer_links": []
+  },
+  "notes": [
+    "原始模型输出；非经历项 entry_kind=null 在正式编排中移除。",
+    "正式编排将已确认角色与未知职责范围分开；不增加事实。"
+  ]
+}

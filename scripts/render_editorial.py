@@ -4,7 +4,7 @@
 
 定位与原则（MYW-72/MYW-73 起为唯一默认交付流程）：
   * 表达层渲染器：输入「评分报告 JSON（jd-match-report/0.1.0）+ 内容编排 JSON
-    （jd-match-editorial/0.2.0）」，产出成品：报告 HTML、成员版分享卡（默认 1 张）、
+    （jd-match-editorial/0.3.0）」，产出成品：报告 HTML、成员版分享卡（默认 1 张）、
     案例版卡片（按编排启用）、卡片预览 HTML（1080×1440）、小红书发布 Markdown。
   * 渲染器无算分权：一切分数、状态、建议只从报告 JSON 读取；内容编排 JSON 只管「怎么说」。
     成员版与案例版共用同一份评分结果与证据，不另算分。
@@ -35,9 +35,15 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-EDITORIAL_VERSION = "jd-match-editorial/0.2.0"
+from resume_strategy import validate_editorial_structure, validate_resume_strategy
+
+EDITORIAL_VERSION = "jd-match-editorial/0.3.0"
 LEGACY_EDITORIAL_VERSION = "jd-match-editorial/0.1.0"  # 旧编排仍可读取渲染（案例卡照旧），但缺成员版，不是默认交付口径
-VOICE_VERSION = "jd-match-voice/0.2.0"
+MEMBER_CARD_VERSIONS = {"jd-match-editorial/0.2.0", EDITORIAL_VERSION}
+VOICE_BY_EDITORIAL = {LEGACY_EDITORIAL_VERSION: "jd-match-voice/0.2.0",
+                      "jd-match-editorial/0.2.0": "jd-match-voice/0.2.0",
+                      EDITORIAL_VERSION: "jd-match-voice/0.3.0"}
+VOICE_VERSION = "jd-match-voice/0.3.0"
 CARD_W, CARD_H = 1080, 1440
 DEFAULT_BRAND_PATH = Path(__file__).resolve().parents[1] / "references" / "brand.json"
 
@@ -52,7 +58,7 @@ EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)")
 NUM_RE = re.compile(r"\d+(?:\.\d+)?")
 # 内部话不出机房（content-standards §2）：机器标识、状态机词、规则引用
-INTERNAL_ID_RE = re.compile(r"\b(?:gate|req|ev|ans|rw|act|job)-[a-z0-9]+(?:-[a-z0-9]+)*\b", re.IGNORECASE)
+INTERNAL_ID_RE = re.compile(r"\b(?:gate|req|ev|ans|rw|act|job|item)-[a-z0-9]+(?:-[a-z0-9]+)*\b", re.IGNORECASE)
 STATUS_WORD_RE = re.compile(r"\b(?:met|unmet|partial|supported|unknown|pending|unclear)\b")
 RULE_REF_RE = re.compile(r"§|决策表第|rubric|schema|R1[0-9]\b|docs/")
 EMPTY_TALK = ("提升竞争力", "突出优势", "强化亮点", "展现自我", "增加砝码", "进一步优化表述")
@@ -227,21 +233,36 @@ def validate_editorial(report: Dict[str, Any], ed: Dict[str, Any]) -> List[str]:
     """内容编排契约校验：引用可解析、引号逐字、数字有出处、职责词零新增、
     表达纪律与脱敏纪律全过。返回错误列表（空 = 通过）。"""
     errors: List[str] = []
+    if not isinstance(ed, dict):
+        return ["$: 内容编排必须是 object"]
 
     def err(msg: str) -> None:
         errors.append(msg)
 
-    # 1. 版本与案例对齐（0.1.0 旧编排仅保留读取兼容；默认交付口径是 0.2.0）
+    # 1. 默认 0.3.0；旧 0.1.0/0.2.0 编排保留读取兼容。
     ed_version = ed.get("editorial_version")
-    if ed_version not in (EDITORIAL_VERSION, LEGACY_EDITORIAL_VERSION):
+    if not isinstance(ed_version, str):
+        return ["$.editorial_version: 必须是 string，且是支持的版本"]
+    if ed_version not in VOICE_BY_EDITORIAL:
         err(f"editorial_version 应为 {EDITORIAL_VERSION}（或兼容读取 {LEGACY_EDITORIAL_VERSION}），实际 {ed_version!r}")
-    if ed.get("voice_version") != VOICE_VERSION:
-        err(f"voice_version 应为 {VOICE_VERSION}，实际 {ed.get('voice_version')!r}")
-    is_v2 = ed_version == EDITORIAL_VERSION
+    expected_voice = VOICE_BY_EDITORIAL.get(ed_version, VOICE_VERSION)
+    if ed.get("voice_version") != expected_voice:
+        err(f"voice_version 应为 {expected_voice}，实际 {ed.get('voice_version')!r}")
+    is_v2 = ed_version in MEMBER_CARD_VERSIONS
     if is_v2 and not ed.get("member_card"):
-        err("0.2.0 编排必须包含 member_card（成员版分享卡内容组，默认交付 1 张；缺失即拒绝渲染，不回退旧模板）")
-    if not is_v2 and ed.get("member_card"):
+        err("0.2.0/0.3.0 编排必须包含 member_card（成员版分享卡内容组，默认交付 1 张；缺失即拒绝渲染，不回退旧模板）")
+    if ed_version == LEGACY_EDITORIAL_VERSION and ed.get("member_card"):
         err(f"{LEGACY_EDITORIAL_VERSION} 编排不含成员版；请升到 {EDITORIAL_VERSION} 或删除 member_card")
+    if ed_version == EDITORIAL_VERSION:
+        # 新版完整消费冻结结构，拦住缺字段/错类型，避免后续裸异常。
+        structure_errors = validate_editorial_structure(ed)
+        if structure_errors:
+            return errors + structure_errors
+        errors.extend(validate_resume_strategy(report, ed["resume_strategy"],
+                      digits_of=_digits_of, scope_words=SCOPE_WORDS, voice_lint=_voice_lint,
+                      ed_rewrites=ed["rewrites"]))
+    elif "resume_strategy" in ed:
+        err("resume_strategy 仅用于 0.3.0 编排；旧版不能静默忽略整份结构方案")
     for i, r in enumerate(ed.get("redactions", [])):
         if not isinstance(r, dict) or not r.get("from") or not r.get("to"):
             err(f"redactions[{i}]: 必须是 {{from, to}}，from 为报告中需泛化的原文片段，to 为泛化词")
@@ -1013,7 +1034,86 @@ def _render_report_module2(ed: Dict[str, Any]) -> str:
   </section>"""
 
 
-def _render_report_module3(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
+def _render_resume_strategy(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
+    """仅呈现模型已给出的策略，复用既有组件/CSS，不排序或判相关性。"""
+    strategy = ed["resume_strategy"]
+    items = {x["item_id"]: x for x in strategy["inventory"]}
+    reqs = {x["req_id"]: x for x in report["requirements"]}
+    evs = {x["evidence_id"]: x for x in report["evidence"]}
+    answers = {x["answer_id"]: x for x in report["answers"]}
+    reds = _build_redactions(ed)
+    basis_labels = {"fact": "原文已有", "inference": "推断", "question": "待确认"}
+    dispositions = {"keep": "保留", "promote": "前置", "compress": "压缩", "omit": "删除"}
+
+    def text(value):
+        return md_bold(_redact(value, reds))
+
+    def label(iid):
+        return text(items[iid]["label"])
+
+    def claim_html(c):
+        quotes = [reqs[r]["jd_quote"] for r in c["req_ids"]]
+        quotes += [evs[e]["quote"] for e in c["evidence_ids"]]
+        quotes += ["补充回答：" + answers[a]["answer"] for a in c["answer_ids"]]
+        anchors = "".join(f'<p class="evidence-quote-text">{text(q)}</p>' for q in dict.fromkeys(quotes))
+        positions = "、".join(label(i) for i in c["item_ids"])
+        return (f'<div class="evidence-rule-card"><p><strong>{basis_labels[c["basis"]]}：</strong>{text(c["text"])}</p>'
+                + (f'<p class="evidence-location">位置：{positions}</p>' if positions else '')
+                + (f'<details><summary>查看原文依据</summary>{anchors}</details>' if anchors else '') + '</div>')
+
+    def accordion(title, body):
+        return (f'<details class="details-accordion"><summary class="details-summary">{esc(title)}'
+                '<span>▾ 展开/折叠</span></summary>'
+                f'<div class="evidence-rule-card">{body}</div></details>')
+
+    def old_tree(parent):
+        rows = sorted((x for x in items.values() if x["parent_id"] == parent), key=lambda x: x["original_order"])
+        return '<ol>' + ''.join(f'<li>{label(x["item_id"])}{old_tree(x["item_id"]) if x["kind"] != "bullet" else ""}</li>' for x in rows) + '</ol>'
+
+    new_sections = []
+    for section in strategy["blueprint"]:
+        entries = []
+        for entry in section["entries"]:
+            bullets = ''.join(f'<li>{label(b)}</li>' for b in entry["bullet_ids"])
+            original = items[entry["entry_id"]]
+            header = ''
+            if original.get("entry_kind") in ("work", "internship") and original["label"] != original["raw_quote"]:
+                header = f'<p class="evidence-quote-text">任职信息：{text(original["raw_quote"])}</p>'
+            entries.append(f'<li><strong>{label(entry["entry_id"])}</strong>{header}<p>{text(entry["rationale"])}</p><ol>{bullets}</ol></li>')
+        new_sections.append(f'<li><strong>{label(section["section_id"])}</strong><p>{text(section["rationale"])}</p><ol>{"".join(entries)}</ol></li>')
+    order_note = {"extracted_text": "原顺序按提取文本展示，未核验原始视觉版式。",
+                  "visual_verified": "原顺序已结合原始视觉材料核验。",
+                  "unverified": "原顺序待核验；下列原结构仅为文本盘点顺序。"}[strategy["order_basis"]]
+    blueprint = (f'<p>{order_note}新顺序面向本次主目标；重排和润色不改变证据覆盖分。</p>'
+                 '<div class="rewrite-diff-body"><div class="diff-panel diff-before"><div class="diff-label">原结构</div>'
+                 + old_tree(None) + '</div><div class="diff-panel diff-after"><div class="diff-label">建议结构 · 从上到下</div><ol>'
+                 + ''.join(new_sections) + '</ol></div></div>')
+    revisions = ''.join(f'<li><strong>{text(r["change"])}</strong><p>位置：{"、".join(label(i) for i in r["location_item_ids"])}</p>{claim_html(r["impact"])}</li>' for r in strategy["revision_priorities"])
+    inventory = ''.join(f'<div class="evidence-rule-card"><strong>{label(x["item_id"])} · {dispositions[x["disposition"]]}</strong>'
+                        f'<p>{text(x["rationale"])}</p><p class="evidence-quote-text">{text(x["raw_quote"])}</p></div>' for x in strategy["inventory"])
+    focus = ''.join(f'<h4>{text(x["concept"])}</h4><p>JD 原文：{text(x["jd_quote"])}</p>{claim_html(x["business_problem"])}' for x in strategy["job_focus"])
+    insight_labels = {"problem": "问题", "role": "本人角色", "actions": "具体行动", "outputs": "产出", "changes": "变化", "skills": "展示技能", "impact": "业务影响"}
+    insights = ''.join(f'<h4>{label(x["entry_id"])}</h4>' + ''.join(f'<h5>{title}</h5>{claim_html(x[field])}' for field, title in insight_labels.items()) for x in strategy["experience_insights"])
+    review = strategy["recruiter_review"]
+    recruiter = ''.join(f'<h4>{title}</h4>' + ''.join(claim_html(c) for c in review[field]) for field, title in
+                        [("first_impression", "简历开头传递的信息"), ("buried_evidence", "被埋没的强证据"), ("generic_statements", "泛泛表述")])
+    recruiter += '<h4>筛选疑虑与面试追问</h4>' + ''.join(claim_html(c["observation"]) + f'<p><strong>待核实 / 面试追问：</strong>{text(c["interview_question"])}</p><p><strong>改法：</strong>{text(c["change"])}</p>' for c in review["concerns"])
+    ats = strategy["ats_review"]
+    keyword_labels = {"present": "原文已有", "equivalent": "同义表达", "underexplained": "已有经验未写清", "missing_evidence": "缺少证据，不能断言不会"}
+    ats_html = ''.join(f'<h4>{text(k["concept"])} · {keyword_labels[k["status"]]}</h4>{claim_html(k["observation"])}' for k in ats["keywords"])
+    ats_html += '<h4>文本可读性</h4>' + ''.join(claim_html(c) for c in ats["readability"])
+    format_note = "已检查提供的原始视觉材料，观察仅针对可见版式。" if ats["format_status"] == "visual_checked" else "原始视觉版式未核验；不据此断言双栏、字体或 ATS 解析失败。"
+    ats_html += '<h4>格式与版式</h4><p>' + format_note + '</p>' + ''.join(claim_html(c) for c in ats["format_observations"])
+    missing = ''.join(f'<li><strong>{text(f["gap"])}</strong><p>补什么：{text(f["ask"])}</p><p>去哪里找：{text(f["where_to_find"])}</p></li>' for f in strategy["missing_facts"])
+    return ('\n  <section class="section-card" id="section-strategy"><div class="section-tag-label"><span class="num">3</span> 整份结构方案 · 先排整份，再改条目</div>'
+            + blueprint + '<h3>按影响排序的修改建议</h3><ol>' + revisions + '</ol>'
+            + accordion("全篇盘点与取舍依据", inventory) + accordion("岗位重点与招聘问题推断", focus)
+            + accordion("关键经历的价值链", insights or '<p>当前材料不足以深挖，见待补事实。</p>')
+            + accordion("招聘者审阅与筛选疑虑", recruiter) + accordion("关键词与可读性诊断", ats_html)
+            + accordion("待补事实清单", '<ol>' + missing + '</ol>' if missing else '<p>没有额外待补事实。</p>') + '</section>')
+
+
+def _render_report_module3(report: Dict[str, Any], ed: Dict[str, Any], number: int = 3) -> str:
     reds = _build_redactions(ed)
     reqs = {r["req_id"]: r for r in report["requirements"]}
     items = []
@@ -1057,12 +1157,12 @@ def _render_report_module3(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
       <div class="pending-body">{md_bold(ed.get("pending_fill_note", "以下缺口改写无能为力，需要补事实："))}{rows}</div></div>"""
     return f"""
   <section class="section-card" id="section-rewrites">
-    <div class="section-tag-label"><span class="num">3</span> 重点改写区 · 局部精准优化</div>
+    <div class="section-tag-label"><span class="num">{number}</span> 重点改写区 · 局部精准优化</div>
     {''.join(items)}{pending_html}
   </section>"""
 
 
-def _render_report_module4(ed: Dict[str, Any]) -> str:
+def _render_report_module4(ed: Dict[str, Any], number: int = 4) -> str:
     steps = []
     for i, a in enumerate(ed["actions"]):
         copy_box = ""
@@ -1093,12 +1193,12 @@ def _render_report_module4(ed: Dict[str, Any]) -> str:
       </div>""")
     return f"""
   <section class="section-card" id="section-actions">
-    <div class="section-tag-label"><span class="num">4</span> 行动清单 · Action Plan</div>
+    <div class="section-tag-label"><span class="num">{number}</span> 行动清单 · Action Plan</div>
     <div class="actions-timeline">{''.join(steps)}</div>
   </section>"""
 
 
-def _render_report_module5(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
+def _render_report_module5(report: Dict[str, Any], ed: Dict[str, Any], number: int = 5) -> str:
     reds = _build_redactions(ed)
     sources = {s["source_id"]: s for s in report["sources"]}
     evs = {e["evidence_id"]: e for e in report["evidence"]}
@@ -1161,7 +1261,7 @@ def _render_report_module5(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
                     f'{esc(job["title"])}<span class="tab-score">{esc(job["score"])} 分</span></button>')
     return f"""
   <section class="section-card" id="section-evidence">
-    <div class="section-tag-label"><span class="num">5</span> 证据详情与判定理由 · Evidence Details</div>
+    <div class="section-tag-label"><span class="num">{number}</span> 证据详情与判定理由 · Evidence Details</div>
     <div class="job-tabs">{''.join(tabs)}</div>
     {''.join(panes)}
   </section>"""
@@ -1171,6 +1271,9 @@ def render_editorial_report(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
     """渲染编辑批注风自包含互动报告 HTML（数据 + 编排已通过 validate_editorial）。"""
     case_label = esc(ed.get("masthead", {}).get("case_label", report.get("case_id", "")))
     synthetic_badge = '<span class="badge-pill">脱敏合成案例</span>' if report.get("synthetic") else '<span class="badge-pill">已脱敏</span>'
+    has_strategy = ed.get("editorial_version") == EDITORIAL_VERSION
+    offset = 1 if has_strategy else 0
+    strategy_nav = '<a href="#section-strategy" class="toc-link">3. 整份结构方案</a>\n    ' if has_strategy else ''
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -1191,15 +1294,15 @@ def render_editorial_report(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
   <nav class="toc-bar">
     <a href="#section-verdict" class="toc-link">1. 审校结论</a>
     <a href="#section-findings" class="toc-link">2. 关键发现</a>
-    <a href="#section-rewrites" class="toc-link">3. 重点改写区</a>
-    <a href="#section-actions" class="toc-link">4. 行动清单</a>
-    <a href="#section-evidence" class="toc-link">5. 证据详情</a>
+    {strategy_nav}<a href="#section-rewrites" class="toc-link">{3 + offset}. 重点改写区</a>
+    <a href="#section-actions" class="toc-link">{4 + offset}. 行动清单</a>
+    <a href="#section-evidence" class="toc-link">{5 + offset}. 证据详情</a>
   </nav>
 {_render_report_module1(report, ed)}
 {_render_report_module2(ed)}
-{_render_report_module3(report, ed)}
-{_render_report_module4(ed)}
-{_render_report_module5(report, ed)}
+{_render_resume_strategy(report, ed) if has_strategy else ''}{_render_report_module3(report, ed, 3 + offset)}
+{_render_report_module4(ed, 4 + offset)}
+{_render_report_module5(report, ed, 5 + offset)}
   <footer class="report-footer">
     <div>分数 = 简历证据对该 JD 要求的覆盖度，不代表能力总分或录取概率 · 案例已脱敏</div>
     <div style="margin-top:4px;color:#A1A1AA;">求职体检与深度匹配报告 · 编辑部审校定稿</div>
@@ -1798,7 +1901,7 @@ def generate_bundle(report: Dict[str, Any], ed: Dict[str, Any], outdir: Path, br
         card_paths.append(p)
     manifest = {"report": report_path, "preview": preview_path, "social": social_path, "cards": card_paths}
     manifest["member_card"] = None
-    if ed.get("editorial_version") == EDITORIAL_VERSION:
+    if ed.get("editorial_version") in MEMBER_CARD_VERSIONS:
         member_path = outdir / "member-card-01.html"
         member_path.write_text(_card_member(report, ed), encoding="utf-8")
         manifest["member_card"] = member_path
@@ -1808,7 +1911,7 @@ def generate_bundle(report: Dict[str, Any], ed: Dict[str, Any], outdir: Path, br
 def main() -> int:
     ap = argparse.ArgumentParser(description="默认交付链路：编辑批注风报告 + 成员版分享卡 + 案例卡 + 预览 + 发布 MD")
     ap.add_argument("--input", "-i", required=True, help="评分报告 JSON（jd-match-report/0.1.0）")
-    ap.add_argument("--editorial", "-e", required=True, help="内容编排 JSON（jd-match-editorial/0.2.0）")
+    ap.add_argument("--editorial", "-e", required=True, help="内容编排 JSON（jd-match-editorial/0.3.0；兼容 0.1.0/0.2.0）")
     ap.add_argument("--outdir", "-o", required=True, help="输出目录（report.html / member-card-01.html / cards/ / cards-preview.html / social-post.md）")
     ap.add_argument("--brand", default=None, help="品牌配置 JSON（缺省用 references/brand.json；品牌独立于候选人材料）")
     args = ap.parse_args()

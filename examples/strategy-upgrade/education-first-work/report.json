@@ -1,0 +1,276 @@
+{
+  "schema_version": "jd-match-report/0.1.0",
+  "rubric_version": "jd-match-rubric/0.1.0",
+  "case_id": "education-first-work",
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成机构乙",
+    "合成院校"
+  ],
+  "sources": [
+    {
+      "source_id": "src-resume-1",
+      "kind": "resume",
+      "filename": "resume.md",
+      "summary": "合成简历，全部材料已提取，未含真实联系方式。",
+      "parse_warnings": []
+    },
+    {
+      "source_id": "src-jd-1",
+      "kind": "jd",
+      "filename": "jd-1.md",
+      "summary": "合成目标岗位，要求与资格条件已拆解。",
+      "parse_warnings": []
+    }
+  ],
+  "candidate_stage": "experienced",
+  "parse_warnings": [],
+  "jobs": [
+    {
+      "job_id": "job-1",
+      "title": "用户运营专员",
+      "category": "operations",
+      "jd_source_id": "src-jd-1",
+      "score": 83,
+      "scoring_status": "ok",
+      "gates": [
+        {
+          "gate_id": "gate-1-1",
+          "job_id": "job-1",
+          "text": "本科及以上学历",
+          "jd_quote": "必须本科及以上学历",
+          "status": "met",
+          "evidence_ids": [
+            "ev-education-first-work-2"
+          ],
+          "rationale": "简历教育背景写有本科。"
+        }
+      ],
+      "unknown_count": 1,
+      "rank": 1,
+      "rank_rationale": "按各自 JD 的证据覆盖比较，本岗位为本次主目标。",
+      "suggestion": "prioritize",
+      "suggestion_rationale": "先调整材料结构，再核对关键事实。现有行为与核心职责相关，缺少的结果口径保留待确认。"
+    }
+  ],
+  "requirements": [
+    {
+      "req_id": "req-1-1",
+      "job_id": "job-1",
+      "text": "熟练使用 Excel 整理运营数据并输出周报",
+      "jd_quote": "熟练使用 Excel 整理运营数据并输出周报",
+      "locator": "src-jd-1 L3",
+      "category": "skill",
+      "importance": "must",
+      "importance_source": "jd_explicit",
+      "status": "supported",
+      "evidence_ids": [
+        "ev-education-first-work-6"
+      ],
+      "answer_ids": [],
+      "rationale": "岗位要求熟练使用 Excel 整理运营数据并输出周报；简历已有对应行为记录。",
+      "weight": 3
+    },
+    {
+      "req_id": "req-1-2",
+      "job_id": "job-1",
+      "text": "运营用户社群并整理用户问题",
+      "jd_quote": "运营用户社群并整理用户问题",
+      "locator": "src-jd-1 L4",
+      "category": "experience",
+      "importance": "normal",
+      "importance_source": "system_default",
+      "status": "supported",
+      "evidence_ids": [
+        "ev-education-first-work-7"
+      ],
+      "answer_ids": [],
+      "rationale": "岗位要求运营用户社群并整理用户问题；简历已有对应行为记录。",
+      "weight": 2
+    },
+    {
+      "req_id": "req-1-3",
+      "job_id": "job-1",
+      "text": "SQL 实际应用经验者优先",
+      "jd_quote": "SQL 实际应用经验者优先",
+      "locator": "src-jd-1 L5",
+      "category": "experience",
+      "importance": "bonus",
+      "importance_source": "jd_explicit",
+      "status": "unclear",
+      "evidence_ids": [
+        "ev-education-first-work-12"
+      ],
+      "answer_ids": [],
+      "rationale": "材料未提供可核对的实践证据，保留为未写清或待确认。",
+      "weight": 1
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-education-first-work-1",
+      "source_id": "src-resume-1",
+      "quote": "教育背景",
+      "locator": "src-resume-1 L4",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-2",
+      "source_id": "src-resume-1",
+      "quote": "合成院校 · 本科 · 市场营销 · 2014.09–2018.06",
+      "locator": "src-resume-1 L6",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-3",
+      "source_id": "src-resume-1",
+      "quote": "课程包括消费者行为与统计基础",
+      "locator": "src-resume-1 L7",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-4",
+      "source_id": "src-resume-1",
+      "quote": "工作经历",
+      "locator": "src-resume-1 L9",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-5",
+      "source_id": "src-resume-1",
+      "quote": "合成机构甲 · 用户运营专员 · 2021.01–2026.09",
+      "locator": "src-resume-1 L11",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-6",
+      "source_id": "src-resume-1",
+      "quote": "每周使用 Excel 汇总新增用户与活动参与数据，输出运营周报",
+      "locator": "src-resume-1 L12",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-7",
+      "source_id": "src-resume-1",
+      "quote": "运营用户社群，整理问题并更新常见问题文档",
+      "locator": "src-resume-1 L13",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-8",
+      "source_id": "src-resume-1",
+      "quote": "策划社群交流活动，收集参与者反馈并归档",
+      "locator": "src-resume-1 L14",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-9",
+      "source_id": "src-resume-1",
+      "quote": "技能清单",
+      "locator": "src-resume-1 L16",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-10",
+      "source_id": "src-resume-1",
+      "quote": "工具使用",
+      "locator": "src-resume-1 L18",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-11",
+      "source_id": "src-resume-1",
+      "quote": "Excel（透视表与数据整理）",
+      "locator": "src-resume-1 L19",
+      "tags": []
+    },
+    {
+      "evidence_id": "ev-education-first-work-12",
+      "source_id": "src-resume-1",
+      "quote": "基础 SQL（课程学习）",
+      "locator": "src-resume-1 L20",
+      "tags": []
+    }
+  ],
+  "answers": [],
+  "primary_job_id": "job-1",
+  "primary_selection_reason": "单岗位自动选择。",
+  "answer_variants": [],
+  "rewrites": [
+    {
+      "rewrite_id": "rw-1",
+      "job_id": "job-1",
+      "original_quote": "每周使用 Excel 汇总新增用户与活动参与数据，输出运营周报",
+      "rewritten_text": "按周输出运营周报：使用 Excel 汇总新增用户与活动参与数据",
+      "rationale": "把可核对的产出与具体行动放在句子前部，保留原职责及成果归属。",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-2",
+      "job_id": "job-1",
+      "original_quote": "运营用户社群，整理问题并更新常见问题文档",
+      "rewritten_text": "运营用户社群：整理问题，更新常见问题文档",
+      "rationale": "把可核对的产出与具体行动放在句子前部，保留原职责及成果归属。",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": false
+    },
+    {
+      "rewrite_id": "rw-3",
+      "job_id": "job-1",
+      "original_quote": "策划社群交流活动，收集参与者反馈并归档",
+      "rewritten_text": "策划社群交流活动，并收集、归档参与者反馈",
+      "rationale": "把可核对的产出与具体行动放在句子前部，保留原职责及成果归属。",
+      "new_facts": [],
+      "numbers_from": [],
+      "pending_fill": false
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "act-1",
+      "job_id": "job-1",
+      "order": 1,
+      "goal": "按岗位要求重排整份简历",
+      "deliverable": "一版调整顺序的简历",
+      "completion_criteria": "最相关的经历与条目已前移，任职信息仍完整。",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-2",
+      "job_id": "job-1",
+      "order": 2,
+      "goal": "核对本人贡献和成果归属",
+      "deliverable": "一条有记录支持的本人贡献描述",
+      "completion_criteria": "团队成果和个人贡献各有明确说明。",
+      "fact_or_skill": "fact"
+    },
+    {
+      "action_id": "act-3",
+      "job_id": "job-1",
+      "order": 3,
+      "goal": "补齐尚未写清的事实",
+      "deliverable": "可引用的交付记录或说明",
+      "completion_criteria": "能指出记录出处；没有记录的部分仍标待确认。",
+      "fact_or_skill": "fact"
+    }
+  ],
+  "share_payload": {
+    "standalone": true,
+    "anonymized": true,
+    "score": 83,
+    "score_label": "简历证据匹配度",
+    "job_title": "用户运营专员",
+    "job_category": "operations",
+    "headline_findings": [
+      "核心经历有行为证据，整份顺序需要对齐岗位。"
+    ],
+    "gate_notes": [
+      "本科资格已在原文写明。"
+    ],
+    "disclaimer": "分数衡量简历证据对 JD 的覆盖，不代表能力总分、ATS 分或面试概率。"
+  }
+}

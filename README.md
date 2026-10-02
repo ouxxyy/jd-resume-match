@@ -1,8 +1,8 @@
 # 简历优化大师（jd-resume-match）
 
-投简历之前，先做一次「简历 vs JD」的证据体检：分数可复算、每条判定都引用简历原文、改写不编造事实。
+投简历之前，先看整份简历该怎么排，再看句子该怎么改：按 JD 找证据、调整模块和经历顺序、深挖关键经历的价值，分数仍可复算，改写不编造事实。
 
-Python 3.9+（仅标准库，零依赖）· 215 项自动化测试 · MIT
+Python 3.9+（仅标准库，零依赖）· 270 项自动化测试 · MIT
 
 ## 它解决什么问题
 
@@ -13,6 +13,9 @@ Python 3.9+（仅标准库，零依赖）· 215 项自动化测试 · MIT
 - 把每份 JD 拆成逐条要求，标出「必须 / 一般 / 加分」和一票条件（学历、年限、值班接受度这类硬门槛）；
 - 在你的简历原文里逐条定位证据，给出 supported / partial / unclear / unmet / unknown 五态判定，每条都附原文引用和位置；
 - 算出可复算的匹配分（0–100）与投递建议（优先投 / 改完再投 / 暂缓）——**unmet 硬门槛强制「暂缓」，高分抵消不了**；材料里没写的信息记 `unknown`，绝不推断成「不满足」；
+- 盘点整份简历的模块、经历和条目，给出保留、前移、压缩或删除的依据。较早但相关的工作也可以前移，雇主、职位和日期仍保留；教育、项目和工作谁在前，由岗位要求和实际证据决定；
+- 深挖关键经历的问题、本人角色、行动、产出和业务影响；缺结果或数字时列出该补什么、去哪里找，不把职责改成虚构的成绩；
+- 给出有原文依据的招聘疑虑、面试追问和关键词诊断，区分同义表达、没写清与缺证据，按影响排列修改建议；
 - 给出 3–5 处不改事实的重点改写（逐字前后对照，每个数字有出处，不新增「独立负责」这类原句没有的职责词）和 3 项行动清单。
 
 **分数只衡量「简历证据对 JD 要求的覆盖」，不是能力总分、ATS 官方分，也不是面试概率。**算分的不是模型：权重、系数、建议规则全部写在公开量尺 [`references/scoring-rubric.md`](references/scoring-rubric.md) 里，由确定性脚本复算，同一输入必得同一分数。
@@ -24,9 +27,16 @@ Python 3.9+（仅标准库，零依赖）· 215 项自动化测试 · MIT
 <p align="center">
   <img src="assets/demo-report-desktop.png" alt="编辑批注风的简历匹配体检报告整页截图：分数与投递建议、逐条要求判定、原文证据引用、改写对照" width="720">
 </p>
-<p align="center"><sub>报告整页缩略（合成案例 A）· 阅读顺序：投递判断与分数 → 优势和关键差距 → 局部修改对照 → 待补事实及行动 → 原文依据</sub></p>
+<p align="center"><sub>报告整页缩略（v0.3.0 合成运营案例）· 阅读顺序：投递判断与分数 → 优势和关键差距 → 整份结构方案 → 重点改写 → 待补事实及行动 → 原文依据</sub></p>
 
-交付物还有两套 1080×1440 分享卡与发布文案（以下均为合成案例、已脱敏）：
+<p align="center">
+  <img src="assets/demo-structure-mobile.png" alt="整份结构方案：原顺序与按岗位相关性排列的新顺序，手机视口" width="360">
+</p>
+<p align="center"><sub>整份结构方案直接展开；经历价值链、招聘疑虑和关键词依据可展开查看。样式沿用原报告。</sub></p>
+
+合成样例：[较早相关工作前移](examples/strategy-upgrade/older-relevant-work/preview/report.html) · [应届生投数据岗](examples/strategy-upgrade/freshgrad-project/preview/report.html) · [同一人改投研究岗](examples/strategy-upgrade/freshgrad-project-research/preview/report.html)。
+
+交付物还有两套 1080×1440 分享卡与发布文案（以下来自不同合成案例，均已脱敏）：
 
 <table>
   <tr>
@@ -44,7 +54,7 @@ Python 3.9+（仅标准库，零依赖）· 215 项自动化测试 · MIT
 
 1. **提交材料**：一份简历（PDF / DOCX / TXT / MD）+ 一个或多个 JD（文本、文件或链接）。
 2. **脚本提取**：解析文件并给识别摘要；空文件、加密、扫描件、乱码 PDF 走显式降级路径，说清楚缺什么、怎么补，不硬装能分析。
-3. **模型初诊**：拆 JD 要求、逐条在简历原文定位证据，产出结构化报告 JSON（此步不算分）；最多 3 个澄清问题，可整体跳过，你的回答只作为补充证据登记。
+3. **模型初诊**：拆 JD 要求、盘点全篇并决定模块/经历/条目顺序，再深挖关键经历和生成重点改写（此步不算分）；最多 3 个澄清问题，可整体跳过，你的回答只作为补充证据登记。
 4. **脚本算分**：`score_report.py` 按量尺复算分数 / 建议 / 排名并回写；结构、引用、隐私校验任何一项不过，直接拒绝出报告。
 5. **渲染交付**：自包含 HTML 体检单 + 成员版分享卡 PNG + 案例版卡片与发布文案。
 6. **三句话结论**：怎么投、最值钱也最委屈的发现（带数字）、现在就能做的第一步。
@@ -57,11 +67,14 @@ Python 3.9+（仅标准库，零依赖）· 215 项自动化测试 · MIT
 # ZCode 等宿主
 git clone https://github.com/ouxxyy/jd-resume-match.git ~/.zcode/skills/jd-resume-match
 
+# Codex（共享 Skills 目录）
+git clone https://github.com/ouxxyy/jd-resume-match.git ~/.agents/skills/jd-resume-match
+
 # Claude Code
 git clone https://github.com/ouxxyy/jd-resume-match.git ~/.claude/skills/jd-resume-match
 ```
 
-仓库根目录就是 skill 本体，clone 即可用。想装得干净（不带 tests / docs），在仓库根运行 `./install.sh <你的 skills 目录>`；或从 [Releases](../../releases) 下载 zip（附 sha256 校验值）。全部安装路径见 [INSTALL.md](INSTALL.md)。
+仓库根目录就是 skill 本体，clone 即可用。想装得干净（不带 tests / docs），从 [Releases](https://github.com/ouxxyy/jd-resume-match/releases) 下载 zip（附 sha256 校验值）后按包内 INSTALL.md 安装；仓库根的 `./install.sh <你的 skills 目录>` 也支持完整源码安装。全部安装路径见 [INSTALL.md](INSTALL.md)。
 
 ## 第一次使用
 

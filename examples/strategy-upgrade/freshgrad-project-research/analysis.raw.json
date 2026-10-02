@@ -1,0 +1,1098 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成机构乙",
+    "合成院校"
+  ],
+  "model": "gpt-6.1-sol",
+  "strategy": {
+    "job_id": "job-2",
+    "order_basis": "extracted_text",
+    "inventory": [
+      {
+        "item_id": "item-education",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 1,
+        "label": "教育背景",
+        "raw_quote": "教育背景",
+        "evidence_ids": [
+          "ev-freshgrad-project-1"
+        ],
+        "req_ids": [
+          "req-2-1",
+          "req-2-2",
+          "req-2-3"
+        ],
+        "disposition": "keep",
+        "rationale": "统计研究助理重视专业课程与方法基础，教育背景继续放在开头，内部先展示方法说明与比较行为。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-education-entry",
+        "kind": "entry",
+        "parent_id": "item-education",
+        "original_order": 1,
+        "label": "统计学本科",
+        "raw_quote": "合成院校 · 统计学本科 · 2022.09–2026.06",
+        "evidence_ids": [
+          "ev-freshgrad-project-2"
+        ],
+        "req_ids": [
+          "req-2-1"
+        ],
+        "disposition": "keep",
+        "rationale": "专业与本科资格有明确原文，保留院校、学位和就读日期。",
+        "entry_kind": "education"
+      },
+      {
+        "item_id": "item-education-courses",
+        "kind": "bullet",
+        "parent_id": "item-education-entry",
+        "original_order": 1,
+        "label": "相关课程",
+        "raw_quote": "学习统计推断、实验设计与数据库课程",
+        "evidence_ids": [
+          "ev-freshgrad-project-3"
+        ],
+        "req_ids": [
+          "req-2-1",
+          "req-2-2"
+        ],
+        "disposition": "keep",
+        "rationale": "保留方法学习背景，排在课程研究行为之后；课程名称不能替代方法应用证据。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-education-methods",
+        "kind": "bullet",
+        "parent_id": "item-education-entry",
+        "original_order": 2,
+        "label": "课程研究与方法说明",
+        "raw_quote": "课程研究中比较统计方法并撰写方法说明",
+        "evidence_ids": [
+          "ev-freshgrad-project-4"
+        ],
+        "req_ids": [
+          "req-2-2",
+          "req-2-3"
+        ],
+        "disposition": "promote",
+        "rationale": "同时包含方法比较行为和说明产出，前移到教育条目开头，比单列课程更能回答研究岗位要求。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-project",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 2,
+        "label": "项目经历",
+        "raw_quote": "项目经历",
+        "evidence_ids": [
+          "ev-freshgrad-project-5"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ],
+        "disposition": "keep",
+        "rationale": "作为教育方法背景后的实践补充，优先展示分析限制，再展示支撑它的数据处理与报告。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-project-entry",
+        "kind": "entry",
+        "parent_id": "item-project",
+        "original_order": 1,
+        "label": "课程用户分析项目",
+        "raw_quote": "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12",
+        "evidence_ids": [
+          "ev-freshgrad-project-6"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留项目名称、成员角色和日期，明确课程项目场景与贡献范围。",
+        "entry_kind": "project"
+      },
+      {
+        "item_id": "item-project-sql",
+        "kind": "bullet",
+        "parent_id": "item-project-entry",
+        "original_order": 1,
+        "label": "样本清洗与分组汇总",
+        "raw_quote": "使用 SQL 清洗课程样本并进行分组汇总",
+        "evidence_ids": [
+          "ev-freshgrad-project-7"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留分析限制所依托的样本处理过程，排在限制说明之后；不把分组汇总写成统计推断或实验设计。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-project-report",
+        "kind": "bullet",
+        "parent_id": "item-project-entry",
+        "original_order": 2,
+        "label": "图表与分析报告",
+        "raw_quote": "制作用户行为分析图表并撰写分析报告",
+        "evidence_ids": [
+          "ev-freshgrad-project-8"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ],
+        "disposition": "keep",
+        "rationale": "保留可核对的报告产出，排在方法边界与处理过程之后；不将一般分析报告等同于统计方法说明。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-project-limits",
+        "kind": "bullet",
+        "parent_id": "item-project-entry",
+        "original_order": 3,
+        "label": "指标定义与分析限制",
+        "raw_quote": "根据样本分组结果整理指标定义和分析限制",
+        "evidence_ids": [
+          "ev-freshgrad-project-9"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ],
+        "disposition": "promote",
+        "rationale": "直接对应分析限制要求，从项目末尾前移到项目条目开头，保持原有样本分组依据。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-campus",
+        "kind": "section",
+        "parent_id": null,
+        "original_order": 3,
+        "label": "校园经历",
+        "raw_quote": "校园经历",
+        "evidence_ids": [
+          "ev-freshgrad-project-10"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "与统计研究核心要求关联较弱，放在末尾简短保留，不因相关性低而删除整段经历。",
+        "entry_kind": null
+      },
+      {
+        "item_id": "item-campus-entry",
+        "kind": "entry",
+        "parent_id": "item-campus",
+        "original_order": 1,
+        "label": "校园活动志愿者",
+        "raw_quote": "校园活动志愿者 · 2024.10",
+        "evidence_ids": [
+          "ev-freshgrad-project-11"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "保留志愿者身份与活动日期，用简短条目交代履历背景，不扩写成研究职责。",
+        "entry_kind": "campus"
+      },
+      {
+        "item_id": "item-campus-support",
+        "kind": "bullet",
+        "parent_id": "item-campus-entry",
+        "original_order": 1,
+        "label": "签到与资料整理",
+        "raw_quote": "协助现场签到和资料整理",
+        "evidence_ids": [
+          "ev-freshgrad-project-12"
+        ],
+        "req_ids": [],
+        "disposition": "compress",
+        "rationale": "原句已简短，保留协助范围即可；资料整理不能直接证明统计研究或方法写作能力。",
+        "entry_kind": null
+      }
+    ],
+    "job_focus": [
+      {
+        "concept": "统计学专业课程背景",
+        "req_ids": [
+          "req-2-1"
+        ],
+        "jd_quote": "统计学专业课程背景优先",
+        "business_problem": {
+          "text": "推断：岗位希望候选人具备统计学课程基础，便于理解研究中的方法讨论。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-1"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "统计推断与实验设计方法",
+        "req_ids": [
+          "req-2-2"
+        ],
+        "jd_quote": "掌握统计推断与实验设计方法",
+        "business_problem": {
+          "text": "推断：岗位需要能够说明方法选择和适用条件的研究支持；具体研究对象与实验任务仍待确认。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      },
+      {
+        "concept": "统计方法说明与分析限制",
+        "req_ids": [
+          "req-2-3"
+        ],
+        "jd_quote": "撰写统计方法说明与分析限制",
+        "business_problem": {
+          "text": "推断：岗位希望研究过程与结论边界能够被清楚说明，便于读者理解分析依据与限制。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [],
+          "answer_ids": [],
+          "item_ids": []
+        }
+      }
+    ],
+    "blueprint": [
+      {
+        "section_id": "item-education",
+        "rationale": "教育背景继续居首：先让读者看到统计学本科，再看到方法比较与说明产出，随后交代相关课程。研究岗位的直接方法证据比一般数据处理工具更应靠前。",
+        "entries": [
+          {
+            "entry_id": "item-education-entry",
+            "rationale": "保留完整院校、学位与就读日期，课程研究条目前移，课程学习条目随后。",
+            "bullet_ids": [
+              "item-education-methods",
+              "item-education-courses"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-project",
+        "rationale": "项目作为研究表达的实践补充，先展示分析限制，再交代样本处理和报告产出。",
+        "entries": [
+          {
+            "entry_id": "item-project-entry",
+            "rationale": "保留完整项目名称、数据处理成员角色与日期；条目只在本项目内部重排。",
+            "bullet_ids": [
+              "item-project-limits",
+              "item-project-sql",
+              "item-project-report"
+            ]
+          }
+        ]
+      },
+      {
+        "section_id": "item-campus",
+        "rationale": "校园经历放在末尾紧凑保留，为方法与限制说明留出阅读空间。",
+        "entries": [
+          {
+            "entry_id": "item-campus-entry",
+            "rationale": "保留活动身份、日期与简短协助事项，避免把低相关内容扩写成研究经验。",
+            "bullet_ids": [
+              "item-campus-support"
+            ]
+          }
+        ]
+      }
+    ],
+    "experience_insights": [
+      {
+        "entry_id": "item-education-entry",
+        "problem": {
+          "text": "课程研究具体要回答什么问题、为什么需要比较统计方法，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods"
+          ]
+        },
+        "role": {
+          "text": "原文记录统计学本科背景，以及课程研究中的方法比较与说明撰写。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-entry",
+            "item-education-methods"
+          ]
+        },
+        "actions": {
+          "text": "学习统计推断、实验设计与数据库课程，并在课程研究中比较统计方法。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses",
+            "item-education-methods"
+          ]
+        },
+        "outputs": {
+          "text": "课程研究中撰写了方法说明。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods"
+          ]
+        },
+        "changes": {
+          "text": "方法比较是否促成分析方案调整、具体调整了什么，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods"
+          ]
+        },
+        "skills": {
+          "text": "方法比较与说明撰写可作为研究方法表达的行为证据；具体统计推断和实验设计应用深度仍需实例支撑。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses",
+            "item-education-methods"
+          ]
+        },
+        "impact": {
+          "text": "方法说明被谁使用、获得什么反馈，以及是否影响课程研究结论，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods"
+          ]
+        }
+      },
+      {
+        "entry_id": "item-project-entry",
+        "problem": {
+          "text": "项目的具体分析问题、样本来源和分组依据，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-entry",
+            "item-project-sql",
+            "item-project-limits"
+          ]
+        },
+        "role": {
+          "text": "原文角色为课程用户分析项目的数据处理成员。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-entry"
+          ]
+        },
+        "actions": {
+          "text": "使用 SQL 清洗课程样本并分组汇总，制作用户行为图表、撰写报告，并依据分组结果整理指标定义和分析限制。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-sql",
+            "item-project-report",
+            "item-project-limits"
+          ]
+        },
+        "outputs": {
+          "text": "原文写明图表、分析报告，以及指标定义和分析限制的整理。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-report",
+            "item-project-limits"
+          ]
+        },
+        "changes": {
+          "text": "整理分析限制后是否修改报告结论或使用范围，待确认。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-limits"
+          ]
+        },
+        "skills": {
+          "text": "样本处理、图表报告和限制整理形成了可追问的分析过程；这些行为不能直接替代统计推断与实验设计的应用实例。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-sql",
+            "item-project-report",
+            "item-project-limits"
+          ]
+        },
+        "impact": {
+          "text": "报告的使用者、反馈及实际作用，待确认；现有文字不足以声明业务指标改善。",
+          "basis": "question",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-report",
+            "item-project-limits"
+          ]
+        }
+      }
+    ],
+    "recruiter_review": {
+      "first_impression": [
+        {
+          "text": "简历开头的文本已呈现统计学本科与相关课程，专业方向清楚；方法比较与说明产出值得在教育条目中更早出现。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-entry",
+            "item-education-courses",
+            "item-education-methods"
+          ]
+        },
+        {
+          "text": "速读视角下，项目先写 SQL 容易让研究表达证据后出现；应把分析限制条目前移，校园协助事项保持简短。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-9",
+            "ev-freshgrad-project-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-sql",
+            "item-project-limits",
+            "item-campus-support"
+          ]
+        }
+      ],
+      "buried_evidence": [
+        {
+          "text": "课程研究中的方法比较和说明撰写放在课程列表之后，实际比课程名称更能说明做过什么。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses",
+            "item-education-methods"
+          ]
+        },
+        {
+          "text": "分析限制位于项目条目末尾，却直接对应研究岗位的写作要求，应在本项目内前移。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-sql",
+            "item-project-report",
+            "item-project-limits"
+          ]
+        }
+      ],
+      "generic_statements": [
+        {
+          "text": "“学习统计推断、实验设计与数据库课程”说明学习范围，但不能单凭课程名称看出方法应用深度。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses"
+          ]
+        },
+        {
+          "text": "“比较统计方法”与“分析限制”已有具体行为方向，但方法名称、比较依据和限制内容仍未展开。",
+          "basis": "fact",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods",
+            "item-project-limits"
+          ]
+        }
+      ],
+      "concerns": [
+        {
+          "observation": {
+            "text": "原文写明课程学习与方法比较，未写明实际采用的统计推断或实验设计方法及应用过程。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-3",
+              "ev-freshgrad-project-4"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-education-courses",
+              "item-education-methods"
+            ]
+          },
+          "interview_question": "课程研究比较了哪些方法，如何选择方法并检查适用条件？是否实际实施过实验设计？",
+          "change": "从课程作业或方法说明中找出可核对的应用片段；没有记录的应用深度继续待确认，不能用润色补足。"
+        },
+        {
+          "observation": {
+            "text": "原文角色为数据处理成员，原文未声明独立/主导项目；条目未区分个人交付与团队整合产出。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-6",
+              "ev-freshgrad-project-8",
+              "ev-freshgrad-project-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-project-entry",
+              "item-project-report",
+              "item-project-limits"
+            ]
+          },
+          "interview_question": "图表、报告和限制说明中，哪些内容由你完成，哪些由团队共同形成？",
+          "change": "保留成员角色，用项目分工与文档记录核实个人贡献，再补充有依据的归属描述。"
+        },
+        {
+          "observation": {
+            "text": "原文有方法说明与分析限制产出，但未交代具体内容、使用者或反馈。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-4",
+              "ev-freshgrad-project-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-education-methods",
+              "item-project-limits"
+            ]
+          },
+          "interview_question": "方法说明和分析限制分别写了什么，读者如何使用，有没有可核对的反馈？",
+          "change": "分别回到课程说明与项目报告寻找内容样例和反馈，避免跨经历拼接成果或补写未经确认的效果。"
+        }
+      ]
+    },
+    "ats_review": {
+      "keywords": [
+        {
+          "concept": "统计学专业课程背景",
+          "req_ids": [
+            "req-2-1"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "统计学本科与相关课程均在原文出现，专业背景无需另造技能模块重复陈述。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-1"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-2",
+              "ev-freshgrad-project-3"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-education-entry",
+              "item-education-courses"
+            ]
+          }
+        },
+        {
+          "concept": "统计推断与实验设计应用",
+          "req_ids": [
+            "req-2-2"
+          ],
+          "status": "underexplained",
+          "observation": {
+            "text": "统计推断与实验设计出现在课程学习中，课程研究写有方法比较；应用实例与方法选择依据尚未说明。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-2"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-3",
+              "ev-freshgrad-project-4"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-education-courses",
+              "item-education-methods"
+            ]
+          }
+        },
+        {
+          "concept": "统计方法说明",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "status": "equivalent",
+          "observation": {
+            "text": "“比较统计方法并撰写方法说明”在同句中建立了统计方法与说明产出的联系，可用给定改写让这个联系更直接。",
+            "basis": "inference",
+            "req_ids": [
+              "req-2-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-4"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-education-methods"
+            ]
+          }
+        },
+        {
+          "concept": "分析限制",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "status": "present",
+          "observation": {
+            "text": "项目原文明确写有依据样本分组结果整理分析限制，概念已出现，具体内容仍可补充。",
+            "basis": "fact",
+            "req_ids": [
+              "req-2-3"
+            ],
+            "evidence_ids": [
+              "ev-freshgrad-project-9"
+            ],
+            "answer_ids": [],
+            "item_ids": [
+              "item-project-limits"
+            ]
+          }
+        }
+      ],
+      "readability": [
+        {
+          "text": "教育、项目和校园章节名称清楚；按统计研究助理要求，教育方法行为与项目限制说明应分别成为本段先读到的条目。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-1",
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-5",
+            "ev-freshgrad-project-9",
+            "ev-freshgrad-project-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-education-methods",
+            "item-project",
+            "item-project-limits",
+            "item-campus"
+          ]
+        },
+        {
+          "text": "“统计方法”和“分析限制”仍偏概括，补充有记录支持的方法名称与限制内容，比重复添加岗位关键词更能回答研究要求。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods",
+            "item-project-limits"
+          ]
+        }
+      ],
+      "format_status": "text_only",
+      "format_observations": [
+        {
+          "text": "本次仅依据简历文本和提取顺序分析；原始视觉版式、双栏、字体、图像及具体招聘系统的解析表现均未核验。",
+          "basis": "question",
+          "req_ids": [],
+          "evidence_ids": [
+            "ev-freshgrad-project-1",
+            "ev-freshgrad-project-5",
+            "ev-freshgrad-project-10"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education",
+            "item-project",
+            "item-campus"
+          ]
+        }
+      ]
+    },
+    "revision_priorities": [
+      {
+        "order": 1,
+        "change": "先标清方法应用深度与贡献归属的证据边界。保留课程学习和数据处理成员表述，实际方法应用、个人交付及效果继续待确认。",
+        "location_item_ids": [
+          "item-education-courses",
+          "item-education-methods",
+          "item-project-entry",
+          "item-project-report",
+          "item-project-limits"
+        ],
+        "impact": {
+          "text": "核心方法要求目前只有课程与方法比较描述，项目又以成员身份呈现；守住这些边界可避免把学习经历写成完整方法掌握，或把团队交付写成个人主导。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses",
+            "item-education-methods",
+            "item-project-entry",
+            "item-project-report",
+            "item-project-limits"
+          ]
+        },
+        "rewrite_ids": []
+      },
+      {
+        "order": 2,
+        "change": "教育背景保持在开头，方法比较与说明条目前移到课程列表之前，采用给定的方法说明改写。",
+        "location_item_ids": [
+          "item-education",
+          "item-education-entry",
+          "item-education-methods"
+        ],
+        "impact": {
+          "text": "方法比较与说明产出比课程名称更能回答研究岗位做过什么的问题，前移后可更早读到这段行为证据。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses",
+            "item-education-methods"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-2"
+        ]
+      },
+      {
+        "order": 3,
+        "change": "将分析限制放到项目条目开头，采用给定的限制说明改写；随后保留样本清洗、分组汇总与图表报告。",
+        "location_item_ids": [
+          "item-project",
+          "item-project-entry",
+          "item-project-limits",
+          "item-project-sql",
+          "item-project-report"
+        ],
+        "impact": {
+          "text": "分析限制直接对应研究写作要求；前移能让项目的阅读重点转向结论边界，同时保留支撑它的处理过程和报告产出。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-project-limits",
+            "item-project-sql",
+            "item-project-report"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-3"
+        ]
+      },
+      {
+        "order": 4,
+        "change": "采用给定的课程学习改写，作为方法说明之后的学习背景；这处润色不补足方法实践证据。",
+        "location_item_ids": [
+          "item-education-entry",
+          "item-education-courses"
+        ],
+        "impact": {
+          "text": "课程条目能说明学习范围，但表达调整仍只证明原有课程学习，不能替代统计推断与实验设计的应用实例。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-3"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-courses"
+          ]
+        },
+        "rewrite_ids": [
+          "rw-1"
+        ]
+      },
+      {
+        "order": 5,
+        "change": "校园经历在末尾紧凑保留身份、日期和协助事项，不扩写成研究职责。修改建议按风险与影响排列，报告中的行动仍保持重排简历、核对贡献归属、补齐事实的原顺序。",
+        "location_item_ids": [
+          "item-campus",
+          "item-campus-entry",
+          "item-campus-support"
+        ],
+        "impact": {
+          "text": "签到与资料整理对统计研究要求的直接证明有限，简短保留可交代活动背景，并让教育方法和项目限制成为阅读重点。",
+          "basis": "inference",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-9",
+            "ev-freshgrad-project-11",
+            "ev-freshgrad-project-12"
+          ],
+          "answer_ids": [],
+          "item_ids": [
+            "item-education-methods",
+            "item-project-limits",
+            "item-campus-entry",
+            "item-campus-support"
+          ]
+        },
+        "rewrite_ids": []
+      }
+    ],
+    "missing_facts": [
+      {
+        "gap": "统计推断与实验设计的实际应用深度待确认，课程名称不能补足应用过程。",
+        "ask": "课程研究采用或比较了哪些具体方法？如何检查适用条件？是否实际实施过实验设计？没有记录的部分继续待确认。",
+        "where_to_find": "课程作业、分析过程记录、方法说明与教师反馈。",
+        "item_ids": [
+          "item-education-courses",
+          "item-education-methods"
+        ],
+        "req_ids": [
+          "req-2-2"
+        ]
+      },
+      {
+        "gap": "课程研究的问题、方法比较依据及说明内容待确认。",
+        "ask": "研究要回答什么问题，为什么比较这些方法，方法说明包含哪些可核对的内容？",
+        "where_to_find": "课程研究任务书、报告正文与方法说明原稿。",
+        "item_ids": [
+          "item-education-methods"
+        ],
+        "req_ids": [
+          "req-2-2",
+          "req-2-3"
+        ]
+      },
+      {
+        "gap": "项目分析限制的具体内容和样本分组依据待确认。",
+        "ask": "样本如何分组，整理了哪些限制，这些限制如何约束报告结论或使用范围？",
+        "where_to_find": "项目报告、指标定义文档、分组查询与分析记录。",
+        "item_ids": [
+          "item-project-sql",
+          "item-project-limits",
+          "item-project-report"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ]
+      },
+      {
+        "gap": "项目个人贡献与团队产出的边界待确认。",
+        "ask": "图表、报告、指标定义和限制说明中，哪些由本人完成，哪些由团队共同完成？",
+        "where_to_find": "项目分工、文档修改记录、课程提交记录与成员确认。",
+        "item_ids": [
+          "item-project-entry",
+          "item-project-report",
+          "item-project-limits"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ]
+      },
+      {
+        "gap": "课程说明与项目报告的使用场景、反馈和后续变化待确认。",
+        "ask": "分别是谁阅读或使用这些材料，有什么可核对的反馈，是否发生后续修改？没有记录则不补写效果。",
+        "where_to_find": "课程批注、项目评审意见、报告修订记录与使用反馈，按经历分别核实。",
+        "item_ids": [
+          "item-education-methods",
+          "item-project-report",
+          "item-project-limits"
+        ],
+        "req_ids": [
+          "req-2-3"
+        ]
+      }
+    ],
+    "answer_links": []
+  },
+  "notes": [
+    "同一应届简历改选统计研究岗位；初始混合事实/未知的职责疑虑已分为待确认，不新增事实。"
+  ]
+}

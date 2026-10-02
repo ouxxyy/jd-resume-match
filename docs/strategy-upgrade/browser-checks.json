@@ -1,0 +1,97 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "合成机构甲",
+    "合成院校"
+  ],
+  "checks": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "education-first-work",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "education-first-work",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "older-relevant-work",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "older-relevant-work",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "freshgrad-project",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "freshgrad-project",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "freshgrad-project-research",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "strategyBeforeRewrite": true,
+      "detailClosed": true,
+      "nav": 6,
+      "case": "freshgrad-project-research",
+      "expand": true,
+      "navigation": true,
+      "copy_handler": true
+    }
+  ]
+}

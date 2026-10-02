@@ -1,0 +1,111 @@
+{
+  "synthetic": true,
+  "private_markers": [
+    "李晓晓",
+    "王成"
+  ],
+  "results": [
+    {
+      "path": "examples/case-b-2yr-data-dev/expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "数据分析师",
+          "score": 83,
+          "unknown_count": 1,
+          "suggestion": "prioritize"
+        },
+        {
+          "title": "Python 后端研发工程师",
+          "score": 17,
+          "unknown_count": 5,
+          "suggestion": "hold"
+        }
+      ]
+    },
+    {
+      "path": "examples/case-c-2yr-brand-mkt/expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "品牌营销主管",
+          "score": 70,
+          "unknown_count": 2,
+          "suggestion": "hold"
+        },
+        {
+          "title": "电商运营专员",
+          "score": 63,
+          "unknown_count": 0,
+          "suggestion": "revise_then_apply"
+        }
+      ]
+    },
+    {
+      "path": "examples/case-d-experienced-mkt/expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "品牌市场负责人",
+          "score": 70,
+          "unknown_count": 1,
+          "suggestion": "prioritize"
+        }
+      ]
+    },
+    {
+      "path": "examples/case-a-freshgrad-ops/expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "新媒体运营专员",
+          "score": 75,
+          "unknown_count": 1,
+          "suggestion": "revise_then_apply"
+        },
+        {
+          "title": "产品助理",
+          "score": 29,
+          "unknown_count": 1,
+          "suggestion": "revise_then_apply"
+        }
+      ]
+    },
+    {
+      "path": "examples/case-e-unspecified-data/expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "数据分析师",
+          "score": 39,
+          "unknown_count": 2,
+          "suggestion": "revise_then_apply"
+        }
+      ]
+    },
+    {
+      "path": "examples/supplements/sup-market.expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "市场专员",
+          "score": 64,
+          "unknown_count": 1,
+          "suggestion": "revise_then_apply"
+        }
+      ]
+    },
+    {
+      "path": "examples/supplements/sup-design.expected.json",
+      "check": "PASS",
+      "jobs": [
+        {
+          "title": "视觉设计师",
+          "score": 42,
+          "unknown_count": 1,
+          "suggestion": "revise_then_apply"
+        }
+      ]
+    }
+  ]
+}

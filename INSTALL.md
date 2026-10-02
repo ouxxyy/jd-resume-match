@@ -1,6 +1,6 @@
-# jd-resume-match skill 安装与使用（v0.2.0）
+# jd-resume-match skill 安装与使用（分析编排 0.3.0）
 
-「JD vs 简历匹配度打分器」：用户提交一份简历 + 一个或多个 JD，经初诊和最多一轮（3 个可跳过）追问，获得可复算、有证据引用的匹配评分报告、自包含 HTML 求职体检单，以及编辑批注风的默认交付（报告 + 成员版分享卡 PNG 1 张 + 案例版卡片 PNG + 小红书文案，均为 1080×1440）。
+「JD vs 简历匹配度打分器」：用户提交一份简历 + 一个或多个 JD，经初诊和最多一轮（3 个可跳过）追问，获得可复算、有证据引用的匹配评分报告、自包含 HTML 求职体检单（含整份结构蓝图、经历价值链与招聘者审阅），以及编辑批注风的默认交付（报告 + 成员版分享卡 PNG 1 张 + 案例版卡片 PNG + 小红书文案，均为 1080×1440）。
 **分数只衡量「简历证据对 JD 要求的覆盖」，不是能力总分、ATS 官方分或面试概率。**
 
 ---
@@ -16,43 +16,33 @@
 
 ## 2. 安装
 
-仓库根目录就是 skill 本体（`SKILL.md` 在根部），三种方式任选：
+压缩包解压后结构：
 
-### 方式 A：git clone（推荐）
-
-```bash
-# ZCode / 其他使用 ~/.zcode/skills 的宿主
-git clone https://github.com/ouxxyy/jd-resume-match.git ~/.zcode/skills/jd-resume-match
-# Claude Code
-git clone https://github.com/ouxxyy/jd-resume-match.git ~/.claude/skills/jd-resume-match
+```text
+jd-resume-match-0.1.1/
+├── jd-resume-match/        # skill 本体（SKILL.md 在其根部）
+│   ├── SKILL.md            # 分析流程（智能体读这个）
+│   ├── references/         # 评分契约 + 数据契约 + 表达契约 + 编排契约 + 品牌配置 + 岗位量尺
+│   ├── scripts/            # 提取/校验/评分/渲染/分享/编排渲染/PNG 导出 七个确定性脚本
+│   ├── templates/          # 报告 HTML 模板（旧链路）
+│   ├── examples/           # 合成示例（expected.json + editorial.json 成对）
+│   └── THIRD_PARTY_NOTICES.md
+├── install.sh              # 安装脚本（可选）
+└── INSTALL.md              # 本文档
 ```
 
-clone 即可用，无需构建。`tests/`、`docs/`、`assets/` 只是仓库附属（测试与文档），不参与 skill 运行，不需要可删。
-
-### 方式 B：install.sh
+### 方式 A：脚本安装（推荐）
 
 ```bash
 ./install.sh                    # 默认装到 ~/.claude/skills/
 ./install.sh ~/.zcode/skills    # 或指定任意 skills 根目录
 ```
 
-脚本行为：只写入 `<目标>/jd-resume-match/` 一个目录；**目标已存在同名非空目录时拒绝安装、不覆盖任何文件**（`--force` 才覆盖）；安装完自动跑一次校验器冒烟检查。在仓库根或 Release 压缩包解压目录内运行均可（自动识别两种布局）。
+脚本行为：只写入 `<目标>/jd-resume-match/` 一个目录；**目标已存在同名非空目录时拒绝安装、不覆盖任何文件**（`--force` 才覆盖）；安装完自动跑一次校验器冒烟检查。
 
-### 方式 C：Release 压缩包 / 手动复制
+### 方式 B：手动复制
 
-从 GitHub Releases 下载 `jd-resume-match-<版本>.zip`（附 sha256 校验值），解压后运行包内 `install.sh`，或把 `jd-resume-match/` 整个目录复制到宿主的 skills 根目录（如 `~/.claude/skills/`、`~/.zcode/skills/` 或项目内 `.claude/skills/`）。本 skill 不写任何用户级配置文件；卸载 = 删除这一个目录。
-
-压缩包内 skill 目录结构：
-
-```text
-jd-resume-match/
-├── SKILL.md            # 分析流程（智能体读这个）
-├── references/         # 评分契约 + 数据契约 + 表达契约 + 编排契约 + 品牌配置 + 岗位量尺
-├── scripts/            # 提取/校验/评分/渲染/分享/编排渲染/PNG 导出 确定性脚本
-├── templates/          # 报告 HTML 模板（旧链路）
-├── examples/           # 合成示例（expected.json + editorial.json 成对）
-└── THIRD_PARTY_NOTICES.md
-```
+把 `jd-resume-match/` 整个目录复制到宿主的 skills 根目录（如 `~/.claude/skills/`、`~/.zcode/skills/` 或项目内 `.claude/skills/`）。本 skill 不写任何用户级配置文件；卸载 = 删除这一个目录。
 
 ### 安装后验证（不依赖智能体，纯脚本侧）
 
@@ -66,7 +56,7 @@ python3 <安装路径>/jd-resume-match/scripts/validate_report.py \
 
 ## 3. ⚠ 格式化 hook 事件提示（发布/复用前必读）
 
-**在装有全局格式化 hook（如 prettier PostToolUse）的环境里运行本 skill，hook 可能在智能体写文件时自动重排仓库内文件格式**。开发过程中端到端实测发生过一次：全局 prettier hook 重排了 `SKILL.md` 的表格与代码块（Markdown 列对齐、引号统一等），导致与契约文件产生非预期 diff。
+**在装有全局格式化 hook（如 prettier PostToolUse）的环境里运行本 skill，hook 可能在智能体写文件时自动重排仓库内文件格式**。已在 T4A 端到端实测中发生一次：全局 prettier hook 重排了本仓库 `SKILL.md` 的表格与代码块（Markdown 列对齐、引号统一等），导致与契约文件产生非预期 diff。事件完整存档：开发仓库 `.t4a-toole2e/formatter-incident-2026-09-12.patch`。
 
 建议：
 
@@ -83,6 +73,8 @@ python3 <安装路径>/jd-resume-match/scripts/validate_report.py \
 3. **初诊（模型）**：拆解 JD 要求、逐条在简历原文定位证据，产出报告 JSON（不算分）；
 4. **澄清轮**：最多 3 个可整体跳过的问题；多岗位时「选主目标」计入 3 问；
 5. **校验与评分（脚本，唯一算分口径）**：`validate_report.py` → `score_report.py --apply`（校验失败拒绝写盘）；
+新增整份分析：确定主目标后，按 `references/analysis-strategy.md` 盘点模块/经历/条目并生成相关性优先的结构蓝图；较早经历可前移，任职信息和事实归属保留。新版编排为 `jd-match-editorial/0.3.0` + `jd-match-voice/0.3.0`，必含 `resume_strategy` 与成员卡内容。旧 0.1.0/0.2.0 编排可读取；v0.3.0 分发包包含此次升级，旧 0.2.0 包仍为历史版本；更新时请下载 v0.3.0。
+
 6. **渲染交付（默认链路：编辑批注风报告 + PNG 分享卡）**：撰写 `editorial.json` → `render_editorial.py` 生成报告 HTML + 卡片预览 + 单卡 HTML → `export_png.py` 导出 **1080×1440 PNG**（成员版默认 1 张）。内容编排校验失败或 PNG 导出失败时明确报错、修复后重试——**不把仅 HTML 的旧报告或旧分享卡当成完成交付**；
 7. **旧链路（仅兼容）**：`render_report.py`（报告 HTML）+ `build_share.py`（脱敏分享卡 HTML）保留以兼容既有调用，正常使用不得静默退回旧模板。
 
@@ -143,7 +135,7 @@ python3 scripts/export_png.py --html examples/<案例>/share.html --width 800 --
   --out share.png
 
 # 5) 改动评分相关内容后必须全量回归
-python3 -m unittest discover -s tests -v   # 本仓库含 tests/；zip 分发包不含
+python3 -m unittest discover -s tests -v   # tests/ 仅存在于开发仓库，不在分发包内
 ```
 
 **重生成检查清单**（render_editorial 校验器已强制执行，人工复核时对照）：
@@ -158,7 +150,7 @@ python3 -m unittest discover -s tests -v   # 本仓库含 tests/；zip 分发包
 
 ## 7. 第三方声明
 
-见 `THIRD_PARTY_NOTICES.md`：本项目未复制、未引入任何上游仓库代码（仅思路级研究，留痕于 `docs/reference-audit.md`），当前**无附带许可证义务**；其中 open-resume（AGPL-3.0）已明确决定不采纳其代码。
+见 `THIRD_PARTY_NOTICES.md`：本项目未复制、未引入任何上游仓库代码（仅思路级研究，留痕于开发仓库 `docs/reference-audit.md`），当前**无附带许可证义务**；其中 open-resume（AGPL-3.0）已明确决定不采纳其代码。
 
 ## 8. 已知限制
 

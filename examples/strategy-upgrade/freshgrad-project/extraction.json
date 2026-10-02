@@ -1,0 +1,167 @@
+{
+  "extraction_version": "jd-extract/0.1.1",
+  "ready_for_analysis": true,
+  "inputs": [
+    {
+      "source_id": "src-resume-1",
+      "kind": "resume",
+      "filename": "resume.md",
+      "path": "examples/strategy-upgrade/freshgrad-project/resume.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 合成候选人简历\n> synthetic: true；机构、经历与数据均为虚构。\n\n## 教育背景\n\n合成院校 · 统计学本科 · 2022.09–2026.06\n- 学习统计推断、实验设计与数据库课程\n- 课程研究中比较统计方法并撰写方法说明\n\n## 项目经历\n\n课程用户分析项目 · 数据处理成员 · 2025.09–2025.12\n- 使用 SQL 清洗课程样本并进行分组汇总\n- 制作用户行为分析图表并撰写分析报告\n- 根据样本分组结果整理指标定义和分析限制\n\n## 校园经历\n\n校园活动志愿者 · 2024.10\n- 协助现场签到和资料整理\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 合成候选人简历"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true；机构、经历与数据均为虚构。"
+        },
+        {
+          "locator": "L4",
+          "text": "## 教育背景"
+        },
+        {
+          "locator": "L6",
+          "text": "合成院校 · 统计学本科 · 2022.09–2026.06"
+        },
+        {
+          "locator": "L7",
+          "text": "- 学习统计推断、实验设计与数据库课程"
+        },
+        {
+          "locator": "L8",
+          "text": "- 课程研究中比较统计方法并撰写方法说明"
+        },
+        {
+          "locator": "L10",
+          "text": "## 项目经历"
+        },
+        {
+          "locator": "L12",
+          "text": "课程用户分析项目 · 数据处理成员 · 2025.09–2025.12"
+        },
+        {
+          "locator": "L13",
+          "text": "- 使用 SQL 清洗课程样本并进行分组汇总"
+        },
+        {
+          "locator": "L14",
+          "text": "- 制作用户行为分析图表并撰写分析报告"
+        },
+        {
+          "locator": "L15",
+          "text": "- 根据样本分组结果整理指标定义和分析限制"
+        },
+        {
+          "locator": "L17",
+          "text": "## 校园经历"
+        },
+        {
+          "locator": "L19",
+          "text": "校园活动志愿者 · 2024.10"
+        },
+        {
+          "locator": "L20",
+          "text": "- 协助现场签到和资料整理"
+        }
+      ],
+      "summary": {
+        "lines": 20,
+        "text_chars": 277,
+        "blocks": 14
+      }
+    },
+    {
+      "source_id": "src-jd-1",
+      "kind": "jd",
+      "filename": "jd-1.md",
+      "path": "examples/strategy-upgrade/freshgrad-project/jd-1.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 数据分析助理（合成 JD）\n> synthetic: true\n熟练使用 SQL 清洗与汇总数据\n制作分析图表并撰写分析报告\n具有正式论文发表经历者优先\n必须本科及以上学历\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 数据分析助理（合成 JD）"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true"
+        },
+        {
+          "locator": "L3",
+          "text": "熟练使用 SQL 清洗与汇总数据"
+        },
+        {
+          "locator": "L4",
+          "text": "制作分析图表并撰写分析报告"
+        },
+        {
+          "locator": "L5",
+          "text": "具有正式论文发表经历者优先"
+        },
+        {
+          "locator": "L6",
+          "text": "必须本科及以上学历"
+        }
+      ],
+      "summary": {
+        "lines": 6,
+        "text_chars": 89,
+        "blocks": 6
+      }
+    },
+    {
+      "source_id": "src-jd-2",
+      "kind": "jd",
+      "filename": "jd-2.md",
+      "path": "examples/strategy-upgrade/freshgrad-project/jd-2.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 统计研究助理（合成 JD）\n> synthetic: true\n统计学专业课程背景优先\n掌握统计推断与实验设计方法\n撰写统计方法说明与分析限制\n必须本科及以上学历\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 统计研究助理（合成 JD）"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true"
+        },
+        {
+          "locator": "L3",
+          "text": "统计学专业课程背景优先"
+        },
+        {
+          "locator": "L4",
+          "text": "掌握统计推断与实验设计方法"
+        },
+        {
+          "locator": "L5",
+          "text": "撰写统计方法说明与分析限制"
+        },
+        {
+          "locator": "L6",
+          "text": "必须本科及以上学历"
+        }
+      ],
+      "summary": {
+        "lines": 6,
+        "text_chars": 84,
+        "blocks": 6
+      }
+    }
+  ]
+}

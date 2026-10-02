@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑批注风发布卡片 · 社群运营专员（1080×1440 · 2 张）</title>
+<style>
+body{background:#1E1E24;color:#E4E4E7;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",Roboto,sans-serif;
+padding:32px 20px;min-height:100vh}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.preview-header{max-width:1280px;margin:0 auto 32px;display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:16px;border-bottom:1px solid #3F3F46;padding-bottom:20px}
+.preview-title h1{font-size:24px;font-weight:800;color:#FFF;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.preview-title p{font-size:14px;color:#A1A1AA;margin-top:6px}
+.preview-nav{display:flex;gap:10px}
+.btn{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:700;background:#27272A;color:#FFF;
+border:1px solid #3F3F46;cursor:pointer;text-decoration:none}
+.btn:hover{background:#3F3F46}
+.btn-primary{background:#DC2626;border-color:#EF4444}
+.btn-primary:hover{background:#B91C1C}
+.gallery-container{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:32px;align-items:start}
+.card-preview-wrap{background:#27272A;border:1px solid #3F3F46;border-radius:12px;overflow:hidden;
+display:flex;flex-direction:column}
+.card-meta-bar{padding:12px 18px;display:flex;justify-content:space-between;align-items:center;background:#18181B;
+border-bottom:1px solid #3F3F46}
+.card-meta-title{font-size:14px;font-weight:800;color:#FFF}
+.card-meta-dim{font-size:12px;color:#A1A1AA;background:#27272A;padding:2px 8px;border-radius:4px}
+.scaled-frame-container{width:100%;aspect-ratio:3/4;position:relative;background:#FBF9F5;overflow:hidden}
+.card-canvas.scaled{transform-origin:top left}
+.card-download-row{padding:12px 18px;background:#18181B;border-top:1px solid #3F3F46;display:flex;
+justify-content:space-between;align-items:center;gap:8px}
+</style>
+<style id="cardCss">
+*{box-sizing:border-box;margin:0;padding:0}
+.card-canvas{width:1080px;height:1440px;padding:56px 60px;display:flex;flex-direction:column;
+justify-content:space-between;position:relative;background:#FBF9F5;overflow:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+color:#18181B;-webkit-font-smoothing:antialiased}
+.header-bar{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #18181B;
+padding-bottom:18px;flex-shrink:0}
+.header-brand{font-size:18px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#52525B;
+display:flex;align-items:center;gap:12px}
+.header-stamp{border:2px solid #DC2626;color:#DC2626;padding:2px 10px;border-radius:4px;font-size:14px;font-weight:900;
+letter-spacing:.08em;transform:rotate(-2deg);background:#FFF}
+.header-page-num{font-size:16px;font-weight:800;color:#71717A;letter-spacing:.08em;background:#EFECE4;
+padding:4px 14px;border-radius:999px}
+.title-section{margin-top:6px;flex-shrink:0}
+.kicker-tag{display:inline-block;font-size:18px;font-weight:800;color:#DC2626;letter-spacing:.06em;margin-bottom:12px;
+background:#FEF2F2;border:1.5px solid #FCA5A5;padding:4px 14px;border-radius:6px}
+.main-headline{font-size:52px;font-weight:900;line-height:1.25;letter-spacing:-.02em;color:#18181B}
+.main-headline .highlight-red{color:#DC2626}
+.main-headline .underline-marker{background:linear-gradient(180deg,transparent 65%,rgba(220,38,38,.2) 65%);padding:0 4px}
+.loupe-container{background:#FFF;border:2px solid #E5E1D5;border-left:6px solid #DC2626;border-radius:12px;
+padding:24px 30px;box-shadow:0 8px 24px rgba(24,24,27,.04);position:relative}
+.loupe-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+.loupe-header-title{font-size:16px;font-weight:800;color:#71717A;letter-spacing:.06em;text-transform:uppercase}
+.loupe-badge{background:#FEF2F2;color:#DC2626;font-size:14px;font-weight:800;padding:2px 10px;border-radius:4px;
+border:1px solid #FCA5A5}
+.raw-resume-text{font-size:25px;color:#52525B;font-family:ui-monospace,Menlo,Consolas,monospace;line-height:1.5;
+background:#FAF8F5;padding:16px 20px;border-radius:8px;border:1px dashed #DDD8CC;word-break:break-word}
+.circle-burial{border:2.5px solid #DC2626;color:#DC2626;font-weight:900;padding:2px 8px;border-radius:6px;
+background:#FFF5F5;display:inline-block}
+.loupe-annotation{margin-top:14px;display:flex;align-items:flex-start;gap:12px;background:#FEF2F2;padding:14px 18px;
+border-radius:8px;border:1px solid #FECACA}
+.loupe-annotation-icon{background:#DC2626;color:#FFF;font-size:12px;font-weight:900;padding:2px 6px;border-radius:4px;
+white-space:nowrap;margin-top:4px;flex-shrink:0}
+.loupe-annotation-text{font-size:20px;font-weight:700;color:#991B1B;line-height:1.45}
+.findings-strip{display:flex;flex-direction:column;gap:14px}
+.finding-row{background:#FFF;border:1.5px solid #E5E1D5;border-radius:10px;padding:16px 24px;display:flex;
+align-items:center;gap:18px}
+.finding-idx{width:38px;height:38px;background:#18181B;color:#FFF;font-size:18px;font-weight:900;border-radius:8px;
+display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.finding-idx.red{background:#DC2626}
+.finding-body{font-size:22px;font-weight:700;color:#27272A;line-height:1.4}
+.finding-body strong{color:#DC2626}
+.verdict-banner{background:#18181B;color:#FFF;border-radius:12px;padding:22px 32px;display:flex;
+justify-content:space-between;align-items:center;gap:20px}
+.verdict-banner-left h3{font-size:27px;font-weight:900;color:#FFF;margin-bottom:4px;line-height:1.3}
+.verdict-banner-left p{font-size:15px;color:#A1A1AA;line-height:1.4}
+.verdict-banner-score{text-align:right;border-left:2px solid #3F3F46;padding-left:28px;flex-shrink:0}
+.verdict-score-num{font-size:52px;font-weight:900;line-height:1;color:#FFF;letter-spacing:-.04em}
+.verdict-score-desc{font-size:13px;color:#A1A1AA;margin-top:4px}
+.footer-bar{border-top:1.5px solid #E5E1D5;padding-top:14px;display:flex;justify-content:space-between;
+font-size:14px;color:#71717A;gap:12px;flex-shrink:0}
+.diff-list{display:flex;flex-direction:column;gap:18px}
+.diff-card{background:#FFF;border:2px solid #E5E1D5;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(24,24,27,.03)}
+.diff-card-header{background:#F5F2EA;padding:10px 18px;border-bottom:1px solid #E5E1D5;display:flex;
+justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.diff-card-title{font-size:18px;font-weight:800;color:#18181B}
+.diff-card-tag{font-size:13px;font-weight:800;padding:3px 10px;border-radius:4px;background:#FFF;
+border:1px solid #D4CEBE;color:#52525B}
+.diff-card-tag.alert{color:#DC2626;border-color:#FCA5A5;background:#FEF2F2}
+.diff-card-tag.good{color:#059669;border-color:#86EFAC;background:#F0FDF4}
+.diff-card-body{padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.diff-box{border-radius:8px;padding:12px 16px;font-size:16.5px;line-height:1.55}
+.diff-box.before{background:#FAF9F6;border:1.5px solid #E4E1D8;color:#71717A}
+.diff-box.after{background:#F0FDF4;border:1.5px solid #86EFAC;color:#064E3B;font-weight:600}
+.diff-box-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.diff-box.before .diff-box-label{color:#A1A1AA}
+.diff-box.after .diff-box-label{color:#059669}
+.strike-text{text-decoration:line-through;text-decoration-color:#DC2626;text-decoration-thickness:2px;color:#A1A1AA}
+.green-badge{background:rgba(16,185,129,.18);color:#065F46;padding:1px 6px;border-radius:4px;font-weight:800}
+.diff-annotation{background:#FEF2F2;border-top:1.5px solid #FECACA;padding:10px 18px;display:flex;
+align-items:flex-start;gap:10px}
+.diff-annotation-stamp{background:#DC2626;color:#FFF;font-size:12px;font-weight:900;padding:2px 8px;border-radius:4px;
+white-space:nowrap;margin-top:2px;flex-shrink:0}
+.diff-annotation-text{font-size:20px;color:#991B1B;line-height:1.5;font-weight:600}
+.diff-annotation-text strong{font-weight:800;color:#7F1D1D}
+.principles-box{background:#18181B;color:#FFF;border-radius:12px;padding:14px 22px}
+.principles-title{font-size:17px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#F87171;
+margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:18px;color:#E4E4E7;font-weight:600}
+.principle-item{display:flex;align-items:center;gap:6px;line-height:1.35}
+.principle-item::before{content:"✓";color:#4ADE80;font-weight:900}
+.actions-list{display:flex;flex-direction:column;gap:18px}
+.action-card{background:#FFF;border:2px solid #E5E1D5;border-radius:12px;padding:20px 28px;
+box-shadow:0 4px 16px rgba(24,24,27,.03);position:relative}
+.action-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.action-step-num{background:#18181B;color:#FFF;font-size:14px;font-weight:800;padding:4px 12px;border-radius:6px;letter-spacing:.04em}
+.action-step-num.primary{background:#DC2626}
+.action-timing-tag{font-size:14px;font-weight:800;color:#71717A;background:#F5F2EA;padding:3px 10px;border-radius:4px}
+.action-card-title{font-size:23px;font-weight:900;color:#18181B;line-height:1.35;margin-bottom:10px}
+.action-card-desc{font-size:17px;color:#52525B;line-height:1.55;margin-bottom:12px}
+.template-box{background:#FAF8F5;border:1.5px dashed #DDD8CC;border-left:4px solid #DC2626;border-radius:6px;
+padding:12px 18px;font-size:17px;color:#18181B;line-height:1.5}
+.template-box.green{border-left-color:#059669;background:#F0FDF4;border-color:#BBF7D0}
+.template-label{font-size:12px;font-weight:800;color:#71717A;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.template-content{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:18px;font-weight:700;color:#18181B}
+.check-chips-card{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip-card{background:#FFF;border:1.5px solid #D4CEBE;padding:4px 12px;border-radius:6px;font-size:15px;font-weight:700;color:#27272A}
+.chip-card.highlight{border-color:#DC2626;color:#DC2626;background:#FEF2F2}
+.bottom-takeaway-banner{background:#18181B;color:#FFF;border-radius:12px;padding:22px 30px;display:flex;
+align-items:center;gap:20px}
+.takeaway-icon{font-size:32px;color:#F87171;flex-shrink:0}
+.takeaway-text{font-size:18px;line-height:1.55;color:#E4E4E7}
+.takeaway-text strong{color:#FFF;font-weight:800}
+.judge-card{background:#FFF;border:2px solid #E5E1D5;border-radius:12px;padding:20px 26px}
+.judge-card-header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.judge-card-title{font-size:20px;font-weight:900;color:#18181B;line-height:1.35}
+.judge-card-text{font-size:17px;color:#52525B;line-height:1.55}
+.judge-card-text strong{color:#18181B}
+.judge-source{font-size:13px;font-weight:700;color:#71717A;margin-top:10px}
+/* 发现透视卡紧凑变体（三张判定卡 + 放大镜并排时的密度控制） */
+.findings-list-tight{display:flex;flex-direction:column;gap:12px}
+.findings-list-tight .judge-card{padding:14px 20px}
+.findings-list-tight .judge-card-title{font-size:19px;line-height:1.3}
+.findings-list-tight .judge-card-text{font-size:16px;line-height:1.5}
+.findings-list-tight .loupe-container{padding:14px 18px;margin-top:10px;border-radius:10px}
+.findings-list-tight .loupe-header{margin-bottom:8px}
+.findings-list-tight .raw-resume-text{font-size:20px;padding:10px 14px}
+.findings-list-tight .loupe-annotation{padding:10px 14px;margin-top:10px}
+.findings-list-tight .loupe-annotation-text{font-size:18px}
+</style>
+</head>
+<body>
+<div class="preview-header">
+  <div class="preview-title">
+    <h1><span>发布卡片 · 编辑批注风</span><span style="font-size:12px;background:#DC2626;color:#FFF;padding:2px 8px;border-radius:4px;">1080×1440 PNG · 2 张</span></h1>
+    <p>纸白底 · 黑大标 · 红批注 · 局部放大 · 改前改后对照 —— 预览与导出共用同一排版，无样式漂移</p>
+  </div>
+  <div class="preview-nav"><button class="btn btn-primary" id="btnExportAll">导出全部 PNG</button></div>
+</div>
+<div class="gallery-container">
+  <div class="card-preview-wrap">
+    <div class="card-meta-bar"><span class="card-meta-title">01 · 合成案例</span>
+    <span class="card-meta-dim">1080 × 1440</span></div>
+    <div class="scaled-frame-container" data-card-idx="1"><div class="card-canvas scaled" data-export="card-01">
+  <div class="header-bar">
+    <div class="header-brand">RESUME FIT AUDIT <span class="header-stamp">编辑部审校定稿</span></div>
+    <div class="header-page-num">CARD 01 / 02 · 合成案例</div>
+  </div>
+
+  <div class="title-section"><h1 class="main-headline">整份简历先排好顺序</h1></div>
+
+  <div class="findings-strip"><div class="finding-row"><div class="finding-idx red">01</div><div class="finding-body"><strong>相关证据前移：</strong>结构调整不改变证据分</div></div></div>
+  <div class="verdict-banner">
+    <div class="verdict-banner-left"><h3>【先把相关证据放到前面】</h3>
+    <p>改句子不涨匹配分，但决定招聘方 10 秒内能不能看到事实</p></div>
+    <div class="verdict-banner-score"><div class="verdict-score-num">100</div>
+    <div class="verdict-score-desc">岗位证据覆盖分</div></div>
+  </div>
+  <div class="footer-bar">
+    <span>分数 = 简历证据对 JD 的覆盖度，不代表录取概率</span>
+    <span>脱敏合成案例 · CASE</span>
+  </div>
+</div></div>
+    <div class="card-download-row"><span style="font-size:13px;color:#A1A1AA;">痛点透视与结论</span>
+    <button class="btn" data-export-one="01">下载 PNG</button></div>
+  </div>
+  <div class="card-preview-wrap">
+    <div class="card-meta-bar"><span class="card-meta-title">02 · 合成案例</span>
+    <span class="card-meta-dim">1080 × 1440</span></div>
+    <div class="scaled-frame-container" data-card-idx="2"><div class="card-canvas scaled" data-export="card-02">
+  <div class="header-bar">
+    <div class="header-brand">RESUME FIT AUDIT <span class="header-stamp">编辑部审校定稿</span></div>
+    <div class="header-page-num">CARD 02 / 02 · 行动清单</div>
+  </div>
+
+  <div class="title-section"><h1 class="main-headline">先调整结构，再补事实</h1></div>
+  <div class="actions-list">
+  <div class="action-card">
+    <div class="action-card-header"><span class="action-step-num ">第1步</span>
+    <span class="action-timing-tag"></span></div>
+    <div class="action-card-title">按岗位要求重排整份简历</div>
+    <div class="action-card-desc"></div><div class="template-box"><div class="template-label">话术模板</div><div class="template-content">按结构方案调整模块和条目顺序，保留原任职日期。</div></div>
+  </div>
+  <div class="action-card">
+    <div class="action-card-header"><span class="action-step-num ">第2步</span>
+    <span class="action-timing-tag"></span></div>
+    <div class="action-card-title">核对本人贡献和成果归属</div>
+    <div class="action-card-desc"></div>
+  </div>
+  <div class="action-card">
+    <div class="action-card-header"><span class="action-step-num ">第3步</span>
+    <span class="action-timing-tag"></span></div>
+    <div class="action-card-title">补齐尚未写清的事实</div>
+    <div class="action-card-desc"></div>
+  </div></div>
+  <div class="bottom-takeaway-banner"><div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">改句子不会让匹配分上涨，分数只认写进简历的事实。</div></div>
+  <div class="card-brand-action-row" style="margin-top:14px;padding:12px 20px;background:#FFF;border:1.5px solid #E5E1D5;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="background:#18181B;color:#FFF;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:800;">🔍 搜 欧八同学</span>
+      <span style="font-size:14px;color:#52525B;font-weight:700;">生成自己的简历体检报告</span>
+    </div>
+    <span style="font-size:12px;color:#71717A;font-weight:600;">深度诊断 · 脱敏求职小样</span>
+  </div>
+  <div class="footer-bar">
+    <span>分数 = 简历证据对 JD 的覆盖度，不代表录取概率</span>
+    <span>脱敏合成案例 · CASE</span>
+  </div>
+</div></div>
+    <div class="card-download-row"><span style="font-size:13px;color:#A1A1AA;">痛点透视与结论</span>
+    <button class="btn" data-export-one="02">下载 PNG</button></div>
+  </div></div>
+<script>
+(function(){
+  function scaleCards(){
+    document.querySelectorAll('.scaled-frame-container').forEach(function(box){
+      var card = box.querySelector('.card-canvas');
+      card.style.transform = 'scale(' + (box.offsetWidth / 1080) + ')';
+    });
+  }
+  window.addEventListener('resize', scaleCards);
+  window.addEventListener('load', scaleFramesSoft);
+  function scaleFramesSoft(){ scaleCards(); }
+  setTimeout(scaleCards, 60);
+
+  function exportCard(idx, done){
+    var card = document.querySelector('[data-export="card-' + idx + '"]');
+    var clone = card.cloneNode(true);
+    clone.style.transform = 'none';
+    clone.classList.remove('scaled');
+    var css = document.getElementById('cardCss').outerHTML;
+    var wrap = document.createElement('div');
+    wrap.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+    wrap.appendChild(document.createElement('div'));
+    wrap.firstChild.innerHTML = css;
+    wrap.firstChild.appendChild(clone);
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440">' +
+      '<foreignObject width="100%" height="100%">' + new XMLSerializer().serializeToString(wrap) + '</foreignObject></svg>';
+    var blob = new Blob([svg], {type: 'image/svg+xml;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var img = new Image();
+    img.onload = function(){
+      var canvas = document.createElement('canvas');
+      canvas.width = 1080; canvas.height = 1440;
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FBF9F5';
+      ctx.fillRect(0, 0, 1080, 1440);
+      ctx.drawImage(img, 0, 0);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(function(pngBlob){
+        var link = document.createElement('a');
+        link.download = 'card-' + idx + '.png';
+        link.href = URL.createObjectURL(pngBlob);
+        link.click();
+        setTimeout(function(){ URL.revokeObjectURL(link.href); }, 4000);
+        done(true);
+      }, 'image/png');
+    };
+    img.onerror = function(){ done(false); };
+    img.src = url;
+  }
+  document.getElementById('btnExportAll').addEventListener('click', function(){
+    var btn = this; btn.disabled = true; var old = btn.textContent;
+    var total = 2;
+    var queue = [];
+    for (var i = 1; i <= total; i++) queue.push(i);
+    (function next(){
+      if (!queue.length) { btn.textContent = old; btn.disabled = false; return; }
+      var i = queue.shift();
+      btn.textContent = '导出中 ' + i + '/' + total + '…';
+      exportCard(i, function(){ setTimeout(next, 350); });
+    })();
+  });
+  document.querySelectorAll('[data-export-one]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = btn.getAttribute('data-export-one');
+      var old = btn.textContent; btn.textContent = '导出中…'; btn.disabled = true;
+      exportCard(idx, function(){ btn.textContent = old; btn.disabled = false; });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+  "extraction_version": "jd-extract/0.1.1",
+  "ready_for_analysis": true,
+  "inputs": [
+    {
+      "source_id": "src-resume-1",
+      "kind": "resume",
+      "filename": "resume.md",
+      "path": "examples/strategy-upgrade/older-relevant-work/resume.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 合成候选人简历\n> synthetic: true；机构、经历与数据均为虚构。\n\n## 教育背景\n\n合成院校 · 本科 · 管理学 · 2011.09–2015.06\n- 学习统计与管理基础\n\n## 工作经历\n\n合成机构乙 · 行政助理 · 2023.01–2026.09\n- 整理报销材料并归档会议纪要\n- 参与办公用品采购与库存记录\n\n合成机构甲 · 社群运营专员 · 2020.01–2022.12\n- 运营用户社群，定期整理用户反馈\n- 每周使用 Excel 汇总活动参与数据并输出周报\n- 参与活动执行，团队活动参与率达到 25%，本人负责签到与反馈整理\n\n## 技能清单\n\n工具使用\n- Excel（透视表与数据整理）\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 合成候选人简历"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true；机构、经历与数据均为虚构。"
+        },
+        {
+          "locator": "L4",
+          "text": "## 教育背景"
+        },
+        {
+          "locator": "L6",
+          "text": "合成院校 · 本科 · 管理学 · 2011.09–2015.06"
+        },
+        {
+          "locator": "L7",
+          "text": "- 学习统计与管理基础"
+        },
+        {
+          "locator": "L9",
+          "text": "## 工作经历"
+        },
+        {
+          "locator": "L11",
+          "text": "合成机构乙 · 行政助理 · 2023.01–2026.09"
+        },
+        {
+          "locator": "L12",
+          "text": "- 整理报销材料并归档会议纪要"
+        },
+        {
+          "locator": "L13",
+          "text": "- 参与办公用品采购与库存记录"
+        },
+        {
+          "locator": "L15",
+          "text": "合成机构甲 · 社群运营专员 · 2020.01–2022.12"
+        },
+        {
+          "locator": "L16",
+          "text": "- 运营用户社群，定期整理用户反馈"
+        },
+        {
+          "locator": "L17",
+          "text": "- 每周使用 Excel 汇总活动参与数据并输出周报"
+        },
+        {
+          "locator": "L18",
+          "text": "- 参与活动执行，团队活动参与率达到 25%，本人负责签到与反馈整理"
+        },
+        {
+          "locator": "L20",
+          "text": "## 技能清单"
+        },
+        {
+          "locator": "L22",
+          "text": "工具使用"
+        },
+        {
+          "locator": "L23",
+          "text": "- Excel（透视表与数据整理）"
+        }
+      ],
+      "summary": {
+        "lines": 23,
+        "text_chars": 318,
+        "blocks": 16
+      }
+    },
+    {
+      "source_id": "src-jd-1",
+      "kind": "jd",
+      "filename": "jd-1.md",
+      "path": "examples/strategy-upgrade/older-relevant-work/jd-1.md",
+      "status": "ok",
+      "reason_code": null,
+      "guidance": null,
+      "parse_warnings": [],
+      "format": "text",
+      "text": "# 社群运营专员（合成 JD）\n> synthetic: true\n熟练使用 Excel 整理活动数据并输出周报\n运营用户社群并整理用户反馈\n有社群活动执行经验者优先\n必须本科及以上学历\n",
+      "blocks": [
+        {
+          "locator": "L1",
+          "text": "# 社群运营专员（合成 JD）"
+        },
+        {
+          "locator": "L2",
+          "text": "> synthetic: true"
+        },
+        {
+          "locator": "L3",
+          "text": "熟练使用 Excel 整理活动数据并输出周报"
+        },
+        {
+          "locator": "L4",
+          "text": "运营用户社群并整理用户反馈"
+        },
+        {
+          "locator": "L5",
+          "text": "有社群活动执行经验者优先"
+        },
+        {
+          "locator": "L6",
+          "text": "必须本科及以上学历"
+        }
+      ],
+      "summary": {
+        "lines": 6,
+        "text_chars": 94,
+        "blocks": 6
+      }
+    }
+  ]
+}

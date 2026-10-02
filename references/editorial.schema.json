@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "jd-match-editorial 内容编排契约",
-  "description": "MYW-72/MYW-73 起为默认交付链路的内容编排契约。只管「怎么说」——承载报告导语、重点诊断、成员版分享卡内容组（member_card）、案例版卡片内容组（cards）、发布标题与正文；分数/状态/建议一律来自评分报告 JSON（jd-match-report/0.1.0），本契约禁止携带 score。成员版与案例版共用同一评分结果与证据，不另算分。文字遵循 references/content-standards.md（jd-match-voice/0.2.0），品牌文案来自 references/brand.json。语义校验（引用可解析、引号逐字、数字溯源、职责词零新增、脱敏扫描）由 scripts/render_editorial.py 的 validate_editorial 实施，强于本结构 Schema。",
+  "description": "MYW-72/MYW-73 起为默认交付链路的内容编排契约。只管「怎么说」——承载报告导语、重点诊断、成员版分享卡内容组（member_card）、案例版卡片内容组（cards）、发布标题与正文；分数/状态/建议一律来自评分报告 JSON（jd-match-report/0.1.0），本契约禁止携带 score。成员版与案例版共用同一评分结果与证据，不另算分。文字遵循 references/content-standards.md（jd-match-voice/0.3.0），品牌文案来自 references/brand.json。语义校验（引用可解析、引号逐字、数字溯源、职责词零新增、脱敏扫描）由 scripts/render_editorial.py 的 validate_editorial 实施，强于本结构 Schema。 0.3.0 的 resume_strategy 承载有证据的定性编辑策略，不参与评分；结构、引用、同经历事实归属与展示由校验器共同约束。",
   "type": "object",
   "required": [
     "editorial_version",
@@ -23,14 +23,17 @@
   "properties": {
     "editorial_version": {
       "enum": [
+        "jd-match-editorial/0.3.0",
         "jd-match-editorial/0.2.0",
         "jd-match-editorial/0.1.0"
       ],
-      "description": "0.2.0：含 member_card 成员版内容组（默认交付口径）；0.1.0：旧编排，仅保留读取兼容，不得用于新交付"
+      "description": "0.3.0 为新交付默认：必含 resume_strategy 与 member_card；0.1.0/0.2.0 保留读取兼容。"
     },
     "voice_version": {
-      "const": "jd-match-voice/0.2.0",
-      "description": "表达契约版本（content-standards.md）"
+      "enum": [
+        "jd-match-voice/0.2.0",
+        "jd-match-voice/0.3.0"
+      ]
     },
     "case_id": {
       "type": "string",
@@ -613,6 +616,9 @@
           }
         }
       }
+    },
+    "resume_strategy": {
+      "$ref": "#/definitions/resumeStrategy"
     }
   },
   "definitions": {
@@ -668,7 +674,617 @@
           "description": "行动卡底部箴言"
         }
       }
+    },
+    "strategyClaim": {
+      "type": "object",
+      "required": [
+        "text",
+        "basis",
+        "req_ids",
+        "evidence_ids",
+        "answer_ids",
+        "item_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis": {
+          "enum": [
+            "fact",
+            "inference",
+            "question"
+          ]
+        },
+        "req_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "answer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "strategyInventoryItem": {
+      "type": "object",
+      "required": [
+        "item_id",
+        "kind",
+        "parent_id",
+        "original_order",
+        "label",
+        "raw_quote",
+        "evidence_ids",
+        "req_ids",
+        "disposition",
+        "rationale"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "pattern": "^item-[a-z0-9-]+$"
+        },
+        "kind": {
+          "enum": [
+            "section",
+            "entry",
+            "bullet"
+          ]
+        },
+        "parent_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "original_order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "req_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "disposition": {
+          "enum": [
+            "keep",
+            "promote",
+            "compress",
+            "omit"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_kind": {
+          "enum": [
+            "work",
+            "internship",
+            "project",
+            "education",
+            "campus",
+            "skills",
+            "summary",
+            "other"
+          ]
+        }
+      }
+    },
+    "strategyBlueprintEntry": {
+      "type": "object",
+      "required": [
+        "entry_id",
+        "rationale",
+        "bullet_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bullet_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "strategyBlueprintSection": {
+      "type": "object",
+      "required": [
+        "section_id",
+        "rationale",
+        "entries"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "section_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/strategyBlueprintEntry"
+          }
+        }
+      }
+    },
+    "strategyInsight": {
+      "type": "object",
+      "required": [
+        "entry_id",
+        "problem",
+        "role",
+        "actions",
+        "outputs",
+        "changes",
+        "skills",
+        "impact"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "problem": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "role": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "actions": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "outputs": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "changes": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "skills": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "impact": {
+          "$ref": "#/definitions/strategyClaim"
+        }
+      }
+    },
+    "strategyRecruiterReview": {
+      "type": "object",
+      "required": [
+        "first_impression",
+        "buried_evidence",
+        "generic_statements",
+        "concerns"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "first_impression": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyClaim"
+          }
+        },
+        "buried_evidence": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyClaim"
+          }
+        },
+        "generic_statements": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyClaim"
+          }
+        },
+        "concerns": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyConcern"
+          }
+        }
+      }
+    },
+    "strategyConcern": {
+      "type": "object",
+      "required": [
+        "observation",
+        "interview_question",
+        "change"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "observation": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "interview_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "change": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "strategyKeyword": {
+      "type": "object",
+      "required": [
+        "concept",
+        "req_ids",
+        "status",
+        "observation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "concept": {
+          "type": "string",
+          "minLength": 1
+        },
+        "req_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "status": {
+          "enum": [
+            "present",
+            "equivalent",
+            "underexplained",
+            "missing_evidence"
+          ]
+        },
+        "observation": {
+          "$ref": "#/definitions/strategyClaim"
+        }
+      }
+    },
+    "strategyAtsReview": {
+      "type": "object",
+      "required": [
+        "keywords",
+        "readability",
+        "format_status",
+        "format_observations"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyKeyword"
+          }
+        },
+        "readability": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyClaim"
+          }
+        },
+        "format_status": {
+          "enum": [
+            "text_only",
+            "visual_checked",
+            "unverified"
+          ]
+        },
+        "format_observations": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyClaim"
+          }
+        }
+      }
+    },
+    "strategyRevision": {
+      "type": "object",
+      "required": [
+        "order",
+        "change",
+        "location_item_ids",
+        "impact",
+        "rewrite_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "change": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location_item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "impact": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "rewrite_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "strategyMissingFact": {
+      "type": "object",
+      "required": [
+        "gap",
+        "ask",
+        "where_to_find",
+        "item_ids",
+        "req_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "gap": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ask": {
+          "type": "string",
+          "minLength": 1
+        },
+        "where_to_find": {
+          "type": "string",
+          "minLength": 1
+        },
+        "item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "req_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "resumeStrategy": {
+      "type": "object",
+      "required": [
+        "job_id",
+        "order_basis",
+        "inventory",
+        "job_focus",
+        "blueprint",
+        "experience_insights",
+        "recruiter_review",
+        "ats_review",
+        "revision_priorities",
+        "missing_facts",
+        "answer_links"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order_basis": {
+          "enum": [
+            "extracted_text",
+            "visual_verified",
+            "unverified"
+          ]
+        },
+        "inventory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/strategyInventoryItem"
+          }
+        },
+        "job_focus": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "concept",
+              "req_ids",
+              "jd_quote",
+              "business_problem"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "concept": {
+                "type": "string",
+                "minLength": 1
+              },
+              "req_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              },
+              "jd_quote": {
+                "type": "string",
+                "minLength": 1
+              },
+              "business_problem": {
+                "$ref": "#/definitions/strategyClaim"
+              }
+            }
+          },
+          "maxItems": 10
+        },
+        "blueprint": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/strategyBlueprintSection"
+          }
+        },
+        "experience_insights": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyInsight"
+          }
+        },
+        "recruiter_review": {
+          "$ref": "#/definitions/strategyRecruiterReview"
+        },
+        "ats_review": {
+          "$ref": "#/definitions/strategyAtsReview"
+        },
+        "revision_priorities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/strategyRevision"
+          }
+        },
+        "missing_facts": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/strategyMissingFact"
+          }
+        },
+        "answer_links": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "object",
+            "required": [
+              "answer_id",
+              "entry_id"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "answer_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entry_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
     }
   },
-  "_version_policy": "结构或字段语义变更升次版本号（0.1.x → 0.2.0）并记变更；重大转向升主版本。0.1.0（2026-09-12，MYW-69 第 4 步）：初版。0.2.0（2026-09-15，MYW-72/MYW-73 T2）：新增 member_card 成员版内容组（0.2.0 必填）与渲染级脱敏白名单 redactions；cards 明确为案例版内容组；两者共用评分结果与证据，不另算分；0.1.0 编排保留读取兼容，但缺成员版，不得用于新交付。"
+  "_version_policy": "结构或字段语义变更升次版本号（0.1.x → 0.2.0）并记变更；重大转向升主版本。0.1.0（2026-09-12，MYW-69 第 4 步）：初版。0.2.0（2026-09-15，MYW-72/MYW-73 T2）：新增 member_card 成员版内容组（0.2.0 必填）与渲染级脱敏白名单 redactions；cards 明确为案例版内容组；两者共用评分结果与证据，不另算分；0.1.0 编排保留读取兼容，但缺成员版，不得用于新交付。 0.3.0（2026-10-02）：新增 resume_strategy、整份简历结构蓝图及深度诊断；voice 0.3.0；评分报告/rubric 版本不变，旧版仍可读取。",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "editorial_version": {
+            "const": "jd-match-editorial/0.3.0"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resume_strategy",
+          "member_card"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "editorial_version": {
+            "enum": [
+              "jd-match-editorial/0.2.0",
+              "jd-match-editorial/0.3.0"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "member_card"
+        ]
+      }
+    }
+  ]
 }
