@@ -1,8 +1,20 @@
-# 简历优化大师（jd-resume-match）
+# 简历优化大师（jd-resume-match）｜简历与 JD 匹配及证据审查
 
 投简历之前，先看整份简历该怎么排，再看句子该怎么改：按 JD 找证据、调整模块和经历顺序、深挖关键经历的价值，分数仍可复算，改写不编造事实。
 
 Python 3.9+（仅标准库，零依赖）· 270 项自动化测试 · MIT
+
+[使用示例](#quick-example) · [开始使用](#quick-start) · [English](#english-overview)
+
+<a id="quick-example"></a>
+
+## 一次使用示例
+
+**输入示例：** 一份简历，以及要求“独立推进跨团队项目”的 JD。简历只写“参与项目”，没有说明自己的行动。
+
+**输出：** 对该要求定位简历原文，标出支持程度和证据缺口；给出模块排序、经历深挖及改写建议。不会把“参与”直接改成“独立负责”，缺失数字会列为待补事实。
+
+可先看 [合成案例与报告](examples/README.md)，再按 [安装说明](#quick-start) 使用。分数衡量证据覆盖，不是 ATS 官方评分。
 
 ## 它解决什么问题
 
@@ -58,6 +70,8 @@ Python 3.9+（仅标准库，零依赖）· 270 项自动化测试 · MIT
 4. **脚本算分**：`score_report.py` 按量尺复算分数 / 建议 / 排名并回写；结构、引用、隐私校验任何一项不过，直接拒绝出报告。
 5. **渲染交付**：自包含 HTML 体检单 + 成员版分享卡 PNG + 案例版卡片与发布文案。
 6. **三句话结论**：怎么投、最值钱也最委屈的发现（带数字）、现在就能做的第一步。
+
+<a id="quick-start"></a>
 
 ## 安装
 
@@ -123,6 +137,39 @@ python3 scripts/render_editorial.py --input examples/<案例>/expected.json \
 - JD 链接抓取尽力而为（10 秒超时、2MB 上限）；需登录或反爬的页面会失败，引导你粘贴全文。
 - 初诊、澄清与证据引用的质量依赖宿主智能体；提取、校验、评分、渲染是确定性脚本，同输入必出同输出。
 - 分数基于 4 个合成案例、7 个岗位视角校准（rubric 0.1.0），衡量证据覆盖度，不预测任何录取概率，也不宣称「XX% 置信度」。
+
+## 常见问题
+
+### 匹配分可以当作录用概率吗？
+
+不能。它衡量简历证据对 JD 要求的覆盖程度，不是能力总分、ATS 官方分或录用概率。
+
+### 可以同时对比多个 JD 吗？
+
+可以。每个 JD 单独拆要求、引用证据和计算分数，硬门槛不会被高分抵消。
+
+### 会帮我补成绩或改掉工作时间吗？
+
+不会。结构与措辞建议保留雇主、职位、日期和事实，缺少的结果或数字会列入待补材料。
+
+### PDF 和离线能力有什么限制？
+
+不做 OCR，中文 PDF 提取可能乱码；可换成 DOCX/TXT/MD。离线的是 HTML 报告，分析仍由你的宿主模型完成。
+
+<a id="english-overview"></a>
+
+## English overview
+
+An evidence-based resume and job-description matching Skill with reproducible scoring, resume structure advice and an offline HTML report. It traces judgments to your original text and flags missing evidence instead of inventing achievements.
+
+See [installation](#quick-start) and [synthetic examples](examples/README.md). Python 3.9+ is required. Scores measure evidence coverage, not ATS scores or hiring probability. Scanned PDFs are not OCR-processed; analysis uses your agent's model even though the resulting report can be read offline.
+
+## 相关项目
+
+[欧八同学的 AI Skills 与跳槽涨薪工具合集](https://github.com/ouxxyy/ouba-classmate)，还可以接着使用：
+
+- [先筛选有来源证据的岗位](https://github.com/ouxxyy/job-search)
+- [再练习经历面试与重答](https://github.com/ouxxyy/ai-interviewer)
 
 ## 作者
 
