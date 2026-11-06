@@ -1,0 +1,22 @@
+{
+  "name": "jd-resume-match",
+  "version": "1.0.0",
+  "description": "AI简历优化大师：简历与 JD 匹配及证据审查，输出可复算评分、整份结构方案与自包含 HTML 求职体检单",
+  "author": {
+    "name": "欧八同学 (ouxxyy)",
+    "url": "https://github.com/ouxxyy/ouba-classmate"
+  },
+  "repository": "https://github.com/ouxxyy/jd-resume-match",
+  "homepage": "https://github.com/ouxxyy/ouba-classmate",
+  "license": "MIT",
+  "skills": "./",
+  "keywords": [
+    "resume-matching",
+    "jd-match",
+    "career",
+    "chinese",
+    "claude-skill",
+    "mcp",
+    "ouba-classmate"
+  ]
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jd-resume-match-mcp"
+version = "0.1.0"
+description = "基于证据引用与 jd-match-rubric/0.1.0 可复算评分规则的中文简历 vs JD 匹配 MCP Server（纯本地运行，零网络上传）"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "欧八同学 (ouxxyy)", email = "ouxxyy@users.noreply.github.com" }
+]
+keywords = ["mcp", "resume", "job-description", "career", "chinese", "claude-skill"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/ouxxyy/ouba-classmate"
+Repository = "https://github.com/ouxxyy/jd-resume-match"
+
+[project.scripts]
+jd-resume-match-mcp = "jd_resume_match_mcp.server:main"

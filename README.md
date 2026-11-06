@@ -1,8 +1,10 @@
 # AI简历优化大师（jd-resume-match）｜简历与 JD 匹配及证据审查
 
+> 📦 **本项目属于 [ouba-classmate 套件](https://github.com/ouxxyy/ouba-classmate)**：[一行安装全部 Skill](https://github.com/ouxxyy/ouba-classmate#install) · [查看《中文 AI 求职 Skill 公开横评》](https://github.com/ouxxyy/ouba-classmate/tree/main/benchmark)
+
 投简历之前，先看整份简历该怎么排，再看句子该怎么改：按 JD 找证据、调整模块和经历顺序、深挖关键经历的价值，分数仍可复算，改写不编造事实。
 
-Python 3.9+（仅标准库，零依赖）· 270 项自动化测试 · MIT
+Python 3.9+（仅标准库，零依赖）· 270 项自动化测试 · 内置 MCP Server（`uvx` 一键启动）· MIT
 
 > [!TIP]
 > 🎁 扫码关注公众号「欧八同学」，免费领取 AI 案例与 Skill《大厂产品AI经验编程 200 套》→ [去扫码](#author)
@@ -92,6 +94,25 @@ git clone https://github.com/ouxxyy/jd-resume-match.git ~/.claude/skills/jd-resu
 ```
 
 仓库根目录就是 skill 本体，clone 即可用。想装得干净（不带 tests / docs），从 [Releases](https://github.com/ouxxyy/jd-resume-match/releases) 下载 zip（附 sha256 校验值）后按包内 INSTALL.md 安装；仓库根的 `./install.sh <你的 skills 目录>` 也支持完整源码安装。全部安装路径见 [INSTALL.md](INSTALL.md)。
+
+### 方式二：作为 MCP Server 一键接入（Claude Desktop / Claude Code / Cursor / Codex）
+
+本仓库提供零依赖、纯本地运行的 MCP Server（见 [`mcp/`](mcp/) 与 [`server.json`](server.json)，命名空间 `io.github.ouxxyy/jd-resume-match`），只暴露 `match_resume(jd, resume)` 工具，返回按 `jd-match-rubric/0.1.0` 公式复算的分数、逐条 JD 要求的简历原文行号证据引用（`L1..Ln`）与缺口清单：
+
+```json
+{
+  "mcpServers": {
+    "jd-resume-match": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp",
+        "jd-resume-match-mcp"
+      ]
+    }
+  }
+}
+```
 
 ## 第一次使用
 
