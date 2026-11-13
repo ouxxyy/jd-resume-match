@@ -37,6 +37,22 @@ def fixture():
         revisions.append({'order':len(revisions)+1,'change':'调整条目信息顺序，保留事实归属。','location_item_ids':[bullet['item_id']],'impact':claim('已有具体行动，优先让读者看到。','fact',[bullet['item_id']],ev=bullet['evidence_ids']),'rewrite_ids':[rw['rewrite_id']]})
     work=next(x for x in inventory if x.get('entry_kind')=='work')
     insight={'entry_id':work['item_id'],**{f:claim(ids=[work['item_id']]) for f in ['problem','role','actions','outputs','changes','skills','impact']}}
-    strategy={'job_id':report['primary_job_id'],'order_basis':'extracted_text','inventory':inventory,'job_focus':[{'concept':r['text'],'req_ids':[r['req_id']],'jd_quote':r['jd_quote'],'business_problem':claim('岗位可能需要稳定交付相关工作。','inference',reqs=[r['req_id']])} for r in report['requirements']],'blueprint':blueprint,'experience_insights':[insight],'recruiter_review':{'first_impression':[],'buried_evidence':[],'generic_statements':[],'concerns':[]},'ats_review':{'keywords':[],'readability':[],'format_status':'text_only','format_observations':[]},'revision_priorities':revisions,'missing_facts':[],'answer_links':[]}
+    work_bullets=[x for x in inventory if x.get('parent_id')==work['item_id']]
+    ev_report=work_bullets[0]['evidence_ids'][0]
+    ev_comm=work_bullets[1]['evidence_ids'][0]
+    req_must=report['requirements'][0]['req_id']
+    req_norm=report['requirements'][1]['req_id']
+    req_bonus=report['requirements'][2]['req_id']
+    greetings={
+        'lead_entry_id':work['item_id'],
+        'selection_rationale':'针对运营数据周报与社群整理的核心要求，优先将用户运营专员经历放到开头。',
+        'gap_honesty':claim('SQL 仅见课程学习记录，沟通时明确说明为课程基础，不包装成实际工作应用。','fact',[work['item_id']],reqs=[req_bonus],ev=[report['evidence'][-1]['evidence_id']]),
+        'versions':[
+            {'style':'capability_first','label':'A. 能力优先','text':'您好，我有用户运营专员实践：每周使用 Excel 汇总新增用户与活动参与数据并输出运营周报，同时运营用户社群并更新常见问题文档。','focus_note':'优先对齐运营数据周报与社群运营两项核心能力要求，适合发给 HR 初筛。','req_ids':[req_must,req_norm],'evidence_ids':[ev_report,ev_comm],'answer_ids':[]},
+            {'style':'outcome_first','label':'B. 成果优先','text':'您好，我在用户运营岗位中每周稳定输出运营周报，并建立更新社群常见问题文档；如需数据整理与社群维护经验可详聊。','focus_note':'把周报与常见问题文档两项可验证交付置顶，适合发给业务负责人。','req_ids':[req_must,req_norm],'evidence_ids':[ev_report,ev_comm],'answer_ids':[]},
+            {'style':'concise_natural','label':'C. 简洁自然','text':'您好，看到贵司在招用户运营，我之前每周用 Excel 汇总数据出运营周报并维护用户社群和常见问题文档，想看下是否契合。','focus_note':'去模板化短句破冰，聚焦最核心的周报与社群实践。','req_ids':[req_must,req_norm],'evidence_ids':[ev_report,ev_comm],'answer_ids':[]},
+        ],
+    }
+    strategy={'job_id':report['primary_job_id'],'order_basis':'extracted_text','inventory':inventory,'job_focus':[{'concept':r['text'],'req_ids':[r['req_id']],'jd_quote':r['jd_quote'],'business_problem':claim('岗位可能需要稳定交付相关工作。','inference',reqs=[r['req_id']])} for r in report['requirements']],'blueprint':blueprint,'experience_insights':[insight],'recruiter_review':{'first_impression':[],'buried_evidence':[],'generic_statements':[],'concerns':[]},'ats_review':{'keywords':[],'readability':[],'format_status':'text_only','format_observations':[]},'revision_priorities':revisions,'missing_facts':[],'answer_links':[],'greetings':greetings}
     ed['resume_strategy']=strategy
     return report,ed

@@ -1105,8 +1105,29 @@ def _render_resume_strategy(report: Dict[str, Any], ed: Dict[str, Any]) -> str:
     format_note = "已检查提供的原始视觉材料，观察仅针对可见版式。" if ats["format_status"] == "visual_checked" else "原始视觉版式未核验；不据此断言双栏、字体或 ATS 解析失败。"
     ats_html += '<h4>格式与版式</h4><p>' + format_note + '</p>' + ''.join(claim_html(c) for c in ats["format_observations"])
     missing = ''.join(f'<li><strong>{text(f["gap"])}</strong><p>补什么：{text(f["ask"])}</p><p>去哪里找：{text(f["where_to_find"])}</p></li>' for f in strategy["missing_facts"])
+    greetings = strategy["greetings"]
+    greeting_cards = []
+    for idx, v in enumerate(greetings["versions"], start=1):
+        gid = f"copy-greeting-{idx}"
+        req_tags = "".join(f'<span class="chip">{text(reqs[r]["text"])}</span>' for r in v["req_ids"] if r in reqs)
+        greeting_cards.append(
+            f'<div class="action-step-card">'
+            f'<div class="action-step-badge{" red" if idx == 1 else ""}">{text(v["label"])}</div>'
+            f'<div class="action-step-body">'
+            f'<p>{text(v["focus_note"])}</p>'
+            f'<div class="copy-box"><span class="copy-snippet" id="{gid}">{esc(_redact(v["text"], reds))}</span>'
+            f'<button class="copy-btn" data-copy="{gid}">复制招呼语</button></div>'
+            f'<div class="check-chips">{req_tags}</div>'
+            f'</div></div>'
+        )
+    greetings_html = (
+        f'<p><strong>按 JD 置顶的核心经历：</strong>{label(greetings["lead_entry_id"])} —— {text(greetings["selection_rationale"])}</p>'
+        f'{claim_html(greetings["gap_honesty"])}'
+        f'<div class="actions-timeline">{"".join(greeting_cards)}</div>'
+    )
     return ('\n  <section class="section-card" id="section-strategy"><div class="section-tag-label"><span class="num">3</span> 整份结构方案 · 先排整份，再改条目</div>'
             + blueprint + '<h3>按影响排序的修改建议</h3><ol>' + revisions + '</ol>'
+            + '<h3>岗位打招呼语 · 三版本对比与复制</h3>' + greetings_html
             + accordion("全篇盘点与取舍依据", inventory) + accordion("岗位重点与招聘问题推断", focus)
             + accordion("关键经历的价值链", insights or '<p>当前材料不足以深挖，见待补事实。</p>')
             + accordion("招聘者审阅与筛选疑虑", recruiter) + accordion("关键词与可读性诊断", ats_html)

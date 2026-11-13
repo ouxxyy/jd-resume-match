@@ -1206,6 +1206,77 @@
         ]
       }
     ],
-    "answer_links": []
+    "answer_links": [],
+    "greetings": {
+      "lead_entry_id": "item-user-project",
+      "selection_rationale": "主目标为数据分析助理，岗位最看重 SQL 清洗汇总与分析图表报告，因此优先突出课程用户分析项目中的数据处理与报告交付，而非先介绍校园或泛泛背景。",
+      "gap_honesty": {
+        "text": "简历未见正式论文发表经历证明，仅有课程研究方法说明与课程项目报告，沟通时需如实说明未有正式发表，不把课程作业包装为论文发表。",
+        "basis": "fact",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "evidence_ids": [
+          "ev-freshgrad-project-4",
+          "ev-freshgrad-project-8"
+        ],
+        "answer_ids": [],
+        "item_ids": [
+          "item-method",
+          "item-report"
+        ]
+      },
+      "versions": [
+        {
+          "style": "capability_first",
+          "label": "A. 能力优先",
+          "text": "您好，我在课程用户分析项目中作为数据处理成员，使用 SQL 清洗课程样本并分组汇总，完成用户行为分析图表、分析报告及指标定义梳理。",
+          "focus_note": "对齐 SQL 清洗汇总与图表报告两项核心技能要求，如实保留课程项目身份边界。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-6",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "outcome_first",
+          "label": "B. 成果优先",
+          "text": "您好，我在用户分析项目中交付了用户行为分析图表、分析报告及指标定义与分析限制文档，底层使用 SQL 完成样本清洗和分组汇总，想自荐数据分析助理岗。",
+          "focus_note": "把图表、报告与指标定义文档三类具体交付物放最前面，不编造业务增长数字。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "concise_natural",
+          "label": "C. 简洁自然",
+          "text": "您好，我统计学本科在读，项目里做过 SQL 样本清洗汇总、用户行为图表和分析报告，想了解一下数据分析助理岗位的日常工作重点。",
+          "focus_note": "结合专业背景与 SQL 实战产出做短句破冰，简洁自然。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-7",
+            "ev-freshgrad-project-8"
+          ],
+          "answer_ids": []
+        }
+      ]
+    }
   }
 }

@@ -1032,6 +1032,73 @@
         ]
       }
     ],
-    "answer_links": []
+    "answer_links": [],
+    "greetings": {
+      "lead_entry_id": "item-work-operator",
+      "selection_rationale": "岗位最看重 Excel 整理运营数据并输出周报及社群运营，因此优先把用户运营专员这段直接工作经历放到开头，不以教育背景开篇。",
+      "gap_honesty": {
+        "text": "SQL 仅见课程学习记录，缺少工作实践证据；简历亦未给出量化业务结果，沟通时应如实界定边界，不把课程基础包装为实际业务应用。",
+        "basis": "fact",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "evidence_ids": [
+          "ev-education-first-work-12"
+        ],
+        "answer_ids": [],
+        "item_ids": [
+          "item-skills-sql"
+        ]
+      },
+      "versions": [
+        {
+          "style": "capability_first",
+          "label": "A. 能力优先",
+          "text": "您好，我有用户运营专员经历：每周使用 Excel 汇总新增用户与活动参与数据并输出运营周报，同时运营用户社群并整理更新常见问题文档。",
+          "focus_note": "优先对齐 Excel 运营周报与社群问题整理两项核心岗位要求，方便招聘者核对能力清单。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-5",
+            "ev-education-first-work-6",
+            "ev-education-first-work-7"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "outcome_first",
+          "label": "B. 成果优先",
+          "text": "您好，在用户运营岗位上，我保持每周用 Excel 汇总新增用户与活动数据交付运营周报，并持续维护社群常见问题文档与活动反馈归档。",
+          "focus_note": "将周报、文档与归档三项可核对的稳定交付置顶，原简历未给出增长数字因此不编造指标。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7",
+            "ev-education-first-work-8"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "concise_natural",
+          "label": "C. 简洁自然",
+          "text": "您好，看到贵司在招用户运营专员，我之前每周用 Excel 汇总数据出运营周报，也做用户社群和常见问题整理，想进一步了解团队需求。",
+          "focus_note": "精简寒暄、直入主题，保留最核心的数据周报与社群动作并附自然跟进。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2"
+          ],
+          "evidence_ids": [
+            "ev-education-first-work-6",
+            "ev-education-first-work-7"
+          ],
+          "answer_ids": []
+        }
+      ]
+    }
   }
 }

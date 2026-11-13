@@ -1122,6 +1122,94 @@
         }
       }
     },
+    "strategyGreetingVersion": {
+      "type": "object",
+      "required": [
+        "style",
+        "label",
+        "text",
+        "focus_note",
+        "req_ids",
+        "evidence_ids",
+        "answer_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "enum": [
+            "capability_first",
+            "outcome_first",
+            "concise_natural"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 240
+        },
+        "focus_note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "req_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "answer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "strategyGreetings": {
+      "type": "object",
+      "required": [
+        "lead_entry_id",
+        "selection_rationale",
+        "gap_honesty",
+        "versions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "lead_entry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selection_rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gap_honesty": {
+          "$ref": "#/definitions/strategyClaim"
+        },
+        "versions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/definitions/strategyGreetingVersion"
+          }
+        }
+      }
+    },
     "resumeStrategy": {
       "type": "object",
       "required": [
@@ -1135,7 +1223,8 @@
         "ats_review",
         "revision_priorities",
         "missing_facts",
-        "answer_links"
+        "answer_links",
+        "greetings"
       ],
       "additionalProperties": false,
       "properties": {
@@ -1248,6 +1337,9 @@
               }
             }
           }
+        },
+        "greetings": {
+          "$ref": "#/definitions/strategyGreetings"
         }
       }
     }

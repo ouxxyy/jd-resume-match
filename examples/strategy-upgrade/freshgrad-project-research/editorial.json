@@ -1278,6 +1278,80 @@
         ]
       }
     ],
-    "answer_links": []
+    "answer_links": [],
+    "greetings": {
+      "lead_entry_id": "item-education-entry",
+      "selection_rationale": "同一份简历改投统计研究助理时，JD 核心看重统计学背景、统计推断与实验设计及方法说明，因此打招呼语首段经历从课程项目切换为统计学本科与课程研究方法说明。",
+      "gap_honesty": {
+        "text": "统计推断与实验设计目前仅有课程学习与课程研究中的方法比较记录，尚未体现实际项目应用深度，沟通时明确以课程研究范围作答。",
+        "basis": "fact",
+        "req_ids": [
+          "req-2-2"
+        ],
+        "evidence_ids": [
+          "ev-freshgrad-project-3",
+          "ev-freshgrad-project-4"
+        ],
+        "answer_ids": [],
+        "item_ids": [
+          "item-education-courses",
+          "item-education-methods"
+        ]
+      },
+      "versions": [
+        {
+          "style": "capability_first",
+          "label": "A. 能力优先",
+          "text": "您好，我本科主修统计学，修读了统计推断与实验设计课程，并在课程研究中比较统计方法、撰写方法说明，同时在项目中梳理过指标定义与分析限制。",
+          "focus_note": "随研究助理 JD 切换切入点，先突出统计推断课程背景与方法比较、分析限制写作能力。",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "outcome_first",
+          "label": "B. 成果优先",
+          "text": "您好，我在统计学课程研究中完成了统计方法比较并撰写方法说明，同时在用户分析项目中输出过指标定义、分析限制与分析报告，希望沟通统计研究助理岗。",
+          "focus_note": "置顶方法说明、指标定义与分析限制文档等研究向可核对产出，不夸大成学术发表。",
+          "req_ids": [
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-8",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "concise_natural",
+          "label": "C. 简洁自然",
+          "text": "您好，我是统计学本科，学过统计推断与实验设计，课程研究写过方法说明也整理过项目分析限制，想确认下统计研究助理日常偏重哪些方向？",
+          "focus_note": "用专业匹配点与具体研究产出短句切入，结尾留低门槛确认问题。",
+          "req_ids": [
+            "req-2-1",
+            "req-2-2",
+            "req-2-3"
+          ],
+          "evidence_ids": [
+            "ev-freshgrad-project-2",
+            "ev-freshgrad-project-3",
+            "ev-freshgrad-project-4",
+            "ev-freshgrad-project-9"
+          ],
+          "answer_ids": []
+        }
+      ]
+    }
   }
 }

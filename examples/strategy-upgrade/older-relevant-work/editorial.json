@@ -1088,6 +1088,80 @@
         ]
       }
     ],
-    "answer_links": []
+    "answer_links": [],
+    "greetings": {
+      "lead_entry_id": "item-community",
+      "selection_rationale": "虽然社群运营专员任职时间早于行政助理，但直接覆盖活动数据周报、社群反馈整理和活动执行三项岗位要求，因此作为打招呼语首段经历置顶。",
+      "gap_honesty": {
+        "text": "近几年行政任职未体现社群或活动周报记录，且活动参与率达到 25% 属于团队整体表现、本人分工为签到与反馈整理，沟通时不将团队指标归因于个人。",
+        "basis": "fact",
+        "req_ids": [
+          "req-1-3"
+        ],
+        "evidence_ids": [
+          "ev-older-relevant-work-5",
+          "ev-older-relevant-work-11"
+        ],
+        "answer_ids": [],
+        "item_ids": [
+          "item-admin",
+          "item-community-event"
+        ]
+      },
+      "versions": [
+        {
+          "style": "capability_first",
+          "label": "A. 能力优先",
+          "text": "您好，我曾任社群运营专员，每周使用 Excel 汇总活动参与数据并输出周报，同时运营用户社群、定期整理用户反馈并参与活动执行。",
+          "focus_note": "优先突出较早但最贴合 JD 的社群运营经历，逐项对准活动周报与社群反馈能力要求。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-8",
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "outcome_first",
+          "label": "B. 成果优先",
+          "text": "您好，我在社群运营期间每周用 Excel 汇总活动数据输出周报、定期整理用户反馈；参与活动执行时团队活动参与率达到 25%，本人承担签到与反馈整理。",
+          "focus_note": "将周报交付与团队 25% 参与率背景前置，同时按原句严格区分团队成果与本人分工。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": []
+        },
+        {
+          "style": "concise_natural",
+          "label": "C. 简洁自然",
+          "text": "您好，看到贵司在招社群运营，我之前有社群运营经验，每周用 Excel 做活动数据周报并定期整理用户反馈，也参与过活动执行，方便沟通细节吗？",
+          "focus_note": "略去相关性较弱的行政经历，直接用最匹配的社群运营事实自然开场。",
+          "req_ids": [
+            "req-1-1",
+            "req-1-2",
+            "req-1-3"
+          ],
+          "evidence_ids": [
+            "ev-older-relevant-work-9",
+            "ev-older-relevant-work-10",
+            "ev-older-relevant-work-11"
+          ],
+          "answer_ids": []
+        }
+      ]
+    }
   }
 }

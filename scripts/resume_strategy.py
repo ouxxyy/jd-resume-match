@@ -10,6 +10,13 @@ from validate_report import EMAIL_RE, PHONE_RE, validate_schema
 
 SCHEMA_PATH = Path(__file__).resolve().parents[1] / "references/editorial.schema.json"
 
+GREETING_STYLES = ["capability_first", "outcome_first", "concise_natural"]
+GREETING_CLICHES = (
+    "学习能力强", "吃苦耐劳", "抗压能力", "踏实肯干", "性格开朗",
+    "热爱贵", "执行力强", "团队精神", "团队合作精神", "良好的沟通",
+)
+ARRIVAL_PATTERNS = ("到岗", "入职")
+
 
 def validate_editorial_structure(ed):
     """解析本地 $ref 并检查 Schema，含本契约使用的根层 if/then。"""
@@ -302,6 +309,70 @@ def validate_resume_strategy(report, strategy, *, digits_of, scope_words, voice_
             err("missing_facts", "待补事实必须关联位置或要求")
         for field in ("gap", "ask", "where_to_find"):
             prose(fact[field], declared_pool(fact, fact["item_ids"]), "missing_facts." + field)
+
+    # 岗位打招呼语（A/B/C 三版本 + 置顶经历 + 缺口诚实说明）确定性校验
+    greetings = strategy["greetings"]
+    lead_id = greetings["lead_entry_id"]
+    if lead_id not in items or items[lead_id]["kind"] != "entry" or lead_id not in seen:
+        err("greetings.lead_entry_id", "置顶经历必须是蓝图中保留的经历条目")
+    lead_item_ids = [lead_id] + [b["item_id"] for b in items.values() if b.get("parent_id") == lead_id]
+    primary_reqs = [r for r in reqs if reqs[r]["job_id"] == primary]
+    prose(greetings["selection_rationale"], declared_pool({"req_ids": primary_reqs}, lead_item_ids),
+          "greetings.selection_rationale")
+    claim(greetings["gap_honesty"], "greetings.gap_honesty")
+    has_gap = (
+        any(r["status"] != "supported" for r in reqs.values() if r["job_id"] == primary)
+        or any(g["status"] != "met" for j in report["jobs"] if j["job_id"] == primary for g in j.get("gates", []))
+    )
+    if has_gap and not greetings["gap_honesty"]["req_ids"]:
+        err("greetings.gap_honesty", "存在未完全满足的要求时，必须明确关联对应要求指出匹配不足")
+    versions = greetings["versions"]
+    if [v["style"] for v in versions] != GREETING_STYLES:
+        err("greetings.versions", "必须按顺序提供 capability_first、outcome_first、concise_natural 三个版本")
+    if len({v["text"].strip() for v in versions}) != len(versions):
+        err("greetings.versions", "三个打招呼语版本内容不得重复")
+    lead_eids = {
+        eid
+        for iid, it in items.items()
+        if (iid == lead_id or it.get("parent_id") == lead_id)
+        for eid in it["evidence_ids"]
+    }
+    for i, v in enumerate(versions):
+        where = f"greetings.versions[{i}]"
+        check_refs(v, where)
+        for aid in v["answer_ids"]:
+            if aid not in answers or primary not in answers[aid]["applies_to_jobs"]:
+                err(where, f"回答无法解析或不适用 {aid}")
+        if not (v["evidence_ids"] or v["answer_ids"]):
+            err(where, "打招呼语必须引用候选人简历证据或补充回答")
+        for eid in v["evidence_ids"]:
+            if eid in evs and evs[eid]["source_id"] not in resume_sources:
+                err(where, f"打招呼语证据必须来自简历原文 {eid}")
+        has_lead_ev = (
+            any(eid in lead_eids for eid in v["evidence_ids"])
+            or any(lead_id in answer_entries.get(aid, set()) for aid in v["answer_ids"])
+        )
+        if not has_lead_ev:
+            err(where, "打招呼语必须包含置顶核心经历的证据")
+        cand_pool = " ".join(
+            [evs[e]["quote"] for e in v["evidence_ids"] if e in evs]
+            + [answers[a]["answer"] for a in v["answer_ids"] if a in answers]
+        )
+        check_text(
+            v["text"], cand_pool, where + ".text", factual=True,
+            errors=errors, digits_of=digits_of, scope_words=scope_words, voice_lint=voice_lint,
+        )
+        for cliche in GREETING_CLICHES:
+            if cliche in v["text"] or cliche in v["focus_note"]:
+                err(where, f"出现空泛套话「{cliche}」，禁止用套话代替真实证据")
+        for pat in ARRIVAL_PATTERNS:
+            if pat in v["text"] and pat not in cand_pool:
+                err(where, f"不得编造到岗或入职时间「{pat}」")
+        if EMAIL_RE.search(v["text"]) or PHONE_RE.search(v["text"]):
+            err(where, "打招呼语不得包含联系方式原文")
+        full_pool = cand_pool + " " + " ".join(reqs[r]["jd_quote"] for r in v["req_ids"] if r in reqs)
+        prose(v["label"], full_pool, where + ".label")
+        prose(v["focus_note"], full_pool, where + ".focus_note")
     return errors
 
 

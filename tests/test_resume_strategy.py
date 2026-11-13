@@ -100,6 +100,35 @@ class StrategyContractTests(unittest.TestCase):
         q='邮箱 contact@example.com';self.report['evidence'][0]['quote']=q;self.s['inventory'][0].update(label=q,raw_quote=q);self.rejected('联系方式')
     def test_voice_pairing(self):self.ed['voice_version']='jd-match-voice/0.2.0';self.rejected('voice_version')
     def test_old_version_cannot_silently_ignore_strategy(self):self.ed['editorial_version']='jd-match-editorial/0.2.0';self.ed['voice_version']='jd-match-voice/0.2.0';self.rejected('仅用于')
+    def test_greeting_requires_three_ordered_styles(self):
+        self.s['greetings']['versions'].reverse()
+        self.rejected('按顺序提供')
+    def test_greeting_duplicate_text_rejected(self):
+        self.s['greetings']['versions'][1]['text']=self.s['greetings']['versions'][0]['text']
+        self.rejected('不得重复')
+    def test_greeting_lead_entry_must_be_kept_entry(self):
+        sec=next(x for x in self.s['inventory'] if x['kind']=='section')
+        self.s['greetings']['lead_entry_id']=sec['item_id']
+        self.rejected('保留的经历条目')
+    def test_greeting_must_cite_lead_entry_evidence(self):
+        edu=next(x for x in self.s['inventory'] if x.get('entry_kind')=='education')
+        self.s['greetings']['versions'][0]['evidence_ids']=edu['evidence_ids']
+        self.rejected('置顶核心经历')
+    def test_greeting_cliche_rejected(self):
+        self.s['greetings']['versions'][0]['text']='您好，我学习能力强、吃苦耐劳，每周使用 Excel 汇总数据输出运营周报。'
+        self.rejected('空泛套话')
+    def test_greeting_invented_number_or_jd_number_rejected(self):
+        self.s['greetings']['versions'][1]['text']='您好，我连续 3 年每周使用 Excel 汇总数据输出周报，助力转化提升 50%。'
+        self.rejected('数字')
+    def test_greeting_invented_arrival_time_rejected(self):
+        self.s['greetings']['versions'][2]['text']='您好，我有运营周报和社群经验，确认下周可随时到岗沟通。'
+        self.rejected('到岗')
+    def test_greeting_scope_word_rejected(self):
+        self.s['greetings']['versions'][0]['text']='您好，我独立主导过每周 Excel 运营周报与用户社群维护，希望进一步沟通。'
+        self.rejected('职责范围词')
+    def test_greeting_gap_honesty_requires_req_when_gap_exists(self):
+        self.s['greetings']['gap_honesty']['req_ids']=[]
+        self.rejected('指出匹配不足')
 
 
 class SyntheticModelAcceptanceTests(unittest.TestCase):
@@ -120,14 +149,17 @@ class SyntheticModelAcceptanceTests(unittest.TestCase):
         self.assertIn('2023.01',items[work['entries'][1]['entry_id']]['raw_quote'])
         team=next(x for x in items.values() if '团队活动参与率' in x['raw_quote'])
         self.assertIn('团队',team['raw_quote'])
+        self.assertEqual(s['greetings']['lead_entry_id'],'item-community')
     def test_freshgrad_project_precedes_education_for_data_role(self):
         p=ROOT/'examples/strategy-upgrade/freshgrad-project';s=json.loads((p/'editorial.json').read_text())['resume_strategy'];items={x['item_id']:x for x in s['inventory']}
         self.assertEqual(items[s['blueprint'][0]['section_id']]['label'],'项目经历')
+        self.assertEqual(s['greetings']['lead_entry_id'],'item-user-project')
     def test_primary_switch_rebuilds_strategy_and_keeps_scores(self):
         p=ROOT/'examples/strategy-upgrade/freshgrad-project-research'
         r=json.loads((p/'report.json').read_text());e=json.loads((p/'editorial.json').read_text());s=e['resume_strategy'];items={x['item_id']:x for x in s['inventory']}
         self.assertEqual(s['job_id'],'job-2');self.assertEqual(red.validate_editorial(r,e),[]);self.assertEqual(vr.check_report(r),[])
         self.assertEqual(items[s['blueprint'][0]['section_id']]['label'],'教育背景')
+        self.assertEqual(s['greetings']['lead_entry_id'],'item-education-entry')
         original=json.loads((p.with_name('freshgrad-project')/'report.json').read_text())
         self.assertEqual({j['job_id']:j['score'] for j in r['jobs']},{j['job_id']:j['score'] for j in original['jobs']})
 
@@ -138,6 +170,9 @@ class StrategyRenderingTests(unittest.TestCase):
         h=red.render_editorial_report(self.report,self.ed)
         self.assertLess(h.index('id="section-strategy"'),h.index('id="section-rewrites"'))
         self.assertIn('6. 证据详情',h);self.assertIn('建议结构 · 从上到下',h)
+        self.assertIn('岗位打招呼语 · 三版本对比与复制',h)
+        self.assertIn('A. 能力优先',h);self.assertIn('B. 成果优先',h);self.assertIn('C. 简洁自然',h)
+        self.assertIn('data-copy="copy-greeting-1"',h)
         self.assertIn('details-accordion',h);self.assertIn('原始视觉版式未核验',h)
     def test_redaction_and_escaping_in_new_content(self):
         self.ed['resume_strategy']['inventory'][0]['label']='<script>alert</script> 教育背景'

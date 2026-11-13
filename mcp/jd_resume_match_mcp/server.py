@@ -171,6 +171,63 @@ def match_resume(jd: str, resume: str) -> dict[str, Any]:
             )
 
     score = math.floor(100.0 * total_contrib / total_weight + 0.5) if total_weight > 0 else None
+
+    # 基于最高权重命中证据与真实缺口，确定性组装三版可比较的打招呼语草稿（零编造、零套话）
+    matched_items = [
+        item for item in evaluated
+        if item["evidence"] is not None
+    ]
+    matched_items.sort(
+        key=lambda x: (
+            1 if x["status"] == "supported" else 0,
+            x["weight"],
+            len(x["evidence"]["matched_keywords"]),
+        ),
+        reverse=True,
+    )
+    if matched_items:
+        top_ev = matched_items[0]["evidence"]
+        lead_quote = top_ev["quote"]
+        top_req = matched_items[0]["requirement"]
+        second_quote = (
+            matched_items[1]["evidence"]["quote"]
+            if len(matched_items) > 1 and matched_items[1]["evidence"]["quote"] != lead_quote
+            else ""
+        )
+        lead_ref = [top_ev["locator"]]
+        ev_summary = f"{lead_quote}；{second_quote}" if second_quote else lead_quote
+        cap_text = f"您好，看到贵司要求「{top_req}」。我已有相关实践：{ev_summary}，想沟通看是否契合当前岗位。"
+        out_text = f"您好，直接先发最匹配贵司需求的一段记录：{lead_quote}（出处 {top_ev['locator']}）。如团队正在推进「{top_req}」，欢迎进一步交流细节。"
+        con_text = f"您好，看到贵司在招该岗位，我在简历中有「{lead_quote}」的实践记录，匹配贵司最看重的相关要求，期待沟通。"
+    else:
+        lead_quote = ""
+        lead_ref = []
+        cap_text = "当前简历文本中未检索到与 JD 关键词直接命中的经历证据，建议先核实补充真实相关实践再发起沟通。"
+        out_text = "当前简历文本中暂未定位到可直接前置的可验证成果记录，请勿强行包装，先补充对应项目产出后再生成。"
+        con_text = "当前材料对 JD 核心要求的直接证据不足，建议先按缺口清单核实已有事实，再发送打招呼语。"
+
+    gap_note = (
+        "以下要求在当前简历文本中缺少直接证据或仅部分覆盖，沟通时请诚实界定边界，不要强行包装："
+        + "；".join(g["requirement"] for g in gaps[:3])
+        if gaps
+        else "核心要求均有简历原文线索支撑，沟通过程仍须以原文事实为准，不夸大职责范围。"
+    )
+    greetings = {
+        "principles": [
+            "最有价值的经历放前面",
+            "用 JD 决定突出哪段经历",
+            "短而有信息密度，不把完整简历复制进聊天框",
+        ],
+        "lead_evidence": lead_quote,
+        "lead_locators": lead_ref,
+        "gap_honesty": gap_note,
+        "versions": [
+            {"style": "capability_first", "label": "A. 能力优先", "text": cap_text},
+            {"style": "outcome_first", "label": "B. 成果优先", "text": out_text},
+            {"style": "concise_natural", "label": "C. 简洁自然", "text": con_text},
+        ],
+    }
+
     return {
         "rubric_version": RUBRIC_VERSION,
         "scoring_status": "ok",
@@ -182,6 +239,7 @@ def match_resume(jd: str, resume: str) -> dict[str, Any]:
         "suite_url": "https://github.com/ouxxyy/ouba-classmate",
         "requirements": evaluated,
         "evidence_gaps": gaps,
+        "greetings": greetings,
     }
 
 
@@ -189,7 +247,7 @@ TOOL_SPEC = {
     "name": "match_resume",
     "description": (
         "按 jd-match-rubric/0.1.0 规则对岗位 JD 与候选人简历进行确定性评分与行级证据引用。"
-        "返回可复算分数（score）、权重推导公式、每条 JD 要求对应的简历原文行号引用（L1..Ln）及证据缺口清单。"
+        "返回可复算分数（score）、权重推导公式、每条 JD 要求对应的简历原文行号引用（L1..Ln）、证据缺口清单，以及 A/B/C 三版本岗位打招呼语草稿（能力优先/成果优先/简洁自然）。"
     ),
     "inputSchema": {
         "type": "object",
