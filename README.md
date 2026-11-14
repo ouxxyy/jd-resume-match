@@ -1,9 +1,25 @@
 # AI简历优化大师（jd-resume-match）｜简历与 JD 匹配及证据审查
 
-> ⭐ **旗舰合集入口：本项目已收录于 [`ouxxyy/ouba-classmate`](https://github.com/ouxxyy/ouba-classmate)** [![GitHub Repo stars](https://img.shields.io/github/stars/ouxxyy/ouba-classmate?style=flat-square&logo=github&label=ouba-classmate%20Stars&color=0284c7)](https://github.com/ouxxyy/ouba-classmate)
-> - 🚀 **建议直接前往 [合集主仓 `ouba-classmate` 点 Star 收藏](https://github.com/ouxxyy/ouba-classmate)**：[一行安装全部 Skill](https://github.com/ouxxyy/ouba-classmate#install) · [查看《中文 AI 求职 Skill 公开横评》](https://github.com/ouxxyy/ouba-classmate/tree/main/benchmark)
-> - 🛡️ **免安装求职防身与自测**：[《2026 求职防身情报库：24道大厂深挖母题 × JD黑话解码 × 接Offer背调18问》](https://github.com/ouxxyy/ouba-classmate/blob/main/radar/README.md) · [⚡ 30秒在线速测：岗位 AI 不可替代指数 & 简历含金量诊断小票](https://ouxxyy.github.io/ouba-classmate/#career-radar)
-> - 💻 **终端 1 秒为开源主仓点亮 Star**：`gh api -X PUT /user/starred/ouxxyy/ouba-classmate`
+<!-- hero:start -->
+
+<p>
+  <a href="https://github.com/ouxxyy/ouba-classmate"><img src="assets/hero-card.svg" width="100%" alt="jd-resume-match — 确定性 JD 匹配公式与原文行号证据链审计"></a>
+</p>
+
+**对照真实 JD 做确定性公式算分、原文行号（L1..Ln）证据锁定与去水分审计，附带本地 stdio MCP Server（仅做分数与证据审查，不做视觉 PDF 排版）。**  
+<sub>Deterministic jd-match-rubric scorer, line-cited anti-hallucination resume audit (L1..Ln), and local stdio MCP server (score & evidence audit only; no visual PDF layout).</sub>
+
+<p>
+  <a href="https://github.com/ouxxyy/ouba-classmate"><img src="https://img.shields.io/badge/SUITE-ouba--classmate-1f6feb?style=for-the-badge" alt="ouba-classmate Suite"></a>
+  <a href="#quick-example"><img src="https://img.shields.io/badge/Quick_Example-0969da?style=for-the-badge" alt="Quick Example"></a>
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-238636?style=for-the-badge" alt="Quick Start"></a>
+  <a href="#english-overview"><img src="https://img.shields.io/badge/English-30363d?style=for-the-badge" alt="English"></a>
+  <a href="https://github.com/ouxxyy"><img src="https://img.shields.io/badge/PROFILE-ouxxyy-30363d?style=for-the-badge" alt="Author Profile"></a>
+</p>
+
+<img src="assets/divider.svg" width="100%" alt="">
+
+<!-- hero:end -->
 
 投简历之前，先看整份简历该怎么排，再看句子该怎么改，顺便生成能提高回复率的岗位打招呼语：按 JD 找证据、调整模块和经历顺序、深挖关键经历的价值，产出能力优先 / 成果优先 / 简洁自然三版话术，分数仍可复算，改写与话术均不编造事实。
 
@@ -192,13 +208,29 @@ An evidence-based resume and job-description matching Skill with reproducible sc
 
 See [installation](#quick-start) and [synthetic examples](examples/README.md). Python 3.9+ is required. Scores measure evidence coverage, not ATS scores or hiring probability. Scanned PDFs are not OCR-processed; analysis uses your agent's model even though the resulting report can be read offline.
 
-## 相关项目
+<!-- suite-matrix:start -->
 
-[欧八同学的 AI Skills 与跳槽涨薪工具合集](https://github.com/ouxxyy/ouba-classmate)，还可以接着使用：
+## 更多开源项目 · More from ouba-classmate Suite
 
-- [先筛选有来源证据的岗位](https://github.com/ouxxyy/job-search)
-- [再练习经历面试与重答](https://github.com/ouxxyy/ai-interviewer)
-- 全部项目与作者主页：[github.com/ouxxyy](https://github.com/ouxxyy)
+> 如果这个项目帮到了你，欢迎去旗舰合集仓 [**`ouxxyy/ouba-classmate`**](https://github.com/ouxxyy/ouba-classmate) 点一颗 Star 或一行安装全部 Skills：
+> `npx skills add ouxxyy/ouba-classmate` · `gh api -X PUT /user/starred/ouxxyy/ouba-classmate`
+
+| 仓库 · Repo | 分类 · Category | 它做什么 · What it does |
+| --- | --- | --- |
+| [`ouba-classmate`](https://github.com/ouxxyy/ouba-classmate) | SUITE · 旗舰合集 | **11 个原创项目总仓 + 一键安装全部 Skills + 在线战力测算与防身情报库**<br><sub>All-in-one Skills suite & benchmark</sub> |
+| [`jd-resume-match`](https://github.com/ouxxyy/jd-resume-match) · **Current** | CAREER · 求职涨薪 | **AI 简历优化与 JD 匹配体检（确定性公式 + 行号证据）**<br><sub>Deterministic JD matching & line-cited resume audit</sub> |
+| [`ai-interviewer`](https://github.com/ouxxyy/ai-interviewer) | CAREER · 求职涨薪 | **中文语音/文字原话追问 AI 模拟面试官（含在线版）**<br><sub>Chinese voice AI mock interviewer anchored to your answers</sub> |
+| [`job-search`](https://github.com/ouxxyy/job-search) | CAREER · 求职涨薪 | **跨 5 平台实时去重筛岗，输出带来源短名单**<br><sub>5-platform source-backed job search & shortlist builder</sub> |
+| [`sherlock-company`](https://github.com/ouxxyy/sherlock-company) | CAREER · 求职涨薪 | **入职前四态证据公司背调与 Offer 核实清单**<br><sub>Pre-offer employer research with 4-state evidence boundaries</sub> |
+| [`mbai`](https://github.com/ouxxyy/mbai) | CAREER · 求职涨薪 | **工作任务 AI 不可替代指数与 4 核决策复盘**<br><sub>Task-level AI irreplaceability index & decision reflection</sub> |
+| [`codex-gif-video`](https://github.com/ouxxyy/codex-gif-video) | CREATIVE · AI 创作 | **69 种风格原生 GIF 与静音 MP4 素材生成 Skill**<br><sub>Native GPT Image 2.6 animated GIF & MP4 generator (69 styles)</sub> |
+| [`storyboard-scavenger`](https://github.com/ouxxyy/storyboard-scavenger) | CREATIVE · AI 创作 | **可灵/即梦/Veo/Sora 七要素 AI 视频分镜工作流**<br><sub>7-element AI video storyboard skill for Kling & Seedance</sub> |
+| [`travel-art-album-skill`](https://github.com/ouxxyy/travel-art-album-skill) | CREATIVE · AI 创作 | **旅行照片艺术画册与单文件离线翻页相册 Skill**<br><sub>Art-styled travel photo proofs & standalone offline HTML flipbook</sub> |
+| [`mystery-skill`](https://github.com/ouxxyy/mystery-skill) | COGNITION · 认知框架 | **Mystery 认知框架与职场心理博弈分析 Skill**<br><sub>Cognitive framework for interview frame & decision study</sub> |
+| [`Attention`](https://github.com/ouxxyy/Attention) | LOCAL APP · 本地工具 | **ActivityWatch 本地专注力、心流时段与切换分析**<br><sub>Local ActivityWatch focus & context-switching dashboard</sub> |
+| [`postapp`](https://github.com/ouxxyy/postapp) | LOCAL APP · 本地工具 | **Chrome 本地摄像头姿态检测与坐姿提醒插件**<br><sub>On-device MoveNet Chrome posture reminder extension</sub> |
+
+<!-- suite-matrix:end -->
 
 <a id="author"></a>
 
@@ -223,3 +255,11 @@ See [installation](#quick-start) and [synthetic examples](examples/README.md). P
 ## 许可证
 
 [MIT](LICENSE)。本项目未复制任何上游仓库代码；研究过的仓库与许可证边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 和 [docs/reference-audit.md](docs/reference-audit.md)。
+
+<!-- footer:start -->
+
+<p align="center">
+  <a href="https://github.com/ouxxyy"><img src="assets/footer.svg" width="100%" alt="欧八同学 · ouxxyy — Positioning × AI Leverage × Salary Growth"></a>
+</p>
+
+<!-- footer:end -->
