@@ -1,5 +1,20 @@
 # AI简历优化大师（jd-resume-match）｜简历与 JD 匹配及证据审查
 
+<!-- discovery:start -->
+## Claude 简历优化与中文 JD 匹配
+
+**怎么用 Claude 或 Codex 对照 JD 优化简历，又不编造经历？** 输入真实简历和岗位 JD，按原文行号核对证据、复算匹配分，输出结构调整、经历改写建议和岗位打招呼语。
+
+Evidence-based resume optimization and job-description matching.
+
+**开始使用：** [安装 Skill / MCP](#quick-start) · [看合成案例](examples/README.md)。
+
+**使用边界：** 分数衡量规则下的证据覆盖，不是 ATS 官方评分或录用概率；不做视觉 PDF 排版，不凭空补数字。
+
+[按任务浏览欧八同学的全部工具](https://github.com/ouxxyy/ouba-classmate#按需求找)；如果本项目有帮助，欢迎收藏当前仓库。
+
+<!-- discovery:end -->
+
 <!-- hero:start -->
 
 <p>
