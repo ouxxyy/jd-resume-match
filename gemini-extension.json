@@ -1,0 +1,15 @@
+{
+  "name": "jd-resume-match",
+  "version": "1.0.0",
+  "description": "Deterministic resume-vs-JD scorer (jd-match-rubric/0.1.0) with line-cited evidence audit (L1..Ln) and local stdio MCP server.",
+  "mcpServers": {
+    "jd-resume-match": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp",
+        "jd-resume-match-mcp"
+      ]
+    }
+  }
+}

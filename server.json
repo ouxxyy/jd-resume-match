@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.ouxxyy/jd-resume-match",
-  "description": "Evidence-based Chinese resume vs job-description (JD) matching MCP server with reproducible scoring (jd-match-rubric/0.1.0) and line-level evidence citations.",
+  "description": "Deterministic resume-vs-JD evidence matcher and line-cited audit (local stdio MCP).",
   "repository": {
     "url": "https://github.com/ouxxyy/jd-resume-match",
     "source": "github",
