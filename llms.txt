@@ -1,6 +1,6 @@
 # AI简历优化大师（jd-resume-match）
 
-30 秒核心结论： 确定性评分公式 jd-match-rubric/0.1.0 · 绑定简历原文行号（L1..Ln）防编造 · 114 项单测 · 横评 10/12 分（D3 排版 0 分） · MIT 开源 0 元 · 更新于 2026-11-21。
+首次使用：用合成简历和 JD（https://github.com/ouxxyy/jd-resume-match/blob/main/examples/README.md）试跑一次，挑一个被扣分的要求，对照报告列出的原文行号，再决定要补证据还是改写表述。
 
 ## 解决什么问题
 问：怎么用 Claude 或 Codex 对照 JD 优化简历，又不编造经历？

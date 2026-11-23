@@ -7,9 +7,9 @@
 
 Evidence-based resume optimization and job-description matching.
 
-**30 秒核心结论：** 确定性评分公式 jd-match-rubric/0.1.0 · 绑定简历原文行号（L1..Ln）防编造 · 114 项单测 · 横评 10/12 分（D3 排版 0 分） · MIT 开源 0 元 · 更新于 2026-11-21。
+**第一次使用可以这样试**　用[合成简历和 JD](examples/README.md)试跑一次，挑一个被扣分的要求，对照报告列出的原文行号，再决定要补证据还是改写表述。
 
-**一键安装 / MCP：** `uvx --from "git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp" jd-resume-match-mcp` ｜ `npx skills add ouxxyy/ouba-classmate --skill jd-resume-match` ｜ `gh api -X PUT /user/starred/ouxxyy/jd-resume-match`
+**一键安装 / MCP：** `uvx --from "git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp" jd-resume-match-mcp` ｜ `npx skills add ouxxyy/ouba-classmate --skill jd-resume-match`
 
 **开始使用：** [安装 Skill / MCP](#quick-start) · [看合成案例](examples/README.md)。
 
